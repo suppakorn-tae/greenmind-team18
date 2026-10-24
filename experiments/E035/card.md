@@ -1,0 +1,2 @@
+# E035 — champion E033 with max-num-batched-tokens 4096 -> 3072 (cap 1024)
+Parent E033. One variable. Why: official sL/sT headroom includes TPOT (p95 57 ms > 50). E024 (3072 on E017) halved final TPOT fails (123 -> 66) but collapsed from KV-full queueing; E033 has +9% KV and the 3072 budget shortens sequences, so the memory cliff may have moved. Risk: same collapse. Judge on final TTFT+TPOT fails and peak waiting. Start 2026-10-24T20:21:20+07:00.
