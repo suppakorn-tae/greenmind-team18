@@ -1,0 +1,2 @@
+# E016 — champion + MAX_BT 4096 + long-prefill-token-threshold 2048 (combine E010 + E011)
+Parent E010 (MAX_BT 4096); one variable vs parent: per-request chunk cap 2048. Hypothesis: worst-case step ~0.45 s and no single long prompt can take the whole budget -> TTFT staircase shorter than either alone. Last experiment of the session (16:15 cutoff). Val gate vs champion mean (eta 1.18, arr_ok/kJ 2.05). Start 2026-10-24T15:28:44+07:00.

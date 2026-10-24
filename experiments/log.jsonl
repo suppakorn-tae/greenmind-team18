@@ -35,3 +35,5 @@
 {"ts":"2026-10-24T15:22:16+07:00","id":"E008","event":"start","change":"champion repeat (fresh server, 400 W) to measure variance","status":"champion"}
 {"ts":"2026-10-24T15:25:15+07:00","id":"E008","event":"result","change":"champion repeat","status":"champion","val_run":"20261024-152321-e008-2","eta_vs_base":1.13,"j_per_req":302,"slo_met":"63/100","p95_tpot_ms":51,"lesson":"champion val eta over 2 fresh runs: 1.22, 1.13 (mean 1.18, spread +-0.05)"}
 {"ts":"2026-10-24T15:25:15+07:00","id":"E015","parent":"E008","event":"start","change":"gpu-memory-utilization 0.95","status":"running"}
+{"ts":"2026-10-24T15:28:44+07:00","id":"E015","parent":"E008","event":"result","change":"gpu-memory-utilization 0.95","status":"rejected","val_run":"20261024-152620-e015","val_S":0.0,"eta_vs_base":0.89,"j_per_req":344,"slo_met":"62/100","p95_tpot_ms":52,"accuracy":null,"lesson":"no val gain; more energy"}
+{"ts":"2026-10-24T15:28:44+07:00","id":"E016","parent":"E010","event":"start","change":"MAX_BT 4096 + long-prefill-threshold 2048","status":"running"}

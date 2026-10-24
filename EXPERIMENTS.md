@@ -17,7 +17,8 @@
 | E012 | E008 | power cap 250 W | rejected | 19.5 |  |  | 254 | 45/100 | 82.0 | 250W: J/req -18% but TTFT fails 30->48 (prefill slower) |
 | E013 | E012 | 250W + chunk cap 2048 | rejected | 14.3 |  |  | 267 | 45/100 |  | 250W too slow at peak regardless of chunking |
 | E014 | E008 | power cap 300 W | rejected | 1.2 |  |  | 290 | 56/100, 53/100 |  | 300W: J/req -7..-13% but TTFT fails up; eta mean 1.11 < 1.22 |
-| E015 | E008 | gpu-memory-utilization 0.95 | running |  |  |  |  |  |  |  |
+| E015 | E008 | gpu-memory-utilization 0.95 | rejected | 0.0 |  |  | 344 | 62/100 |  | no val gain; more energy |
+| E016 | E010 | MAX_BT 4096 + long-prefill-threshold 2048 | running |  |  |  |  |  |  |  |
 
 ## Key findings
 
