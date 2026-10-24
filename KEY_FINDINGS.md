@@ -1,0 +1,7 @@
+- AWQ-W4A16 checkpoint: agent class deterministic 2/20 (BF16: 3-7/20) and slower TPOT under batch (Marlin) -> rejected; BF16 is the line.
+- MTP on GDN hybrid multiplies per-sequence recurrent state (k+1 slots); with fp32 state this capped concurrency at ~46 seqs (KV 98%, queueing TTFT). `--mamba-ssm-cache-dtype bfloat16` fixed it (peak KV 56%, TTFT fails 59->33), no visible accuracy loss.
+- MTP k=2 >= k=3 (acceptance 0.87/0.74/0.59 per position).
+- Prefix caching: 3% hit rate on this workload; align mode no benefit -> off.
+- Smaller prefill chunks (2048) hurt: per-step fixed cost.
+- Repeat runs on one server with prefix caching are inflated (warm cache replays) — always fresh server, or prefix caching off.
+- Local val eta tracks official (1.22 vs 1.27); local val A is pessimistic because the agent class (n=20) is noisy.

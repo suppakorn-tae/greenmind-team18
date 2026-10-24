@@ -1,0 +1,2 @@
+# E009 — champion E008 with MTP k=2 -> 1
+Parent E008. One variable: num_speculative_tokens 1. Hypothesis: on the final track (p95 TPOT 88 ms, 110 tpot fails) per-step verify+draft cost at ~60+ seqs dominates; k=1 (1.87 tok/step expected vs 2.6) reduces per-step time and state slots. Risk: fewer tokens/step -> higher J/req, worse TPOT at low load. Judge on local final. Start 2026-10-24T14:49:44+07:00.
