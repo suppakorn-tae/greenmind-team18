@@ -1,11 +1,15 @@
-# Champion: E027 (since 2026-10-24 19:19 +07) — local; OFFICIAL final pending
+# Champion: E030 (since 2026-10-24 19:38 +07) — local; OFFICIAL final pending
+= E027 with `THINK_BUDGET=3072` (the only change; set inside `configs/champion.sh`).
+E030 local: val eta 1.77 / 1.72x, 83 / 81 of 100, 258 / 261 J/req, 0 cutoffs; final S 28.8 / 25.5, eta 1.46 / 1.39x, 123 / 114 of 300, 195 J/req, acc 81.0 / 80.7%.
+
+## E027 (budget 5120) — previous local champion
 = E017 (OFFICIAL final S 59.0) + server-side default thinking budget 5120 tokens (authorized by the team lead 2026-10-24 ~19:00;
 organizer confirmation still recommended). Fallback without the budget: `configs/E017.sh`.
 
 Start: `configs/champion.sh` at default power (`greenmind-kit/power.sh reset` → 400 W, no clock lock).
 ```
 export PATH=$HOME/vllm-env/bin:/usr/local/cuda/bin:$PATH CUDA_HOME=/usr/local/cuda   # ninja/nvcc for FlashInfer JIT
-THINK_BUDGET=5120 python ~/repo/tools/gray/vllm_think_budget.py serve CMKL/MANGO1.5-Qwen3.5-9B --host 0.0.0.0 --port 8000 \
+THINK_BUDGET=3072 python ~/repo/tools/gray/vllm_think_budget.py  # E030; E027 used 5120 serve CMKL/MANGO1.5-Qwen3.5-9B --host 0.0.0.0 --port 8000 \
   --enable-auto-tool-choice --tool-call-parser qwen3_coder --reasoning-parser qwen3 \
   --language-model-only --max-model-len 41984 --gpu-memory-utilization 0.92 \
   --max-num-seqs 256 --max-num-batched-tokens 4096 --long-prefill-token-threshold 1024 \
