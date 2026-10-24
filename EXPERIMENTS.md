@@ -11,7 +11,8 @@
 | E006 | E005 | prefix caching off | neutral | 0.0 |  |  | 328 | 86/148 | 76.0 | prefix cache irrelevant (3% hits); KV still full at 46 seqs; agent class noisy 3-7/20 on BF16 |
 | E007 | E006 | mamba ssm cache bf16 | promoted | 14.5 |  |  | 303 | 106/148 (60/100) | 79.0 | bf16 SSM state frees memory: peak KV 98->56%, TTFT fails 59->33; now TPOT-bound (60ms) |
 | E008 | E007 | MTP k 3->2 | champion | 21.2 | 15.5 | 31.5 | 311 | 63/100 | 79.0 | k=2 >= k=3; official S 31.5; final track TPOT-bound at high concurrency |
-| E009 | E008 | MTP k 2->1 | running |  |  |  |  |  |  |  |
+| E009 | E008 | MTP k 2->1 | rejected | 0.0 | 4.2 |  | 381 | 64/100 | 80.0 | k=1 worse J/req and final TPOT; final TPOT tail = 8K prefill chunks starving decode |
+| E010 | E008 | max-num-batched-tokens 8192->4096 | running |  |  |  |  |  |  |  |
 
 ## Key findings
 

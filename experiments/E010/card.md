@@ -1,0 +1,2 @@
+# E010 — champion E008 with max-num-batched-tokens 8192 -> 4096
+Parent E008. One variable: MAX_BT 4096. Hypothesis: on final load an 8K prefill chunk makes a ~0.85 s step, so co-scheduled decoders blow TPOT; halving the chunk halves the worst stalls -> fewer tpot fails. Risk: slower prefill -> more TTFT fails on long prompts (E003 with AWQ at 2048 got worse, but that was the memory-bound regime). Judge on local final + val eta. Start 2026-10-24T14:59:17+07:00.
