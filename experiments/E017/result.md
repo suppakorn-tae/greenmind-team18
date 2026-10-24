@@ -7,3 +7,5 @@ vs E016: val TTFT fails 24-28 -> 10-12, per-arrival 63-68 -> 78-80, eta mean 1.2
 Lesson: per-request prefill cap is the main TTFT lever on this trace; 1024 >> 2048.
 - Confirmation (configs/champion.sh, fresh server, 400 W) 20261024-154907-e017-confirm: 140/160 turns, 80/100 per arrival, eta 1.34x, 334 J/req, p95 TTFT 1.48 s, p95 TPOT 50 ms, fails ttft 9/tpot 9/cutoff 3, acc 79% (agent 5/20), local val S 42.2 (A 1.00). Reproduces runs #1/#2.
 - 15:51 paused for Tae's official run; champion left serving on :8000.
+- **OFFICIAL final (2026-10-24 08:54 UTC): S 59.0, A 1.00, R 1.012, sE 0.53, sT 0.62, sL 0.80, eta 1.78x, 247 J/req, p95 TTFT 1.91 s, p95 TPOT 59 ms, SLO-met 215/300, accuracy 88.8%.** Linked to local final 20261024-154141-e017 (official #3).
+- Calibration: local final is much harsher than official (117/300 vs 215/300, p95 TTFT 3.88 vs 1.91 s); local val tracks official val closely (E008 eta 1.22 vs 1.27). Use local val as primary, local final as a stress test.

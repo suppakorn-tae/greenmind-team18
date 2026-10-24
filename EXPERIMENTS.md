@@ -19,8 +19,9 @@
 | E014 | E008 | power cap 300 W | rejected | 1.2 |  |  | 290 | 56/100, 53/100 |  | 300W: J/req -7..-13% but TTFT fails up; eta mean 1.11 < 1.22 |
 | E015 | E008 | gpu-memory-utilization 0.95 | rejected | 0.0 |  |  | 344 | 62/100 |  | no val gain; more energy |
 | E016 | E010 | MAX_BT 4096 + long-prefill-threshold 2048 | champion | 30.8 | 17.3 |  | 319 | 68/100, 63/100 | 81.0 | chunk 4096 + per-request cap 2048 fixes TTFT staircase; final S 17.3 > 15.5 |
-| E017 | E016 | champion confirmation fresh server | paused; serving champion.sh for Tae official val run | 42.2 | 22.7 |  | 334 | 80/100 | 79.0 | confirmed: 3 val runs eta 1.44/1.30/1.34, 80/78/80 per arrival |
+| E017 | E016 | champion confirmation fresh server | official-final | 42.2 | 22.7 | 59.0 | 247 | 215/300 | 88.8 | OFFICIAL final: S 59.0, A 1.00, R 1.012, sE 0.53, sT 0.62, sL 0.80, p95 TTFT 1.91 s. Local final is harsher (117/300, TTFT 3.88 s) but ranks the same |
 | E018 | E017 | long-prefill-threshold 512 | rejected | 22.5 |  |  | 331 | 76/100 | 79.0 | 512 too fine: long-prompt TTFT up; optimum ~1024 |
+| E019 | E017 | MAX_BT 4096->2048 (cap 1024) | running |  |  |  |  |  |  |  |
 
 ## Key findings
 
