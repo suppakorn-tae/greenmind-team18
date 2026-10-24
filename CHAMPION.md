@@ -1,4 +1,7 @@
-# Champion: E045 (since 2026-10-24 23:34 +07) — local; OFFICIAL pending
+# Champion: E046 = E045 served as "mango" — OFFICIAL final S 99.38 (2026-10-24 16:48 UTC)
+OFFICIAL: S 99.38, A 1.00, sE 1.00, sT 0.969, sL 1.00, eta 3.82x, 157 J/req, 294/300 on time, 0 truncated/errors, p95 TTFT 1.21 s, p95 TPOT 37 ms, accuracy 88.3%.
+Caveat: longctx retention 0.71 (n=15, below the 20-question gate size). `configs/champion.sh` == `configs/E046.sh` (= E045 + `--served-model-name mango`).
+
 = E030 (OFFICIAL final 88.0) with the team's W8A8 INT8 checkpoint `suppakorn-k/MANGO1.5-Qwen3.5-9B-W8A8` (private HF repo,
 rev 1909e853, made 2026-10-24 by a teammate with llm-compressor GPTQ W8A8 from the official CMKL weights; open calibration data:
 WangchanThaiInstruct, UltraChat, Open-Platypus). Fallback: `configs/E030.sh` (official BF16 weights).

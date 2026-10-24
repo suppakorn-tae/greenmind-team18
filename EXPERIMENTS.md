@@ -48,7 +48,7 @@
 | E043 | E030 | dynamic SD + V2 runner | rejected | 41.8 |  |  | 251 | 81/100; 90/300 | 79.0 | V2 runner: KV 368K vs 475K -> final memory collapse; TPOT fails down to 96 |
 | E044 | E043 | dynamic SD on V1 runner | rejected | 43.7 |  |  | 250 | 83/100; 92/300 | 80.0 | dynamic SD reserves ~23% KV -> final collapse |
 | E045 | E030 | weights -> team W8A8 INT8 (CUTLASS int8) | configs/champion.sh (=E045) serving for official final | 60.3 | 94.4 |  | 209 | 100/100, 100/100; 245/300, 261/300 | 83.5 | W8A8 INT8 on A100 tensor cores ~2x prefill -> peak no longer saturated: val 100/100, local final S 94; accuracy equal or better overall |
-| E046 | E045 | served-model-name mango | champion |  | 94.8 |  | 179 | 257/300 | 82.3 | local final S 94.8, consistent with E045; rag .90 / reason .87 slightly below BF16 |
+| E046 | E045 | served-model-name mango | OFFICIAL CHAMPION |  | 94.8 | 99.38 | 157.5 | 294/300 | 88.3 | OFFICIAL final 99.38 (E030 88.0): sE 1.0, sT 0.97, sL 1.0. longctx retention 0.71 (n=15, ungated) is the only weak spot |
 
 ## Key findings
 
@@ -82,4 +82,5 @@
 - TensorRT-LLM 1.4.0rc1 (E042): supports Qwen3.5+MTP but cold server stalls on runtime JIT (24/100), warm 56/100 vs vLLM 80/100, agent 2/20. Engine ranking for this model on 1x A100: vLLM >> SGLang (58) ~ TRT-LLM (56 warm).
 - Dynamic speculative decoding (E043 V2 runner, E044 V1): k=2 below 64 running / k=1 above cuts final TPOT fails (122 -> 95) but shrinks the KV pool 475K -> 368K tokens -> final memory collapse. GDN kernels: only Triton prefill on Ampere (FlashInfer/CuteDSL need SM90+).
 - **Team W8A8 INT8 checkpoint (E045)**: CUTLASS INT8 tensor-core GEMMs on A100 (~2x BF16) remove the peak prefill bottleneck: val 100/100 on time, local final S 93.7/95.0 vs 25-29 for BF16, 0 waiting at final peak, accuracy 83-84% vs 81%. Weight-only quant (AWQ/FP8 Marlin) was the wrong kind of quantization for this GPU; W8A8 int8 is the right one.
+- **OFFICIAL final S 99.38 (E046 = team W8A8 INT8 + MTP k=2 + bf16 SSM state + prefill cap 1024/4096 + thinking budget 3072)**: sE 1.0, sT 0.97, sL 1.0, 157 J/req (baseline 467, -66%), 294/300 on time, accuracy 88.3%. Only weak spot: longctx retention 0.71 (15 items, ungated).
 
