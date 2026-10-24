@@ -1446,3 +1446,25 @@ INFO:     127.0.0.1:41246 - "POST /v1/chat/completions HTTP/1.1" 200 OK
 (APIServer pid=108491) INFO 10-24 17:58:17 [loggers.py:335] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 393.9 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%
 (APIServer pid=108491) INFO 10-24 17:58:17 [metrics.py:120] SpecDecoding metrics: Mean acceptance length: 3.00, Accepted throughput: 263.00 tokens/s, Drafted throughput: 263.00 tokens/s, Accepted: 2630 tokens, Drafted: 2630 tokens, Per-position acceptance rate: 1.000, 1.000, Avg Draft acceptance rate: 100.0%
 (APIServer pid=108491) INFO 10-24 17:58:27 [loggers.py:335] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%
+(APIServer pid=108491) INFO 10-24 18:05:26 [launcher.py:254] [shutdown] API server: shutdown triggered
+(APIServer pid=108491) INFO 10-24 18:05:26 [launcher.py:270] [shutdown] API server: stopping engine client mode=abort timeout=0s
+(APIServer pid=108491) INFO 10-24 18:05:26 [core_client.py:770] [shutdown] MPClient: start timeout=0s
+(APIServer pid=108491) INFO 10-24 18:05:26 [core_client.py:772] [shutdown] MPClient: stopping engine manager
+(APIServer pid=108491) INFO 10-24 18:05:26 [utils.py:628] [shutdown] Process manager: send sigterm to process EngineCore
+(APIServer pid=108491) WARNING 10-24 18:05:26 [utils.py:648] [shutdown] Process manager: force killing remaining processes count=1
+(APIServer pid=108491) WARNING 10-24 18:05:26 [utils.py:653] [shutdown] Process manager: force killing remaining process EngineCore pid 108630
+(EngineCore pid=108630) INFO 10-24 18:05:26 [core.py:1454] [shutdown] EngineCore: trigger received signal=SIGTERM
+(EngineCore pid=108630) INFO 10-24 18:05:26 [core.py:1635] [shutdown] EngineCore: start mode=abort timeout=0s
+(EngineCore pid=108630) INFO 10-24 18:05:26 [core.py:1666] [shutdown] EngineCore: request processing complete; starting resource teardown
+(EngineCore pid=108630) INFO 10-24 18:05:26 [core.py:1499] [shutdown] EngineCore: exiting busy loop
+(APIServer pid=108491) INFO 10-24 18:05:26 [core_client.py:774] [shutdown] MPClient: engine manager stopped
+(APIServer pid=108491) INFO 10-24 18:05:26 [core_client.py:775] [shutdown] MPClient: cleaning up background resources
+(APIServer pid=108491) INFO 10-24 18:05:26 [core_client.py:777] [shutdown] MPClient: complete
+(APIServer pid=108491) INFO 10-24 18:05:26 [launcher.py:279] [shutdown] API server: engine client stopped
+(APIServer pid=108491) INFO 10-24 18:05:26 [launcher.py:282] [shutdown] API server: signalling HTTP server shutdown
+(APIServer pid=108491) INFO 10-24 18:05:26 [launcher.py:304] [shutdown] API server: shutting down FastAPI HTTP server
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+/usr/lib/python3.12/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '

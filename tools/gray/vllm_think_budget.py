@@ -14,6 +14,7 @@ def _with_budget(self, *a, **k):
     return _orig(self, *a, **k)
 
 protocol.ChatCompletionRequest.to_sampling_params = _with_budget
-from vllm.entrypoints.cli.main import main
-sys.argv = ["vllm", *sys.argv[1:]]
-sys.exit(main())
+if __name__ == "__main__":  # engine core is spawned and re-imports this module
+    from vllm.entrypoints.cli.main import main
+    sys.argv = ["vllm", *sys.argv[1:]]
+    sys.exit(main())

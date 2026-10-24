@@ -26,6 +26,11 @@
 | E021 | E017 | kv-cache-dtype fp8 | rejected | 1.2 |  |  | 337 | 72/100 | 77.0 | fp8 KV forces FlashInfer + downgraded cudagraphs w/ spec decode -> TPOT 60ms |
 | E022 | E017 | power cap 350 W | rejected | 30.2 |  |  | 310 | 77/100, 70/100 | 79.0 | 350W slightly worse; ~50% of val energy is drain phase (cutoff reasoning reqs at low batch) |
 | E023 | E017 | SM clock lock 1215 MHz | official-final (worse than champion) | 44.6 | 20.2 | 52.5 | 186 | 164/300 | 89.1 | OFFICIAL final S 52.5 < E017 59.0: J/req -25% but on-time 215->164, sT 0.62->0.37, sL 0.80->0.69; eta only 1.78->1.80. Local final ranking was correct |
+| E024 | E017 | MAX_BT 3072 | rejected | 29.9 | 8.0 |  | 311 | 79/100; 108/300 | 79.0 | TPOT fails halve on final but KV-full queueing -> TTFT 11.7s |
+| E025 | E017 | gpu util 0.96 | rejected | 37.0 | 22.9 |  | 347 | 77/100; 124/300 | 79.0 | final tie (22.9/22.3 vs 22.7), val eta lower |
+| E026 | E017 | cap 768 | tie (not promoted) | 39.7 | 23.6 |  | 335 | 83/100, 79/100; 116/300 | 79.0 | cap optimum flat 768-1024 |
+| E027 | E017 | [GRAY local-only] thinking budget 5120 | gray-local-win (not shippable) | 47.2 | 25.2 |  | 270 | 84/100, 80/100; 118/300 | 80.0 | thinking budget 5120: val eta +23%, J/req -17%, 0 cutoffs, accuracy equal/better; needs organizer OK |
+| E028 | E017 | MAX_BT 4096->5120 (cap 1024) | running |  |  |  |  |  |  |  |
 
 ## Key findings
 
@@ -46,4 +51,5 @@
 - Local final track is harsher than official (117/300 vs 215/300) but ranks configs the same; local val tracks official val.
 - MTP k=3 on the champion (E020): val tie with -10% J/req, but final-track collapse (memory-capped admission, p95 TTFT 19.8 s). Always confirm on local final; val can't see this failure.
 - Clock lock 1215 MHz (E023): OFFICIAL final 52.5 vs 59.0 — J/req -25% but on-time -24%; eta flat, sT/sL down. On this workload, any clock/power reduction loses SLO about 1:1 with energy. Local final predicted the ranking; val didn't.
+- [GRAY, local only] Server-side thinking budget 5120 (E027): val eta 1.36 -> 1.67, J/req -17%, final S 22.7 -> 25.2, zero cutoffs, accuracy equal or better. Biggest remaining lever; needs organizer approval.
 
