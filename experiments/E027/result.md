@@ -6,3 +6,5 @@ Server-side default thinking_token_budget=5120 (vLLM built-in forced reasoning e
 vs E017 val mean: eta 1.67 vs 1.36 (+23%), J/req -17%. Mechanism: the 2-4 requests that previously ran to the 8192 cutoff (always scored as failures) now stop thinking at 5120 and answer; this shortens the energy window's drain phase (~25 s at ~300 W) and turns some of them into correct answers.
 In E017 runs no request finished naturally between 5K and 8192 tokens, so the budget only touches requests that were already failing.
 Status: evidence for the organizer question; do NOT put in champion.sh / official runs unless organizers approve.
+- Replicates (grader label "E028" by mistake; the E028 server failed to bind :8000, so the E027 server answered): val 20261024-181545-e028: 82/100, eta 1.45x, 312 J/req, cutoff 1; final 20261024-181725-e028: S 25.0, eta 1.36x, 201 J/req, 115/300, cutoff 0, acc 82.0%.
+- E027 summary over 3 val / 2 final: val eta 1.76/1.58/1.45 (mean 1.60 vs E017 1.36), final S 25.2/25.0 (E017 22.7).
