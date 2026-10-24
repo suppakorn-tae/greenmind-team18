@@ -54,3 +54,5 @@
 {"ts":"2026-10-24T16:50:31+07:00","id":"E021","parent":"E017","event":"start","change":"kv-cache-dtype fp8","status":"running"}
 {"ts":"2026-10-24T16:56:38+07:00","id":"E021","parent":"E017","event":"result","change":"kv-cache-dtype fp8","status":"rejected","val_run":"20261024-165424-e021","val_S":1.2,"eta_vs_base":1.13,"j_per_req":337,"slo_met":"72/100","p95_tpot_ms":60,"accuracy":77.0,"lesson":"fp8 KV forces FlashInfer + downgraded cudagraphs w/ spec decode -> TPOT 60ms"}
 {"ts":"2026-10-24T16:56:38+07:00","id":"E022","parent":"E017","event":"start","change":"power cap 350 W","status":"running"}
+{"ts":"2026-10-24T17:01:49+07:00","id":"E022","parent":"E017","event":"result","change":"power cap 350 W","status":"rejected","val_run":"20261024-165748-e022,20261024-165940-e022-2","val_S":30.2,"eta_vs_base":1.30,"j_per_req":310,"slo_met":"77/100, 70/100","p95_tpot_ms":57,"accuracy":79.0,"lesson":"350W slightly worse; ~50% of val energy is drain phase (cutoff reasoning reqs at low batch)"}
+{"ts":"2026-10-24T17:01:49+07:00","id":"E023","parent":"E017","event":"start","change":"SM clock lock 1215 MHz","status":"running"}
