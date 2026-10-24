@@ -74,3 +74,5 @@
 {"ts":"2026-10-24T18:29:15+07:00","id":"E017","event":"start","change":"champion local-final variance check (2 repeats)","status":"champion"}
 {"ts":"2026-10-24T18:36:42+07:00","id":"E017","event":"result","change":"local final variance","status":"champion","final_run":"20261024-183020-e017-final-2,20261024-183314-e017-final-3","final_S":21.0,"lesson":"champion final S 22.7/22.1/18.3; cutoffs 3-7 per run drive variance"}
 {"ts":"2026-10-24T18:37:07+07:00","id":"E029","parent":"E017","event":"start","change":"stream-interval 4","status":"running"}
+{"ts":"2026-10-24T18:43:18+07:00","id":"E029","parent":"E017","event":"abandoned","change":"stream-interval 4 (not applied)","status":"abandoned","val_run":"20261024-183811-e029","final_run":"20261024-184004-e029","lesson":"config edit failed -> champion replicate: val eta 1.26, final S 18.9"}
+{"ts":"2026-10-24T18:43:18+07:00","id":"E026","event":"start","change":"replicate #3 vs champion final mean 20.5","status":"re-evaluating"}
