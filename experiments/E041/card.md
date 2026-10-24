@@ -1,0 +1,4 @@
+# E041 — SGLang 0.5.22 engine (backlog #10), champion-equivalent config
+Parent E030 (vLLM, OFFICIAL 88.0). Variable: serving engine vLLM 0.32 -> SGLang 0.5.22 (open source, Apache-2.0), same official BF16 weights.
+Mapping: qwen3_5 model + qwen3_5_mtp draft (NEXTN/EAGLE, 2 draft tokens), mamba ssm dtype bf16, chunked prefill, no radix cache (or test it), qwen3 reasoning parser, qwen3_coder tool parser, server-side default thinking budget 3072 via Qwen3ThinkingBudgetLogitProcessor.
+Why: vLLM plateau is peak prefill/decode interference + per-step overhead; SGLang has a different scheduler (overlap scheduling, mixed chunked prefill, CUDA graphs for spec decode) that may shorten peak steps. Risk: install (torch 2.14/cu13), Qwen3.5 GDN+MTP kernel maturity on Ampere, tool-call/streaming usage compliance. Installed in a separate venv ~/sglang-env (vLLM env untouched). Start 2026-10-24T21:45:52+07:00.
