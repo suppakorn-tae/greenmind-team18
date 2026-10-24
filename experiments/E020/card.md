@@ -1,0 +1,2 @@
+# E020 — champion E017 with MTP k=2 -> 3 (HANDOFF idea #1; last start before 16:15)
+Parent E017. One variable. Hypothesis: with TTFT queueing fixed, the binding official term is TPOT (sT 0.62, p95 59 ms); k=3 (acceptance 0.84/0.70/0.59) gives ~2.9 vs ~2.6 tokens/step. Under the old scheduler k=3 tied k=2 (E007 vs E008). Risk: per-step verify cost and k+1 GDN state slots at high concurrency. Val gate x2 vs E017 (eta 1.30-1.44, 78-80/100). Start 2026-10-24T16:09:30+07:00.
