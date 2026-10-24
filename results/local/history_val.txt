@@ -1,5 +1,6 @@
 ── track val ──
 SRC      LABEL            STARTED                  S      A      R     sE     sT     sL ETA/BASE   J/REQ   P95TTFT   P95TPOT      SLO   ACC% BASE PAIR             CONFIG
+local    final-verify     2026-10-25T00:29:35   81.6  1.000  1.011  0.713  1.000  1.000    2.189     210      1.05      32.8  100/100   81.0 -    -                mango
 local    E045#2           2026-10-24T23:29:30   60.3  0.738  0.975  0.714  1.000  1.000    2.192     212      1.09      35.8  100/100   78.0 -    -                suppakorn-k/MANGO1.5-Qwen3.5-9B-W8A8
 local    E045             2026-10-24T23:25:35    4.0  0.050  1.043  0.687  1.000  1.000    2.128     205      1.11      36.1  100/100   81.0 -    -                suppakorn-k/MANGO1.5-Qwen3.5-9B-W8A8
 local    E044             2026-10-24T22:59:33   43.7  0.741  0.993  0.468  0.764  0.914    1.672     250      1.77      58.7   83/100   80.0 -    -                CMKL/MANGO1.5-Qwen3.5-9B

@@ -135,3 +135,4 @@
 {"ts":"2026-10-25T00:19:48+07:00","id":"E030","event":"result","status":"superseded by E046 (OFFICIAL 88.0)"}
 {"ts":"2026-10-25T00:19:48+07:00","id":"E045","event":"result","status":"superseded by E046 (same server, label only)"}
 {"ts":"2026-10-25T00:19:48+07:00","id":"E046","event":"champion","status":"FINAL SUBMISSION (OFFICIAL Final 99.38, attempt 20261024T164844-c109c6)"}
+{"ts":"2026-10-25T00:31:03+07:00","id":"E046","event":"result","change":"launch verification via scripts/serve_final.sh","status":"FINAL SUBMISSION (OFFICIAL Final 99.38, attempt 20261024T164844-c109c6)","val_run":"20261025-002935-final-verify","val_S":81.6,"eta_vs_base":2.19,"lesson":"serve_final.sh reproduces E046: identical args, health PASS, val 100/100"}

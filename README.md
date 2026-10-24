@@ -115,12 +115,14 @@ HF_TOKEN=<read-token> ~/vllm-env/bin/hf download suppakorn-k/MANGO1.5-Qwen3.5-9B
 # 3. GPU power: default limit, no clock lock (held constant for the whole run)
 scripts/power.sh reset          # -> 400 W on A100-SXM4-40GB, application clocks unlocked
 
-# 4. Launch the final server (port 8000, model name "mango"); ~60 s warm start, ~3 min on a cold compile cache
+# 4. Launch the final server (port 8000, model name "mango"); ~1 min warm start, ~3-5 min on a cold compile cache
 scripts/serve_final.sh
 #    or, with stop-old-server + wait-for-health:  scripts/restart.sh final
 ```
 
 Once the server is up, `local_grader/grader.py health --url http://localhost:8000` checks streaming with usage, tool calling and NVML energy, and every check passed on our VM.
+
+**Verified on 2026-10-25** ([`experiments/final/README.md`](experiments/final/README.md)): `scripts/power.sh reset && scripts/restart.sh final` started a server whose arguments are identical to the official E046 process. Health passed. A local val run (`20261025-002935-final-verify`) scored 100/100 on time, η 2.19×, 210 J/request, p95 TTFT 1.05 s and p95 TPOT 33 ms.
 
 **What the endpoint supports (verified with the health check and both graders):**
 - **Chat API:** OpenAI-compatible `POST /v1/chat/completions` and `GET /v1/models`.

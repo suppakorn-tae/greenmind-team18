@@ -56,7 +56,7 @@ true start times.
 | E043 | E030 | dynamic SD + V2 runner | rejected | 41.8 |  | 251 | 81/100; 90/300 | 79.0 |  |  |  |  | V2 runner: KV 368K vs 475K -> final memory collapse; TPOT fails down to 96 |
 | E044 | E043 | dynamic SD on V1 runner | rejected | 43.7 |  | 250 | 83/100; 92/300 | 80.0 |  |  |  |  | dynamic SD reserves ~23% KV -> final collapse |
 | E045 | E030 | weights -> team W8A8 INT8 (CUTLASS int8) | superseded by E046 (same server, label only) | 60.3 | 94.4 | 209 | 100/100, 100/100; 245/300, 261/300 | 83.5 |  |  |  |  | W8A8 INT8 on A100 tensor cores ~2x prefill -> peak no longer saturated: val 100/100, local final S 94; accuracy equal or better overall |
-| E046 | E045 | served-model-name mango | FINAL SUBMISSION (OFFICIAL Final 99.38, attempt 20261024T164844-c109c6) |  | 94.8 | 179 | 257/300 | 82.3 | 99.38 (final) | 157.5 | 294/300 | 88.3 | local final S 94.8, consistent with E045; rag .90 / reason .87 slightly below BF16 |
+| E046 | E045 | launch verification via scripts/serve_final.sh | FINAL SUBMISSION (OFFICIAL Final 99.38, attempt 20261024T164844-c109c6) | 81.6 | 94.8 | 179 | 257/300 | 82.3 | 99.38 (final) | 157.5 | 294/300 | 88.3 | serve_final.sh reproduces E046: identical args, health PASS, val 100/100 |
 
 ## Key findings
 
