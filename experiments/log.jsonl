@@ -8,3 +8,5 @@
 {"ts":"2026-10-24T14:01:00+07:00","id":"E003","parent":"E002","event":"start","change":"max-num-batched-tokens 2048","status":"running"}
 {"ts":"2026-10-24T14:08:00+07:00","id":"E003","parent":"E002","event":"result","change":"max-num-batched-tokens 2048","status":"rejected","val_S":0.0,"j_per_req":283,"slo_met":"72/135","p95_tpot_ms":55,"accuracy":76.0,"lesson":"smaller chunks worse; per-step fixed cost dominates, suspect MTP; ablate"}
 {"ts":"2026-10-24T14:09:00+07:00","id":"E004","parent":"E001","event":"start","change":"remove MTP (ablation)","status":"running"}
+{"ts":"2026-10-24T14:13:00+07:00","id":"E004","parent":"E001","event":"result","change":"remove MTP (ablation)","status":"rejected","val_run":"20261024-141006-e004","val_S":0.0,"eta_vs_base":0.81,"j_per_req":315,"slo_met":"80/134","p95_tpot_ms":63,"accuracy":77.0,"lesson":"agent 2/20 without MTP too -> AWQ (or flags) culprit; MTP improves J/req"}
+{"ts":"2026-10-24T14:14:00+07:00","id":"E005","parent":"E001","event":"start","change":"AWQ -> BF16 weights (keep MTP k=3 + flags)","status":"running"}
