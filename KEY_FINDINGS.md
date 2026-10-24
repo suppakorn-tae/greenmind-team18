@@ -24,3 +24,4 @@
 - Remaining loss is peak prefill capacity: ~65K long-prompt tokens arriving within 3 s at peak; misses are marginal (TTFT 0.52-0.88 vs 0.51-0.65 s; TPOT 51-72 ms). Score sensitivity: sT/sL have exponent 0.2 each, so +10% sT = +2% S.
 - OFFICIAL detail (E039 run): s_l_ttft 0.77 < s_l_tpot 0.83, p95 TTFT 1.30x its SLO, p50 TTFT 0.38 s; official agentic accuracy 0.82 (local agent checker ~0.25 is not representative). Lower thinking budget = more sE but less sT; 3072 remains best officially (88.0 vs 86.0).
 - Short-first scheduler patch (E040): throttling in-flight long prefills while short prompts wait makes TTFT worse overall (misses move to long/RAG prompts). Peak prefill capacity is the hard limit.
+- SGLang 0.5.22 (E041): works with this model but best val 58/100 vs vLLM 80/100 (spec-decode GDN intermediate states ~96 MB/slot -> 80 slots, 169K KV tokens; separate 4.2 GB MTP weights; no per-request prefill cap). vLLM stays.
