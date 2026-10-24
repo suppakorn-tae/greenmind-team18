@@ -1,0 +1,3 @@
+# E043 — champion E030 + dynamic speculative decoding (2 draft tokens up to 64 running, 1 above) + V2 model runner
+Parent E030 (OFFICIAL 88.0). Variable: spec schedule num_speculative_tokens_per_batch_size [[1,64,2],[65,256,1]] (max k=2 -> same memory). V2 runner needed to keep full CUDA graphs (V1 forces PIECEWISE with dynamic SD).
+Why: at saturated peak (~130 running) a k=1 step costs ~2/3 of a k=2 step -> shorter steps (TTFT of new arrivals ~2 steps) and slightly cheaper tokens; below 64 running (val peak, quiet, drain) keep k=2. Risk: V2 runner support for hybrid GDN + MTP; acceptance/energy. Start 2026-10-24T22:48:15+07:00.
