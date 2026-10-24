@@ -32,7 +32,7 @@
 | E027 | E017 | E017 + server-side thinking budget 5120 (user-authorized) | paused; serving configs/champion.sh (=E027) for official final | 51.1 | 26.6 |  | 297 | 83/100; 120/300 | 81.0 | budget removes 8192 cutoffs (always failures) and the drain-phase energy; final mean +25% vs E017 |
 | E028 | E017 | MAX_BT 5120 | rejected | 27.7 | 0.0 |  | 318 | 80/100; 99/300 | 80.0 | final backlog collapse (36 waiting); local final may be bistable |
 | E029 | E017 | stream-interval 4 (not applied) | abandoned |  |  |  |  |  |  | config edit failed -> champion replicate: val eta 1.26, final S 18.9 |
-| E030 | E027 | thinking budget 5120->3072 | paused at user request; configs/champion.sh (=E030) serving on :8000 | 47.4 | 27.2 |  | 260 | 83/100, 81/100; 123/300, 114/300 | 80.0 | budget 3072: val eta +10%, final +6% vs 5120, accuracy equal |
+| E030 | E027 | thinking budget 5120->3072 | official-final CHAMPION | 47.4 | 27.2 | 88.0 | 173 | 242/300 | 90.7 | OFFICIAL final S 88.0 (E017 59.0): sE 0.96, sT 0.71, sL 0.85, eta 2.87x, 173 J/req, 242/300, p95 TTFT 1.85 s, acc 90.7%. sE near cap -> next gains must come from sT/sL |
 | E031 | E030 | thinking budget 2048 | rejected | 50.5 | 26.2 |  | 305 | 81/100; 115/300 | 81.0 | 2048 too tight: answer can then run to cutoff; 3072 best |
 | E032 | E030 | MTP k 2->3 (with budget 3072) | abandoned |  |  |  |  |  |  | interrupted by user before any grader run; champion E030 restored |
 
@@ -57,4 +57,5 @@
 - Clock lock 1215 MHz (E023): OFFICIAL final 52.5 vs 59.0 — J/req -25% but on-time -24%; eta flat, sT/sL down. On this workload, any clock/power reduction loses SLO about 1:1 with energy. Local final predicted the ranking; val didn't.
 - [GRAY, local only] Server-side thinking budget 5120 (E027): val eta 1.36 -> 1.67, J/req -17%, final S 22.7 -> 25.2, zero cutoffs, accuracy equal or better. Biggest remaining lever; needs organizer approval.
 - Cap 768 (E026): local final +16% over E017 (3 vs 4 runs) but OFFICIAL final 46.6 vs 59.0 -> a 1-flag local edge of ~15% is not reliable officially; official run-to-run noise is probably ±15-20%.
+- **Thinking budget 3072 (E030): OFFICIAL final S 88.0** (from 59.0): eta 1.78 -> 2.87x, J/req 247 -> 173, SLO 215 -> 242/300, accuracy 88.8 -> 90.7%. sE now 0.96 (near the 3x cap) -> remaining headroom is sT 0.71 / sL 0.85 (latency).
 
