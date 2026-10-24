@@ -1,0 +1,704 @@
+Skipping import of cpp extensions due to incompatible torch version 2.14.0+cu130 for torchao version 0.15.0             Please see https://github.com/pytorch/ao/issues/2919 for more info
+[TensorRT-LLM] TensorRT LLM version: 1.4.0rc1
+/home/researcher/trtllm-env/lib/python3.12/site-packages/tensorrt_llm/serve/openai_protocol.py:288: UserWarning: Field name "schema" in "ResponseFormat" shadows an attribute in parent "OpenAIBaseModel"
+  class ResponseFormat(OpenAIBaseModel):
+[10/24/2026-22:37:23] [TRT-LLM] [I] [llmapi] Using LLM with PyTorch backend
+[10/24/2026-22:37:23] [TRT-LLM] [I] [llmapi] neither checkpoint_format nor checkpoint_loader were provided, checkpoint_format will be set to HF.
+[10/24/2026-22:37:23] [TRT-LLM] [I] [llmapi] Downloading model CMKL/MANGO1.5-Qwen3.5-9B from HuggingFace
+[10/24/2026-22:37:23] [TRT-LLM] [I] [llmapi] Finished downloading model CMKL/MANGO1.5-Qwen3.5-9B from HuggingFace
+[10/24/2026-22:37:29] [TRT-LLM] [W] [llmapi] Failed to load hf generation config from CMKL/MANGO1.5-Qwen3.5-9B, encountered error: CMKL/MANGO1.5-Qwen3.5-9B does not appear to have a file named generation_config.json. Checkout 'https://huggingface.co/CMKL/MANGO1.5-Qwen3.5-9B/tree/main' for available files.
+`torch_dtype` is deprecated! Use `dtype` instead!
+The `use_fast` parameter is deprecated and will be removed in a future version. Use `backend="torchvision"` instead of `use_fast=True`, or `backend="pil"` instead of `use_fast=False`.
+[10/24/2026-22:37:32] [TRT-LLM] [W] [executor] Orchestrator is creating IPC executor
+[10/24/2026-22:37:32] [TRT-LLM] [I] [executor] [startup][pid=177283] executor_proxy: start
+[10/24/2026-22:37:32] [TRT-LLM] [I] [_startup] [startup][pid=177283] mpi_session_setup: start
+[10/24/2026-22:37:32] [TRT-LLM] [I] [_startup] [startup][pid=177283] mpi_session_setup: done, total=0.000s, unattributed=0.000s | 
+[33;20mrank 0 using MpiPoolSession to spawn MPI processes
+[0m[10/24/2026-22:37:32] [TRT-LLM] [I] [executor] Generating a new HMAC key for server proxy_request_queue
+[10/24/2026-22:37:32] [TRT-LLM] [I] [executor] Generating a new HMAC key for server proxy_result_queue
+[10/24/2026-22:37:33] [TRT-LLM] [I] [executor] Generating a new HMAC key for server worker_init_status_queue
+[10/24/2026-22:37:33] [TRT-LLM] [I] [executor] [startup][pid=177283] executor_proxy/pre_worker_setup: done in 0.002s (includes mpi_session_setup)
+[10/24/2026-22:37:33] [TRT-LLM] [I] [_startup] [startup][pid=177283] worker_submit_to_ready: start
+[10/24/2026-22:37:33] [TRT-LLM] [I] [_startup] [startup][pid=177283] worker_submit_to_ready/worker_submit: start
+[10/24/2026-22:37:33] [TRT-LLM] [I] [_startup] [startup][pid=177283] worker_submit_to_ready/worker_submit: done in 0.000s
+[10/24/2026-22:37:33] [TRT-LLM] [I] [_startup] [startup][pid=177283] worker_submit_to_ready/worker_initialization_wait: start
+Skipping import of cpp extensions due to incompatible torch version 2.14.0+cu130 for torchao version 0.15.0             Please see https://github.com/pytorch/ao/issues/2919 for more info
+[TensorRT-LLM] TensorRT LLM version: 1.4.0rc1
+/home/researcher/trtllm-env/lib/python3.12/site-packages/tensorrt_llm/serve/openai_protocol.py:288: UserWarning: Field name "schema" in "ResponseFormat" shadows an attribute in parent "OpenAIBaseModel"
+  class ResponseFormat(OpenAIBaseModel):
+[TRT-LLM] [I] [runtime][RANK 0] Refreshed the MPI local session
+[10/24/2026-22:37:46] [TRT-LLM] [I] [executor] get signal from executor worker
+[10/24/2026-22:37:46] [TRT-LLM] [W] [llmapi] Worker process 177443 is affined to run on the following CPUs: [2] (subset of all logical CPUs). This may harm performance if set incorrectly.
+[10/24/2026-22:37:46] [TRT-LLM] [W] [llmapi] Worker process 177443 has constrained CPU affinity but `TLLM_NUMA_AWARE_WORKER_AFFINITY` is not set. Removing CPU affinity constraints.
+[10/24/2026-22:37:47] [TRT-LLM] [I] [_startup] [startup][pid=177443] executor_creation: start
+`torch_dtype` is deprecated! Use `dtype` instead!
+[10/24/2026-22:37:47] [TRT-LLM] [W] [llmapi] MTPDecodingConfig: 'num_nextn_predict_layers' is deprecated and will be removed in a future release. Use 'max_draft_len' instead.
+[10/24/2026-22:37:47] [TRT-LLM] [W] [llmapi] DecodingBaseConfig: 'allow_advanced_sampling' is deprecated and will be removed in a future release. The flag has no effect — non-greedy sampling is now auto-detected per request.
+[10/24/2026-22:37:47] [TRT-LLM] [I] [_torch] ATTENTION RUNTIME FEATURES:  AttentionRuntimeFeatures(chunked_prefill=True, cache_reuse=False, has_speculative_draft_tokens=False, chunk_size=4096, chunked_prefill_buffer_batch_size=4)
+[10/24/2026-22:37:47] [TRT-LLM] [I] [_startup] [startup][pid=177443] executor_creation/configuration_and_distributed_init: done in 0.207s
+[10/24/2026-22:37:47] [TRT-LLM] [I] [_startup] [startup][pid=177443] executor_creation/model: start
+The `use_fast` parameter is deprecated and will be removed in a future version. Use `backend="torchvision"` instead of `use_fast=True`, or `backend="pil"` instead of `use_fast=False`.
+[10/24/2026-22:37:53] [TRT-LLM] [I] [_torch] Validating KV Cache config against kv_cache_dtype="auto"
+[10/24/2026-22:37:53] [TRT-LLM] [I] [_torch] KV cache quantization set to "auto". Using checkpoint KV quantization.
+[10/24/2026-22:37:53] [TRT-LLM] [I] [_torch] GDN MTP replay is requested; set TRTLLM_USE_GDN_REPLAY=0 to disable it
+[10/24/2026-22:37:53] [TRT-LLM] [I] [_torch] using attn output gate!
+[10/24/2026-22:37:53] [TRT-LLM] [I] [_torch] Use 17.98 GB for model weights.
+[10/24/2026-22:37:53] [TRT-LLM] [I] [_torch] Rank-striped checkpoint read-ahead activated: local_rank=0, local_size=1, workers=16, assigned_bytes=19306303864, checkpoint_bytes=19306303864.
+Mapping safetensors weights in parallel:   0%|          | 0/5 [00:00<?, ?it/s][10/24/2026-22:37:53] [TRT-LLM] [I] [_torch] Start to load safetensor file /home/researcher/.cache/huggingface/hub/models--CMKL--MANGO1.5-Qwen3.5-9B/snapshots/c0e66f0d0de2d747d1b7d7e27c94f82de9d4f920/model-00001-of-00005.safetensors
+[10/24/2026-22:37:53] [TRT-LLM] [I] [_torch] Start to load safetensor file /home/researcher/.cache/huggingface/hub/models--CMKL--MANGO1.5-Qwen3.5-9B/snapshots/c0e66f0d0de2d747d1b7d7e27c94f82de9d4f920/model-00002-of-00005.safetensors
+[10/24/2026-22:37:53] [TRT-LLM] [I] [_torch] Start to load safetensor file /home/researcher/.cache/huggingface/hub/models--CMKL--MANGO1.5-Qwen3.5-9B/snapshots/c0e66f0d0de2d747d1b7d7e27c94f82de9d4f920/model-00003-of-00005.safetensors
+[10/24/2026-22:37:53] [TRT-LLM] [I] [_torch] Start to load safetensor file /home/researcher/.cache/huggingface/hub/models--CMKL--MANGO1.5-Qwen3.5-9B/snapshots/c0e66f0d0de2d747d1b7d7e27c94f82de9d4f920/model-00004-of-00005.safetensors
+[10/24/2026-22:37:53] [TRT-LLM] [I] [_torch] Start to load safetensor file /home/researcher/.cache/huggingface/hub/models--CMKL--MANGO1.5-Qwen3.5-9B/snapshots/c0e66f0d0de2d747d1b7d7e27c94f82de9d4f920/model-00005-of-00005.safetensors
+Mapping safetensors weights in parallel:  20%|██        | 1/5 [00:00<00:00,  8.10it/s]Mapping safetensors weights in parallel:  40%|████      | 2/5 [00:00<00:00,  8.01it/s]Mapping safetensors weights in parallel: 100%|██████████| 5/5 [00:00<00:00, 15.60it/s]
+[10/24/2026-22:37:54] [TRT-LLM] [I] [_torch] Renamed weights with params_map: {'(.*?)attn.proj.(.*)': '\\1attn.o_proj.\\2', '(.*?)mlp.linear_fc1.(.*)': '\\1mlp.up_proj.\\2', '(.*?)mlp.linear_fc2.(.*)': '\\1mlp.down_proj.\\2'}
+Loading weights concurrently:   0%|          | 0/581 [00:00<?, ?it/s]Loading weights concurrently:   0%|          | 1/581 [00:00<01:01,  9.40it/s]Loading weights concurrently:  20%|█▉        | 116/581 [00:00<00:00, 551.14it/s]Loading weights concurrently:  29%|██▊       | 167/581 [00:00<00:00, 468.85it/s]Loading weights concurrently:  41%|████      | 237/581 [00:00<00:00, 543.90it/s]Loading weights concurrently:  50%|█████     | 292/581 [00:00<00:00, 524.85it/s]Loading weights concurrently:  61%|██████    | 352/581 [00:00<00:00, 538.75it/s]Loading weights concurrently:  74%|███████▍  | 431/581 [00:00<00:00, 613.67it/s]Loading weights concurrently:  85%|████████▌ | 494/581 [00:00<00:00, 616.87it/s]Loading weights concurrently:  96%|█████████▌| 557/581 [00:01<00:00, 590.13it/s]Loading weights concurrently: 100%|██████████| 581/581 [00:01<00:00, 504.81it/s]
+[10/24/2026-22:37:59] [TRT-LLM] [I] [_torch] Renamed weights with params_map: {'^model\\.language_model\\.(.*)$': 'model.\\1'}
+[10/24/2026-22:37:59] [TRT-LLM] [I] [_torch] Serial load modules: []
+Loading weights serially: 0it [00:00, ?it/s]Loading weights serially: 0it [00:00, ?it/s]
+Loading weights concurrently:   0%|          | 0/756 [00:00<?, ?it/s]Loading weights concurrently:   3%|▎         | 24/756 [00:00<00:07, 103.88it/s]Loading weights concurrently:   8%|▊         | 62/756 [00:00<00:03, 205.62it/s]Loading weights concurrently:  13%|█▎        | 97/756 [00:00<00:02, 240.42it/s]Loading weights concurrently:  20%|██        | 154/756 [00:00<00:01, 344.01it/s]Loading weights concurrently:  26%|██▌       | 193/756 [00:00<00:01, 333.78it/s]Loading weights concurrently:  30%|███       | 230/756 [00:00<00:01, 333.05it/s]Loading weights concurrently:  35%|███▌      | 268/756 [00:00<00:01, 326.04it/s]Loading weights concurrently:  43%|████▎     | 324/756 [00:01<00:01, 382.29it/s]Loading weights concurrently:  48%|████▊     | 364/756 [00:01<00:01, 381.11it/s]Loading weights concurrently:  55%|█████▌    | 416/756 [00:01<00:00, 410.91it/s]Loading weights concurrently:  61%|██████    | 458/756 [00:01<00:00, 361.58it/s]Loading weights concurrently:  67%|██████▋   | 503/756 [00:01<00:00, 383.77it/s]Loading weights concurrently:  72%|███████▏  | 543/756 [00:01<00:00, 381.06it/s]Loading weights concurrently:  77%|███████▋  | 584/756 [00:01<00:00, 383.27it/s]Loading weights concurrently:  84%|████████▎ | 632/756 [00:01<00:00, 402.04it/s]Loading weights concurrently:  89%|████████▉ | 673/756 [00:01<00:00, 394.17it/s]Loading weights concurrently:  94%|█████████▍| 713/756 [00:02<00:00, 367.67it/s]Loading weights concurrently: 100%|█████████▉| 753/756 [00:02<00:00, 262.35it/s]Loading weights concurrently: 100%|██████████| 756/756 [00:02<00:00, 315.27it/s]
+[10/24/2026-22:38:01] [TRT-LLM] [I] [_torch] Checkpoint I/O policy: requested=auto, selected=rank_striped_read_ahead, activated=True, effective=rank_striped_read_ahead, fallback_reason=none.
+[10/24/2026-22:38:01] [TRT-LLM] [I] [_torch] Model loading metrics for rank 0: checkpoint_preparation_seconds=0.3238, weight_population_seconds=7.5556, checkpoint_finalization_seconds=0.0003, post_load_processing_seconds=0.0285, total_model_loading_seconds=8.3712
+[10/24/2026-22:38:01] [TRT-LLM] [W] [_torch] encoder_max_num_tokens=4096 is smaller than the model's largest profiled atomic multimodal item (65536); using 65536 as the effective encoder runtime budget.
+[10/24/2026-22:38:01] [TRT-LLM] [I] [_torch] Multimodal encoder token budget: configured=None, base=4096, effective=65536, model_atomic_max=65536, attention_capacity={'attention': 16384}.
+[10/24/2026-22:38:01] [TRT-LLM] [I] [_torch] mm_encoder_cache: created with max_bytes=134217728, max_embedding_rows=16384, embedding_dim=4096, embedding_dtype=torch.bfloat16
+[10/24/2026-22:38:01] [TRT-LLM] [I] [_startup] [startup][pid=177443] executor_creation/model: done in 14.238s
+[10/24/2026-22:38:01] [TRT-LLM] [I] [_startup] [startup][pid=177443] executor_creation/sampler: start
+[10/24/2026-22:38:01] [TRT-LLM] [I] [_torch] Using Sampler: SpecSampler
+[10/24/2026-22:38:01] [TRT-LLM] [I] [_startup] [startup][pid=177443] executor_creation/sampler: done in 0.000s
+[10/24/2026-22:38:01] [TRT-LLM] [I] [_torch] [create_py_executor] Created execution_stream: <torch.cuda.Stream device=cuda:0 cuda_stream=0x5762d4d0>
+[10/24/2026-22:38:01] [TRT-LLM] [I] [_torch] Selected hybrid KV cache manager: MambaHybridCacheManagerV2
+[10/24/2026-22:38:01] [TRT-LLM] [I] [_torch] Memory used at after loading weights (inside torch) in memory usage profiling: 18.09 GiB
+[10/24/2026-22:38:01] [TRT-LLM] [I] [_torch] Memory used at after loading weights (outside torch) in memory usage profiling: 0.96 GiB
+[10/24/2026-22:38:01] [TRT-LLM] [I] [_startup] [startup][pid=177443] executor_creation/profiling_kv_cache_allocation: start
+[10/24/2026-22:38:01] [TRT-LLM] [I] [_torch] GDN replay state update: ENABLED
+[10/24/2026-22:38:01] [TRT-LLM] [I] [_torch] [KVCacheManager] execution_stream: <torch.cuda.Stream device=cuda:0 cuda_stream=0x5762d4d0>
+[10/24/2026-22:38:01] [TRT-LLM] [I] [_torch] max_gpu_total_bytes is provided. New quota is 17.37680358812213GiB
+[10/24/2026-22:38:01] [TRT-LLM] [I] [_torch] max_tokens 94208 is provided. Allowed quota from max_tokens is 7.184544613584876GiB. New quota is 7.184544613584876GiB
+[10/24/2026-22:38:01] [TRT-LLM] [I] [_torch] KV cache manager v2 device quota set to 7.184544613584876GiB
+[10/24/2026-22:38:01] [TRT-LLM] [I] [_torch] KV cache manager v2 auto host tier sizing: 1 co-located rank(s) on this node, available host memory 5.56GiB
+[10/24/2026-22:38:01] [TRT-LLM] [I] [_torch] KV cache manager v2 host cache quota set to 2.78GiB
+[TRT-LLM] [I] [runtime][RANK 0] GPU 0 is on NUMA node 0
+[10/24/2026-22:38:01] [TRT-LLM] [I] [_torch] KVCacheManagerV2: IndexMapper capacity=321 (max_num_sequences=160, is_disagg=False, disable_overlap_scheduler=False, pp_size=1, num_reserved_index_slots=1, max_beam_width=1, max_copy_beam_width=1)
+[10/24/2026-22:38:01] [TRT-LLM] [I] [_torch] MambaHybridCacheManagerV2 role-to-pool/lifecycle mapping:
+[10/24/2026-22:38:01] [TRT-LLM] [I] [_torch] role=ssm_state, pool_group_id=1, layer_group_id=0
+[10/24/2026-22:38:01] [TRT-LLM] [I] [_torch] role=conv_state, pool_group_id=1, layer_group_id=0
+[10/24/2026-22:38:01] [TRT-LLM] [I] [_torch] role=key, pool_group_id=0, layer_group_id=1
+[10/24/2026-22:38:01] [TRT-LLM] [I] [_torch] role=value, pool_group_id=0, layer_group_id=1
+[10/24/2026-22:38:01] [TRT-LLM] [I] [_torch] Configured GDN cached replay commit mode for V2: small-batch fused, large-batch all-layer; state layout: affine
+[10/24/2026-22:38:01] [TRT-LLM] [I] [_torch] GDN replay state update: ENABLED
+[10/24/2026-22:38:01] [TRT-LLM] [I] [_torch] No local mamba layers for this rank, skipping mamba state views
+[10/24/2026-22:38:01] [TRT-LLM] [I] [_torch] [KVCacheManager] execution_stream: <torch.cuda.Stream device=cuda:0 cuda_stream=0x5762d4d0>
+[10/24/2026-22:38:01] [TRT-LLM] [I] [_torch] max_gpu_total_bytes is provided. New quota is 17.37680358812213GiB
+[10/24/2026-22:38:01] [TRT-LLM] [I] [_torch] max_tokens 94208 is provided. Allowed quota from max_tokens is 0.3782894741743803GiB. New quota is 0.3782894741743803GiB
+[10/24/2026-22:38:01] [TRT-LLM] [I] [_torch] KV cache manager v2 device quota set to 0.3782894741743803GiB
+[10/24/2026-22:38:01] [TRT-LLM] [I] [_torch] KV cache manager v2 auto host tier sizing: 1 co-located rank(s) on this node, available host memory 5.45GiB
+[10/24/2026-22:38:01] [TRT-LLM] [I] [_torch] KV cache manager v2 host cache quota set to 0.38GiB
+[10/24/2026-22:38:01] [TRT-LLM] [I] [_torch] KVCacheManagerV2: IndexMapper capacity=321 (max_num_sequences=160, is_disagg=False, disable_overlap_scheduler=False, pp_size=1, num_reserved_index_slots=1, max_beam_width=1, max_copy_beam_width=1)
+[10/24/2026-22:38:01] [TRT-LLM] [I] [_torch] MambaHybridCacheManagerV2 role-to-pool/lifecycle mapping:
+[10/24/2026-22:38:01] [TRT-LLM] [I] [_torch] role=key, pool_group_id=0, layer_group_id=0
+[10/24/2026-22:38:01] [TRT-LLM] [I] [_torch] role=value, pool_group_id=0, layer_group_id=0
+[10/24/2026-22:38:01] [TRT-LLM] [I] [_startup] [startup][pid=177443] executor_creation/profiling_kv_cache_allocation: done in 0.182s
+[10/24/2026-22:38:01] [TRT-LLM] [I] [_startup] [startup][pid=177443] executor_creation/spec_resource_manager: start
+[10/24/2026-22:38:01] [TRT-LLM] [I] [_startup] [startup][pid=177443] executor_creation/spec_resource_manager: done in 0.000s
+[10/24/2026-22:38:01] [TRT-LLM] [I] [_startup] [startup][pid=177443] executor_creation/drafter: start
+[10/24/2026-22:38:01] [TRT-LLM] [I] [_startup] [startup][pid=177443] executor_creation/drafter: done in 0.000s
+[10/24/2026-22:38:01] [TRT-LLM] [I] [_startup] [startup][pid=177443] executor_creation/profiling_executor_creation: start
+[10/24/2026-22:38:02] [TRT-LLM] [I] [_torch] max_seq_len=41984, max_num_requests=160, max_num_tokens=4096, max_batch_size=160
+[10/24/2026-22:38:02] [TRT-LLM] [I] [_torch] KVCacheV2Scheduler: tokens_per_block=32, max_num_tokens=4096, max_batch_size=160, draft_mgr=MambaHybridCacheManagerV2, cross_mgr=None, enable_prefix_aware_scheduling=True, prefix_skip_enabled=False, enable_recompute_pause=True
+[10/24/2026-22:38:02] [TRT-LLM] [I] [_torch] cache_transceiver is disabled
+[10/24/2026-22:38:02] [TRT-LLM] [I] [_torch] [PyExecutor] execution_stream initialized: <torch.cuda.Stream device=cuda:0 cuda_stream=0x5762d4d0>; encoder_stream initialized: <torch.cuda.Stream device=cuda:0 cuda_stream=0x574e4c30>.
+[10/24/2026-22:38:02] [TRT-LLM] [I] [_startup] [startup][pid=177443] pre_warmup_rank_barrier: start
+[10/24/2026-22:38:02] [TRT-LLM] [I] [_startup] [startup][pid=177443] pre_warmup_rank_barrier: done, total=0.000s, unattributed=0.000s | 
+[10/24/2026-22:38:02] [TRT-LLM] [I] [_torch] [warmup][pid=177443][rank=0][purpose=memory_profiling][pass=1] sampling_module_prewarm: start
+[10/24/2026-22:38:02] [TRT-LLM] [I] [_torch] [warmup][pid=177443][rank=0][purpose=memory_profiling][pass=1] sampling_module_prewarm: done in 0.0s
+[10/24/2026-22:38:02] [TRT-LLM] [I] [_torch] [warmup][pid=177443][rank=0][purpose=memory_profiling][pass=1] cute_dsl_indexer_q: start
+[10/24/2026-22:38:02] [TRT-LLM] [I] [_torch] [warmup][pid=177443][rank=0][purpose=memory_profiling][pass=1] cute_dsl_indexer_q: done in 0.0s
+[10/24/2026-22:38:02] [TRT-LLM] [I] [_torch] [warmup][pid=177443][rank=0][purpose=memory_profiling][pass=1] attention_jit: start
+[10/24/2026-22:38:02] [TRT-LLM] [I] [_torch] Running TRTLLM-Gen FMHA JIT warmup
+[10/24/2026-22:38:02] [TRT-LLM] [I] [_torch] [warmup][pid=177443][rank=0][purpose=memory_profiling][pass=1] attention shape num_tokens=3, num_gen_requests=1: start
+[10/24/2026-22:38:02] [TRT-LLM] [I] [_torch] PDL enabled
+[TRT-LLM] [W] [thop][RANK 0] Attention workspace size is not enough, increase the size from 0 bytes to 50798592 bytes
+[10/24/2026-22:38:05] [TRT-LLM] [I] [_torch] [warmup][pid=177443][rank=0][purpose=memory_profiling][pass=1] attention shape num_tokens=3, num_gen_requests=1: done in 3.2s
+[10/24/2026-22:38:05] [TRT-LLM] [I] [_torch] [warmup][pid=177443][rank=0][purpose=memory_profiling][pass=1] attention_jit: done in 3.2s
+[10/24/2026-22:38:05] [TRT-LLM] [I] [_torch] [warmup][pid=177443][rank=0][purpose=memory_profiling][pass=1] autotuner: start
+[10/24/2026-22:38:05] [TRT-LLM] [I] [_torch] Running autotuner warmup (TRT-LLM=True, native MXFP8=False, FlashInfer MXFP8=False)...
+[10/24/2026-22:38:05] [TRT-LLM] [I] [_torch] [Autotuner] Autotuning process starts ...
+[10/24/2026-22:38:05] [TRT-LLM] [I] [_torch] [warmup][pid=177443][rank=0][purpose=memory_profiling][pass=1] autotuner shape num_tokens=4096, num_gen_requests=0: start
+[TRT-LLM] [W] [thop][RANK 0] Attention workspace size is not enough, increase the size from 50798592 bytes to 67142656 bytes
+[10/24/2026-22:38:13] [TRT-LLM] [I] [_torch] [warmup][pid=177443][rank=0][purpose=memory_profiling][pass=1] autotuner shape num_tokens=4096, num_gen_requests=0: done in 7.6s
+[10/24/2026-22:38:13] [TRT-LLM] [I] [_torch] [warmup][pid=177443][rank=0][purpose=memory_profiling][pass=1] autotuner shape num_tokens=3, num_gen_requests=1: start
+[10/24/2026-22:38:13] [TRT-LLM] [I] [_torch] [warmup][pid=177443][rank=0][purpose=memory_profiling][pass=1] autotuner shape num_tokens=3, num_gen_requests=1: done in 0.0s
+[10/24/2026-22:38:13] [TRT-LLM] [I] [_torch] [Autotuner] Autotuning process ends
+[10/24/2026-22:38:13] [TRT-LLM] [I] [_torch] [Autotuner] Cache size after warmup is 0
+[10/24/2026-22:38:13] [TRT-LLM] [I] [_torch] [warmup][pid=177443][rank=0][purpose=memory_profiling][pass=1] autotuner: done in 7.7s
+[10/24/2026-22:38:13] [TRT-LLM] [I] [_torch] [warmup][pid=177443][rank=0][purpose=memory_profiling][pass=1] mamba_hybrid: start
+[10/24/2026-22:38:13] [TRT-LLM] [I] [_torch] Running Mamba hybrid warmup (multi-seq + HAS_INITSTATES=True)...
+[10/24/2026-22:38:13] [TRT-LLM] [I] [_torch] [Autotuner] Autotuning process starts ...
+[TRT-LLM] [W] [thop][RANK 0] Attention workspace size is not enough, increase the size from 67142656 bytes to 67144192 bytes
+[10/24/2026-22:38:14] [TRT-LLM] [I] [_torch] [Autotuner] Autotuning process ends
+[10/24/2026-22:38:14] [TRT-LLM] [I] [_torch] [warmup][pid=177443][rank=0][purpose=memory_profiling][pass=1] mamba_hybrid: done in 0.8s
+[10/24/2026-22:38:14] [TRT-LLM] [I] [_torch] [warmup][pid=177443][rank=0][purpose=memory_profiling][pass=1] cuda_graph_capture: start
+[10/24/2026-22:38:14] [TRT-LLM] [I] [_torch] Running CUDA graph warmup for 20 batch sizes.
+[10/24/2026-22:38:14] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (greedy) for batch size=160, draft_len=2, max_seq_len=41984
+[TRT-LLM] [W] [thop][RANK 0] Attention workspace size is not enough, increase the size from 0 bytes to 56164352 bytes
+[10/24/2026-22:38:14] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (greedy) for batch size=128, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:14] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (greedy) for batch size=120, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:14] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (greedy) for batch size=112, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:14] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (greedy) for batch size=104, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:15] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (greedy) for batch size=96, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:15] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (greedy) for batch size=88, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:15] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (greedy) for batch size=80, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:15] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (greedy) for batch size=72, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:15] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (greedy) for batch size=64, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:15] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (greedy) for batch size=56, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:15] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (greedy) for batch size=48, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:15] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (greedy) for batch size=40, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:15] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (greedy) for batch size=32, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:15] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (greedy) for batch size=24, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:15] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (greedy) for batch size=16, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:15] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (greedy) for batch size=8, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:16] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (greedy) for batch size=4, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:16] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (greedy) for batch size=2, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:16] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (greedy) for batch size=1, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:16] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (advanced sampling) for batch size=160, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:16] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (advanced sampling) for batch size=128, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:16] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (advanced sampling) for batch size=120, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:16] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (advanced sampling) for batch size=112, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:16] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (advanced sampling) for batch size=104, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:16] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (advanced sampling) for batch size=96, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:16] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (advanced sampling) for batch size=88, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:16] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (advanced sampling) for batch size=80, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:17] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (advanced sampling) for batch size=72, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:17] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (advanced sampling) for batch size=64, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:17] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (advanced sampling) for batch size=56, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:17] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (advanced sampling) for batch size=48, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:17] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (advanced sampling) for batch size=40, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:17] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (advanced sampling) for batch size=32, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:17] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (advanced sampling) for batch size=24, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:17] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (advanced sampling) for batch size=16, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:17] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (advanced sampling) for batch size=8, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:17] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (advanced sampling) for batch size=4, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:17] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (advanced sampling) for batch size=2, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:17] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (advanced sampling) for batch size=1, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:17] [TRT-LLM] [I] [_torch] Running CUDA graph capture for 20 batch sizes.
+[10/24/2026-22:38:17] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (greedy) for batch size=160, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:18] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (greedy) for batch size=128, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:18] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (greedy) for batch size=120, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:18] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (greedy) for batch size=112, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:18] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (greedy) for batch size=104, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:18] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (greedy) for batch size=96, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:19] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (greedy) for batch size=88, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:19] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (greedy) for batch size=80, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:19] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (greedy) for batch size=72, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:19] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (greedy) for batch size=64, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:19] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (greedy) for batch size=56, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:20] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (greedy) for batch size=48, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:20] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (greedy) for batch size=40, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:20] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (greedy) for batch size=32, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:20] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (greedy) for batch size=24, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:20] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (greedy) for batch size=16, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:20] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (greedy) for batch size=8, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:20] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (greedy) for batch size=4, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:21] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (greedy) for batch size=2, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:21] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (greedy) for batch size=1, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:21] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (advanced sampling) for batch size=160, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:21] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (advanced sampling) for batch size=128, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:21] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (advanced sampling) for batch size=120, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:21] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (advanced sampling) for batch size=112, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:22] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (advanced sampling) for batch size=104, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:22] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (advanced sampling) for batch size=96, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:22] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (advanced sampling) for batch size=88, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:22] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (advanced sampling) for batch size=80, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:22] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (advanced sampling) for batch size=72, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:23] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (advanced sampling) for batch size=64, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:23] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (advanced sampling) for batch size=56, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:23] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (advanced sampling) for batch size=48, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:23] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (advanced sampling) for batch size=40, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:23] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (advanced sampling) for batch size=32, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:23] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (advanced sampling) for batch size=24, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:23] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (advanced sampling) for batch size=16, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:24] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (advanced sampling) for batch size=8, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:24] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (advanced sampling) for batch size=4, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:24] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (advanced sampling) for batch size=2, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:24] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (advanced sampling) for batch size=1, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:24] [TRT-LLM] [I] [_torch] [warmup][pid=177443][rank=0][purpose=memory_profiling][pass=1] cuda_graph_capture: done in 10.1s
+[10/24/2026-22:38:24] [TRT-LLM] [I] [_torch] [warmup][pid=177443][rank=0][purpose=memory_profiling][pass=1] dsa_prewarm: start
+[10/24/2026-22:38:24] [TRT-LLM] [I] [_torch] [warmup][pid=177443][rank=0][purpose=memory_profiling][pass=1] dsa_prewarm: done in 0.0s
+[10/24/2026-22:38:24] [TRT-LLM] [I] [_torch] [warmup][pid=177443][rank=0][purpose=memory_profiling][pass=1] preallocate_padding_dummies: start
+[10/24/2026-22:38:24] [TRT-LLM] [I] [_torch] [warmup][pid=177443][rank=0][purpose=memory_profiling][pass=1] preallocate_padding_dummies: done in 0.0s
+[10/24/2026-22:38:24] [TRT-LLM] [I] [_torch] Eager workspace reclamation is disabled for speculative, CP, encoder-decoder, sparse, compiled, or breakable-graph models
+[10/24/2026-22:38:24] [TRT-LLM] [I] [_torch] [warmup][pid=177443][rank=0][purpose=memory_profiling][pass=1] summary: total=22.2s | sampling_module_prewarm=0.0s (0%), cute_dsl_indexer_q=0.0s (0%), attention_jit=3.2s (14%), autotuner=7.7s (34%), mamba_hybrid=0.8s (4%), cuda_graph_capture=10.1s (46%), dsa_prewarm=0.0s (0%), preallocate_padding_dummies=0.0s (0%)
+[10/24/2026-22:38:24] [TRT-LLM] [I] [_torch] global_steady_clock_offset at each rank: [0.0]
+[10/24/2026-22:38:24] [TRT-LLM] [I] [_torch] Setting global_steady_clock_offset: 0.0 seconds for rank 0
+[10/24/2026-22:38:24] [TRT-LLM] [I] [_startup] [startup][pid=177443] executor_creation/profiling_executor_creation: done in 22.914s
+[10/24/2026-22:38:24] [TRT-LLM] [I] [_startup] [startup][pid=177443] executor_creation/memory_profiling_and_capacity: start
+[10/24/2026-22:38:24] [TRT-LLM] [I] [_torch] Memory used after loading model weights (inside torch) in memory usage profiling: 20.29 GiB
+[10/24/2026-22:38:24] [TRT-LLM] [I] [_torch] Memory used after loading model weights (outside torch) in memory usage profiling: 9.75 GiB
+[TRT-LLM] [W] [thop][RANK 0] Attention workspace size is not enough, increase the size from 0 bytes to 34079744 bytes
+[10/24/2026-22:38:25] [TRT-LLM] [W] [_torch] Resource manager ResourceManagerType.KV_CACHE_MANAGER does not provide a per-request KV block budget
+[10/24/2026-22:38:25] [TRT-LLM] [W] [_torch] Resource manager ResourceManagerType.DRAFT_KV_CACHE_MANAGER does not provide a per-request KV block budget
+[10/24/2026-22:38:32] [TRT-LLM] [I] [_torch] Memory dynamically allocated during inference (inside torch) in memory usage profiling: 2.33 GiB
+[10/24/2026-22:38:32] [TRT-LLM] [I] [_torch] Memory used outside torch (e.g., NCCL and CUDA graphs) in memory usage profiling: 9.83 GiB
+[10/24/2026-22:38:32] [TRT-LLM] [I] [_torch] Reserving 0.19 GiB for multimodal encoder memory not materialized by the profiling run.
+[10/24/2026-22:38:32] [TRT-LLM] [I] [_torch] Peak memory during memory usage profiling (torch + non-torch): 32.63 GiB, available KV cache memory when calculating max tokens: 12.26 GiB, fraction is set 0.85, kv size per token is 36864 bytes/token + 4241620992 bytes fixed cost. device total memory 39.49 GiB, temporary kv cache memory during profiling 7.57 GiB
+[10/24/2026-22:38:32] [TRT-LLM] [I] [_torch] Estimated max memory in KV cache : 12.26 GiB
+[10/24/2026-22:38:32] [TRT-LLM] [I] [_startup] [startup][pid=177443] executor_creation/memory_profiling_and_capacity: done in 7.218s
+[10/24/2026-22:38:32] [TRT-LLM] [I] [_startup] [startup][pid=177443] executor_creation/profiling_resource_teardown: start
+[10/24/2026-22:38:32] [TRT-LLM] [I] [_startup] [startup][pid=177443] executor_creation/profiling_kv_cache_teardown: start
+[10/24/2026-22:38:32] [TRT-LLM] [I] [_startup] [startup][pid=177443] executor_creation/profiling_kv_cache_teardown: done in 0.000s
+[10/24/2026-22:38:32] [TRT-LLM] [I] [_startup] [startup][pid=177443] executor_creation/profiling_resource_teardown: done in 0.421s
+[10/24/2026-22:38:32] [TRT-LLM] [I] [_startup] [startup][pid=177443] executor_creation/final_kv_cache_allocation: start
+[10/24/2026-22:38:32] [TRT-LLM] [I] [_torch] Splitting KV cache max_gpu_total_bytes: total=12.26 GiB, target=11.34 GiB (32768 bytes/token + 4241620992 bytes fixed cost), draft=0.92 GiB (4096 bytes/token, 172097536 bytes/request)
+[10/24/2026-22:38:32] [TRT-LLM] [I] [_torch] GDN replay state update: ENABLED
+[10/24/2026-22:38:32] [TRT-LLM] [I] [_torch] [KVCacheManager] execution_stream: <torch.cuda.Stream device=cuda:0 cuda_stream=0x5762d4d0>
+[10/24/2026-22:38:32] [TRT-LLM] [I] [_torch] max_gpu_total_bytes is provided. New quota is 11.339147292077541GiB
+[10/24/2026-22:38:32] [TRT-LLM] [I] [_torch] KV cache manager v2 device quota set to 11.339147292077541GiB
+[10/24/2026-22:38:32] [TRT-LLM] [I] [_torch] KV cache manager v2 auto host tier sizing: 1 co-located rank(s) on this node, available host memory 5.01GiB
+[10/24/2026-22:38:32] [TRT-LLM] [I] [_torch] KV cache manager v2 host cache quota set to 2.50GiB
+[10/24/2026-22:38:32] [TRT-LLM] [W] [_torch] 'kv_cache_config.avg_seq_len' is not set for a hybrid Mamba model using KV cache manager V2. Falling back to max_seq_len / 2=20994 for cache-pool sizing. Set 'kv_cache_config.avg_seq_len' in the YAML configuration to the workload's average total sequence length for an accurate KV/SSM pool ratio.
+[10/24/2026-22:38:32] [TRT-LLM] [I] [_torch] KVCacheManagerV2: IndexMapper capacity=321 (max_num_sequences=160, is_disagg=False, disable_overlap_scheduler=False, pp_size=1, num_reserved_index_slots=1, max_beam_width=1, max_copy_beam_width=1)
+[10/24/2026-22:38:32] [TRT-LLM] [I] [_torch] MambaHybridCacheManagerV2 role-to-pool/lifecycle mapping:
+[10/24/2026-22:38:32] [TRT-LLM] [I] [_torch] role=ssm_state, pool_group_id=1, layer_group_id=0
+[10/24/2026-22:38:32] [TRT-LLM] [I] [_torch] role=conv_state, pool_group_id=1, layer_group_id=0
+[10/24/2026-22:38:32] [TRT-LLM] [I] [_torch] role=key, pool_group_id=0, layer_group_id=1
+[10/24/2026-22:38:32] [TRT-LLM] [I] [_torch] role=value, pool_group_id=0, layer_group_id=1
+[10/24/2026-22:38:32] [TRT-LLM] [I] [_torch] GDN replay state update: ENABLED
+[10/24/2026-22:38:32] [TRT-LLM] [I] [_torch] No local mamba layers for this rank, skipping mamba state views
+[10/24/2026-22:38:32] [TRT-LLM] [I] [_torch] [KVCacheManager] execution_stream: <torch.cuda.Stream device=cuda:0 cuda_stream=0x5762d4d0>
+[10/24/2026-22:38:32] [TRT-LLM] [I] [_torch] max_gpu_total_bytes is provided. New quota is 0.9236037386581302GiB
+[10/24/2026-22:38:32] [TRT-LLM] [I] [_torch] KV cache manager v2 device quota set to 0.9236037386581302GiB
+[10/24/2026-22:38:32] [TRT-LLM] [I] [_torch] KV cache manager v2 auto host tier sizing: 1 co-located rank(s) on this node, available host memory 4.98GiB
+[10/24/2026-22:38:32] [TRT-LLM] [I] [_torch] KV cache manager v2 host cache quota set to 0.92GiB
+[10/24/2026-22:38:32] [TRT-LLM] [W] [_torch] 'kv_cache_config.avg_seq_len' is not set for a hybrid Mamba model using KV cache manager V2. Falling back to max_seq_len / 2=20994 for cache-pool sizing. Set 'kv_cache_config.avg_seq_len' in the YAML configuration to the workload's average total sequence length for an accurate KV/SSM pool ratio.
+[10/24/2026-22:38:32] [TRT-LLM] [I] [_torch] KVCacheManagerV2: IndexMapper capacity=321 (max_num_sequences=160, is_disagg=False, disable_overlap_scheduler=False, pp_size=1, num_reserved_index_slots=1, max_beam_width=1, max_copy_beam_width=1)
+[10/24/2026-22:38:32] [TRT-LLM] [I] [_torch] MambaHybridCacheManagerV2 role-to-pool/lifecycle mapping:
+[10/24/2026-22:38:32] [TRT-LLM] [I] [_torch] role=key, pool_group_id=0, layer_group_id=0
+[10/24/2026-22:38:32] [TRT-LLM] [I] [_torch] role=value, pool_group_id=0, layer_group_id=0
+[10/24/2026-22:38:32] [TRT-LLM] [I] [_startup] [startup][pid=177443] executor_creation/final_kv_cache_allocation: done in 0.168s
+[10/24/2026-22:38:32] [TRT-LLM] [I] [_startup] [startup][pid=177443] executor_creation/final_executor_creation: start
+[10/24/2026-22:38:33] [TRT-LLM] [I] [_torch] max_seq_len=41984, max_num_requests=160, max_num_tokens=4096, max_batch_size=160
+[10/24/2026-22:38:33] [TRT-LLM] [I] [_torch] KVCacheV2Scheduler: tokens_per_block=32, max_num_tokens=4096, max_batch_size=160, draft_mgr=MambaHybridCacheManagerV2, cross_mgr=None, enable_prefix_aware_scheduling=True, prefix_skip_enabled=False, enable_recompute_pause=True
+[10/24/2026-22:38:33] [TRT-LLM] [I] [_torch] cache_transceiver is disabled
+[10/24/2026-22:38:33] [TRT-LLM] [I] [_torch] [PyExecutor] execution_stream initialized: <torch.cuda.Stream device=cuda:0 cuda_stream=0x5762d4d0>; encoder_stream initialized: <torch.cuda.Stream device=cuda:0 cuda_stream=0x541105d0>.
+[10/24/2026-22:38:33] [TRT-LLM] [I] [_startup] [startup][pid=177443] pre_warmup_rank_barrier: start
+[10/24/2026-22:38:33] [TRT-LLM] [I] [_startup] [startup][pid=177443] pre_warmup_rank_barrier: done, total=0.000s, unattributed=0.000s | 
+[10/24/2026-22:38:33] [TRT-LLM] [I] [_torch] [warmup][pid=177443][rank=0][purpose=final_executor][pass=2] sampling_module_prewarm: start
+[10/24/2026-22:38:33] [TRT-LLM] [I] [_torch] [warmup][pid=177443][rank=0][purpose=final_executor][pass=2] sampling_module_prewarm: done in 0.0s
+[10/24/2026-22:38:33] [TRT-LLM] [I] [_torch] [warmup][pid=177443][rank=0][purpose=final_executor][pass=2] cute_dsl_indexer_q: start
+[10/24/2026-22:38:33] [TRT-LLM] [I] [_torch] [warmup][pid=177443][rank=0][purpose=final_executor][pass=2] cute_dsl_indexer_q: done in 0.0s
+[10/24/2026-22:38:33] [TRT-LLM] [I] [_torch] [warmup][pid=177443][rank=0][purpose=final_executor][pass=2] attention_jit: start
+[10/24/2026-22:38:33] [TRT-LLM] [I] [_torch] Running TRTLLM-Gen FMHA JIT warmup
+[10/24/2026-22:38:33] [TRT-LLM] [I] [_torch] [warmup][pid=177443][rank=0][purpose=final_executor][pass=2] attention shape num_tokens=3, num_gen_requests=1: start
+[TRT-LLM] [W] [thop][RANK 0] Attention workspace size is not enough, increase the size from 0 bytes to 50798592 bytes
+[10/24/2026-22:38:33] [TRT-LLM] [I] [_torch] [warmup][pid=177443][rank=0][purpose=final_executor][pass=2] attention shape num_tokens=3, num_gen_requests=1: done in 0.0s
+[10/24/2026-22:38:33] [TRT-LLM] [I] [_torch] [warmup][pid=177443][rank=0][purpose=final_executor][pass=2] attention_jit: done in 0.0s
+[10/24/2026-22:38:33] [TRT-LLM] [I] [_torch] [warmup][pid=177443][rank=0][purpose=final_executor][pass=2] autotuner: start
+[10/24/2026-22:38:33] [TRT-LLM] [I] [_torch] Skipping duplicate autotuner warmup for already completed num_tokens=4096
+[10/24/2026-22:38:33] [TRT-LLM] [I] [_torch] [warmup][pid=177443][rank=0][purpose=final_executor][pass=2] autotuner: done in 0.0s
+[10/24/2026-22:38:33] [TRT-LLM] [I] [_torch] [warmup][pid=177443][rank=0][purpose=final_executor][pass=2] mamba_hybrid: start
+[10/24/2026-22:38:33] [TRT-LLM] [I] [_torch] Running Mamba hybrid warmup (multi-seq + HAS_INITSTATES=True)...
+[10/24/2026-22:38:33] [TRT-LLM] [I] [_torch] [Autotuner] Autotuning process starts ...
+[TRT-LLM] [W] [thop][RANK 0] Attention workspace size is not enough, increase the size from 50798592 bytes to 67144192 bytes
+[10/24/2026-22:38:34] [TRT-LLM] [I] [_torch] [Autotuner] Autotuning process ends
+[10/24/2026-22:38:34] [TRT-LLM] [I] [_torch] [warmup][pid=177443][rank=0][purpose=final_executor][pass=2] mamba_hybrid: done in 0.8s
+[10/24/2026-22:38:34] [TRT-LLM] [I] [_torch] [warmup][pid=177443][rank=0][purpose=final_executor][pass=2] cuda_graph_capture: start
+[10/24/2026-22:38:34] [TRT-LLM] [I] [_torch] Running CUDA graph warmup for 20 batch sizes.
+[10/24/2026-22:38:34] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (greedy) for batch size=160, draft_len=2, max_seq_len=41984
+[TRT-LLM] [W] [thop][RANK 0] Attention workspace size is not enough, increase the size from 0 bytes to 56164352 bytes
+[10/24/2026-22:38:34] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (greedy) for batch size=128, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:34] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (greedy) for batch size=120, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:34] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (greedy) for batch size=112, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:34] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (greedy) for batch size=104, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:35] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (greedy) for batch size=96, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:35] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (greedy) for batch size=88, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:35] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (greedy) for batch size=80, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:35] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (greedy) for batch size=72, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:35] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (greedy) for batch size=64, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:35] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (greedy) for batch size=56, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:35] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (greedy) for batch size=48, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:35] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (greedy) for batch size=40, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:35] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (greedy) for batch size=32, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:35] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (greedy) for batch size=24, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:35] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (greedy) for batch size=16, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:35] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (greedy) for batch size=8, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:36] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (greedy) for batch size=4, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:36] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (greedy) for batch size=2, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:36] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (greedy) for batch size=1, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:36] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (advanced sampling) for batch size=160, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:36] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (advanced sampling) for batch size=128, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:36] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (advanced sampling) for batch size=120, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:36] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (advanced sampling) for batch size=112, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:36] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (advanced sampling) for batch size=104, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:36] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (advanced sampling) for batch size=96, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:36] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (advanced sampling) for batch size=88, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:36] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (advanced sampling) for batch size=80, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:37] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (advanced sampling) for batch size=72, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:37] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (advanced sampling) for batch size=64, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:37] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (advanced sampling) for batch size=56, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:37] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (advanced sampling) for batch size=48, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:37] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (advanced sampling) for batch size=40, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:37] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (advanced sampling) for batch size=32, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:37] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (advanced sampling) for batch size=24, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:37] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (advanced sampling) for batch size=16, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:37] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (advanced sampling) for batch size=8, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:37] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (advanced sampling) for batch size=4, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:37] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (advanced sampling) for batch size=2, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:37] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph warmup (advanced sampling) for batch size=1, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:37] [TRT-LLM] [I] [_torch] Running CUDA graph capture for 20 batch sizes.
+[10/24/2026-22:38:38] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (greedy) for batch size=160, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:38] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (greedy) for batch size=128, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:38] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (greedy) for batch size=120, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:38] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (greedy) for batch size=112, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:38] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (greedy) for batch size=104, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:39] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (greedy) for batch size=96, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:39] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (greedy) for batch size=88, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:39] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (greedy) for batch size=80, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:39] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (greedy) for batch size=72, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:39] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (greedy) for batch size=64, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:39] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (greedy) for batch size=56, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:40] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (greedy) for batch size=48, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:40] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (greedy) for batch size=40, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:40] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (greedy) for batch size=32, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:40] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (greedy) for batch size=24, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:40] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (greedy) for batch size=16, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:40] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (greedy) for batch size=8, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:40] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (greedy) for batch size=4, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:41] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (greedy) for batch size=2, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:41] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (greedy) for batch size=1, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:41] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (advanced sampling) for batch size=160, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:41] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (advanced sampling) for batch size=128, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:41] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (advanced sampling) for batch size=120, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:42] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (advanced sampling) for batch size=112, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:42] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (advanced sampling) for batch size=104, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:42] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (advanced sampling) for batch size=96, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:42] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (advanced sampling) for batch size=88, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:42] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (advanced sampling) for batch size=80, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:43] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (advanced sampling) for batch size=72, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:43] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (advanced sampling) for batch size=64, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:43] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (advanced sampling) for batch size=56, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:43] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (advanced sampling) for batch size=48, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:43] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (advanced sampling) for batch size=40, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:43] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (advanced sampling) for batch size=32, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:43] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (advanced sampling) for batch size=24, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:44] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (advanced sampling) for batch size=16, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:44] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (advanced sampling) for batch size=8, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:44] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (advanced sampling) for batch size=4, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:44] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (advanced sampling) for batch size=2, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:44] [TRT-LLM] [I] [_torch] Run generation-only CUDA graph capture (advanced sampling) for batch size=1, draft_len=2, max_seq_len=41984
+[10/24/2026-22:38:44] [TRT-LLM] [I] [_torch] [warmup][pid=177443][rank=0][purpose=final_executor][pass=2] cuda_graph_capture: done in 10.3s
+[10/24/2026-22:38:44] [TRT-LLM] [I] [_torch] [warmup][pid=177443][rank=0][purpose=final_executor][pass=2] dsa_prewarm: start
+[10/24/2026-22:38:44] [TRT-LLM] [I] [_torch] [warmup][pid=177443][rank=0][purpose=final_executor][pass=2] dsa_prewarm: done in 0.0s
+[10/24/2026-22:38:44] [TRT-LLM] [I] [_torch] [warmup][pid=177443][rank=0][purpose=final_executor][pass=2] preallocate_padding_dummies: start
+[10/24/2026-22:38:44] [TRT-LLM] [I] [_torch] Pre-allocated the CUDA graph padding dummy request (draft_len=2) at warmup.
+[10/24/2026-22:38:44] [TRT-LLM] [I] [_torch] [warmup][pid=177443][rank=0][purpose=final_executor][pass=2] preallocate_padding_dummies: done in 0.0s
+[10/24/2026-22:38:44] [TRT-LLM] [I] [_torch] Eager workspace reclamation is disabled for speculative, CP, encoder-decoder, sparse, compiled, or breakable-graph models
+[10/24/2026-22:38:44] [TRT-LLM] [I] [_torch] [warmup][pid=177443][rank=0][purpose=final_executor][pass=2] summary: total=11.6s | sampling_module_prewarm=0.0s (0%), cute_dsl_indexer_q=0.0s (0%), attention_jit=0.0s (0%), autotuner=0.0s (0%), mamba_hybrid=0.8s (7%), cuda_graph_capture=10.3s (89%), dsa_prewarm=0.0s (0%), preallocate_padding_dummies=0.0s (0%)
+[10/24/2026-22:38:45] [TRT-LLM] [I] [_torch] global_steady_clock_offset already set (0:00:00); skipping recalibration for rank 0
+[10/24/2026-22:38:45] [TRT-LLM] [I] [_startup] [startup][pid=177443] executor_creation/final_executor_creation: done in 12.559s
+[10/24/2026-22:38:45] [TRT-LLM] [W] [_torch] It is recommended to incl. 'garbage_collection_threshold:0.???' or 'backend:cudaMallocAsync' or 'expandable_segments:True' in PYTORCH_ALLOC_CONF.
+[10/24/2026-22:38:45] [TRT-LLM] [I] [_torch] Setting PyTorch memory fraction to 0.656322734396009 (25.91986083984375 GiB)
+[10/24/2026-22:38:45] [TRT-LLM] [I] [_torch] LLM Args:
+model='CMKL/MANGO1.5-Qwen3.5-9B' tokenizer=None tokenizer_mode='auto' custom_tokenizer=None post_processor_hook=None skip_tokenizer_init=False trust_remote_code=False tensor_parallel_size=1 dtype='auto' revision=None tokenizer_revision=None model_kwargs=None pipeline_parallel_size=1 context_parallel_size=1 gpus_per_node=1 moe_cluster_parallel_size=-1 moe_tensor_parallel_size=-1 moe_expert_parallel_size=-1 enable_attention_dp=False enable_lm_head_tp_in_adp=False pp_partition=None cp_config=None load_format=<LoadFormat.AUTO: 0> enable_lora=False lora_config=None kv_cache_config=KvCacheConfig(enable_block_reuse=False, max_tokens=None, max_attention_window=None, sink_token_length=None, free_gpu_memory_fraction=0.85, host_cache_size=None, disk_cache_size=None, disk_cache_path=None, cross_kv_cache_fraction=None, secondary_offload_min_priority=None, event_buffer_max_size=0, attention_dp_events_gather_period_ms=5, kv_events_config=None, enable_partial_reuse=True, copy_on_partial_reuse=True, use_uvm=False, max_gpu_total_bytes=13167028659, iteration_stats_interval=1, dtype='auto', mamba_ssm_cache_dtype='bfloat16', mamba_ssm_stochastic_rounding=False, mamba_ssm_philox_rounds=10, tokens_per_block=32, mamba_state_cache_interval=None, mamba_state_config=MambaStateConfig(periodic_snapshot_interval=0, additional_snapshot_offsets_from_start=[], additional_snapshot_offsets_from_end=[], enable_branch_snapshot=False), use_kv_cache_manager_v2=True, enable_swa_scratch_reuse=False, kv_cache_event_hash_algo='auto', max_util_for_resume=0.95, enable_kv_pool_rebalance=False, kv_pool_rebalance_config=KvPoolRebalanceConfig(min_sampled_kv_caches=2000, cooldown_secs=120.0, target_ratio_update_interval=100, ratio_tolerance=0.25, moving_average_decay=0.9999, check_interval=10), disk_prefetch_num_reqs=0, fp8_context_mla_kv_len_cap=None, pool_ratio=None, avg_seq_len=None, block_reuse_config=BlockReuseConfig(policy='all_reusable', max_num_turns=1, swa_endpoint_rewind_tokens=0)) enable_chunked_prefill=True guided_decoding_backend=None batched_logits_processor=None iter_stats_max_iterations=None request_stats_max_iterations=None peft_cache_config=None scheduler_config=SchedulerConfig(capacity_scheduler_policy=<CapacitySchedulerPolicy.MAX_UTILIZATION: 'MAX_UTILIZATION'>, context_chunking_policy=None, dynamic_batch_config=None, waiting_queue_policy=<WaitingQueuePolicy.FCFS: 'fcfs'>, use_python_scheduler=False, enable_prefix_aware_scheduling=True) cache_transceiver_config=None sparse_attention_config=None kv_cache_compression_config=None speculative_config=MTPDecodingConfig(max_draft_len=2, max_total_draft_tokens=2, speculative_model=None, moe_backend=None, max_concurrency=None, draft_len_schedule=None, load_format=None, acceptance_rate_window_size=None, acceptance_rate_threshold=None, use_rejection_sampling=False, allow_advanced_sampling=False, advanced_sampling_mode=<AdvancedSamplingMode.FULL: 'full'>, enable_penalty=False, spec_dec_variant=1, decoding_type='MTP', use_relaxed_acceptance_for_thinking=False, relaxed_topk=1, relaxed_delta=0.0, use_mtp_vanilla=False, use_dynamic_tree=False, dynamic_tree_max_topK=None, sa_config=None, num_nextn_predict_layers=1, begin_thinking_phase_token=128798, end_thinking_phase_token=128799) max_batch_size=160 max_input_len=1024 max_seq_len=41984 max_beam_width=1 max_num_tokens=4096 gather_generation_logits=False num_postprocess_workers=0 postprocess_tokenizer_dir='CMKL/MANGO1.5-Qwen3.5-9B' num_serve_frontends=1 reasoning_parser='qwen3_5' decoding_config=None mpi_session=None otlp_traces_endpoint=None backend='pytorch' return_perf_metrics=False per_request_spec_decode_stats=False perf_metrics_output_dir=None perf_metrics_max_requests=0 prometheus_metrics_config=None enable_energy_metrics=False orchestrator_type=None env_overrides=None telemetry_config=TelemetryConfig(disabled=False, usage_context=<UsageContext.CLI_SERVE: 'cli_serve'>) generation_config='trtllm' garbage_collection_gen0_threshold=20000 cuda_graph_config=DecodeCudaGraphConfig(batch_sizes=[1, 2, 4, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112, 120, 128, 160], max_batch_size=160, enable_padding=True, mode='decode') encoder_cuda_graph_config=None enable_encoder_decoder_mixed_cuda_graph=True multimodal_config=MultimodalConfig(encoder_cuda_graph=None, encoder_side_stream_max_ahead=0, encoder_cache_max_bytes=134217728, encoder_scheduling_policy=<MultimodalEncoderSchedulingPolicy.DEFAULT: 'DEFAULT'>, video_pruning_rate=None) attention_dp_config=None disable_overlap_scheduler=False enable_return_routed_experts=False moe_config=MoeConfig(backend='AUTO', max_num_tokens=None, load_balancer=None, disable_finalize_fusion=False, use_low_precision_moe_combine=False) nvfp4_gemm_config=Nvfp4GemmConfig(allowed_backends=['cutlass', 'cublaslt', 'cuda_core']) dwdp_config=None encoder_max_batch_size=None encoder_max_num_tokens=None attn_backend='TRTLLM' enable_mla_skip_correction=False mla_skip_correction_threshold=8.0 sampler_force_async_worker=False enable_in_graph_sampling=False enable_speculative_beam_history_d2h=False enable_early_first_token_response=False enable_low_latency_host_dispatch=False enable_iter_perf_stats=False enable_tokenization_cache=False enable_iter_req_stats=False iter_perf_stats_interval=1 print_iter_log=False batch_wait_timeout_ms=0.0 batch_wait_timeout_iters=0 batch_wait_max_tokens_ratio=0.0 bounded_replay_on_generation=False torch_compile_config=None prefill_cuda_graph_backend=<PrefillCudaGraphBackend.DISABLED: 'disabled'> prefill_capture_num_tokens=None enable_autotuner=True use_fine_grained_sync=False enable_layerwise_nvtx_marker=False enable_min_latency=False stream_interval=1 force_dynamic_quantization=False allreduce_strategy='AUTO' checkpoint_loader=None checkpoint_format='HF' checkpoint_io_policy='auto' mx_config=ModelExpressConfig(server_url=None, server_query_timeout_s=None, preshard_strategy='per_module') gms_config=GmsConfig(socket_path=None, mode='auto', tag='weights') kv_connector_config=None mm_encoder_only=False disable_mm_encoder=False encode_only=False ray_worker_extension_cls=None ray_placement_config=None ray_worker_nsight_options=None sleep_config=None reorder_policy_config=None enable_resource_governor=False use_cute_dsl_blockscaling_mm=False use_cute_dsl_blockscaling_bmm=False enable_locality_domains=False use_cute_dsl_bf16_bmm=False use_cute_dsl_bf16_gemm=False max_stats_len=1000 layer_wise_benchmarks_config=LayerwiseBenchmarksConfig(calibration_mode='NONE', calibration_file_path=None, calibration_layer_indices=None) modeling_v2='off'
+[10/24/2026-22:38:45] [TRT-LLM] [I] [_startup] [startup][pid=177443] executor_creation/executor_start_worker: start
+[10/24/2026-22:38:45] [TRT-LLM] [I] [_startup] [startup][pid=177443] executor_creation/executor_start_worker: done in 0.000s
+[10/24/2026-22:38:45] [TRT-LLM] [I] [_startup] [startup][pid=177443] executor_creation: done, total=57.976s, unattributed=0.068s | configuration_and_distributed_init=0.207s, model=14.238s, sampler=0.000s, profiling_kv_cache_allocation=0.182s, spec_resource_manager=0.000s, drafter=0.000s, profiling_executor_creation=22.914s, memory_profiling_and_capacity=7.218s, profiling_resource_teardown=0.421s, final_kv_cache_allocation=0.168s, final_executor_creation=12.559s, executor_start_worker=0.000s
+[10/24/2026-22:38:45] [TRT-LLM] [I] [executor] RPCServer is bound to ipc:///tmp/rpc_test_d6f79b13-8c87-498e-9c4a-30853dd4513b
+[10/24/2026-22:38:45] [TRT-LLM] [I] [executor] RPC Server started and listening on ipc:///tmp/rpc_test_d6f79b13-8c87-498e-9c4a-30853dd4513b
+[10/24/2026-22:38:45] [TRT-LLM] [I] [executor] RPC Server has started.
+[10/24/2026-22:38:45] [TRT-LLM] [I] [executor] get signal from executor worker
+[10/24/2026-22:38:45] [TRT-LLM] [I] [_startup] [startup][pid=177283] worker_submit_to_ready/worker_initialization_wait: done in 72.106s
+[10/24/2026-22:38:45] [TRT-LLM] [I] [_startup] [startup][pid=177283] worker_submit_to_ready: done, total=72.107s, unattributed=0.000s | worker_submit=0.000s, worker_initialization_wait=72.106s
+[10/24/2026-22:38:45] [TRT-LLM] [I] [executor] [startup][pid=177283] executor_proxy/workers_ready: elapsed=72.210s
+[10/24/2026-22:38:47] [TRT-LLM] [W] [serve] Resource governor is disabled: the executor backend does not provide a resource_governor_queue (e.g. RPC orchestrator mode or explicit opt-out). Endpoints under /_resource_governor/ will not be available.
+INFO:     Started server process [177283]
+INFO:     Waiting for application startup.
+[10/24/2026-22:38:47] [TRT-LLM] [I] [_startup] [startup][pid=177283] http_server_start: start
+INFO:     Application startup complete.
+[10/24/2026-22:38:48] [TRT-LLM] [I] [_startup] [startup][pid=177283] http_server_start: done, total=0.101s, unattributed=0.101s | 
+INFO:     127.0.0.1:55476 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55480 - "GET /v1/models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55480 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+/home/researcher/trtllm-env/lib/python3.12/site-packages/triton/language/core.py:2625: UserWarning: tl.make_block_ptr is deprecated. Use TensorDescriptor or tl.make_tensor_descriptor instead.
+  warn("tl.make_block_ptr is deprecated. Use TensorDescriptor or tl.make_tensor_descriptor instead.")
+INFO:     127.0.0.1:57338 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57340 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34736 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57590 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57596 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57600 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57616 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57632 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57644 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57654 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57662 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57668 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57678 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57680 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57682 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57684 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57700 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57706 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57722 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57730 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57738 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57748 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57750 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57756 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57762 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47102 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47114 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47130 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47132 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47136 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47144 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47146 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47152 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47156 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47160 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47162 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47168 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47174 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47178 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47184 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47200 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47216 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47232 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47246 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47256 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47260 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47262 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47268 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47274 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47278 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47288 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47302 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47308 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47312 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47324 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47330 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47334 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47342 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47358 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47370 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47380 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47390 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47398 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47404 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47420 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52266 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52282 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52290 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52292 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52304 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52320 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52334 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52346 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52358 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52362 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52372 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52374 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52376 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52388 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52402 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52416 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52422 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52432 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52438 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52448 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52456 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52458 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52472 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52480 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52494 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52504 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52514 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52508 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52524 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52532 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52544 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52546 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52556 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52560 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52568 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52584 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52590 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52592 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52594 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52596 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60210 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60212 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60218 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60230 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60246 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60258 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60268 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60284 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60292 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60308 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60316 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60320 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60326 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60328 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60330 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60340 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60354 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60358 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60366 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60376 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60386 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60392 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60398 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60408 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60424 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60436 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47410 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47414 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47430 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47432 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47440 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47442 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47454 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47456 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36602 - "GET /v1/models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36602 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36612 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36626 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36638 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37878 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37882 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37892 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37894 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37896 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47290 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47294 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47310 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47326 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47330 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47340 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47354 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47366 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47380 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47388 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47394 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47398 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47406 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47422 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47438 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47450 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47456 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47460 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47470 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47482 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47486 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47500 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47510 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47516 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47518 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47528 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47540 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47550 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47554 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47562 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47574 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47584 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47592 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47594 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47604 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47610 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47620 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47636 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47046 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47054 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47068 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47078 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47084 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47092 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47108 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47124 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47136 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47138 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47150 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47158 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47174 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47184 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47198 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47204 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47216 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47222 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47226 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47236 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47248 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47256 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47268 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47284 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47296 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47302 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47318 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47322 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47334 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47342 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47348 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47360 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47368 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47370 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47382 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47390 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47406 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47412 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47424 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47430 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47440 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47444 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47452 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47460 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47472 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40996 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41016 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41008 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41028 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41038 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41044 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41056 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41068 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41076 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41084 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41086 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41098 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41104 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41108 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41118 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41132 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41148 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41152 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41162 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41174 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41178 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41186 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41192 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41206 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41222 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41242 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41236 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41254 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41268 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41274 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41286 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41296 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41304 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47572 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47578 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47586 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47596 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47610 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47614 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47616 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47628 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47640 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47644 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47650 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47662 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47666 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47672 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54864 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54876 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54882 - "POST /v1/chat/completions HTTP/1.1" 200 OK
