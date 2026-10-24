@@ -27,3 +27,5 @@
 {"ts":"2026-10-24T15:04:57+07:00","id":"E011","parent":"E008","event":"start","change":"long-prefill-token-threshold 2048","status":"running"}
 {"ts":"2026-10-24T15:10:08+07:00","id":"E011","parent":"E008","event":"result","change":"long-prefill-token-threshold 2048","status":"rejected","val_run":"20261024-150609-e011,20261024-150807-e011-2","val_S":14.1,"eta_vs_base":1.05,"j_per_req":318,"slo_met":"66/100, 64/100","p95_tpot_ms":60,"accuracy":79.0,"lesson":"s_L 0.56->0.74 but eta mean 1.05 vs 1.22; s_E dominates"}
 {"ts":"2026-10-24T15:10:08+07:00","id":"E012","parent":"E008","event":"start","change":"power cap 400->250 W","status":"running"}
+{"ts":"2026-10-24T15:13:34+07:00","id":"E012","parent":"E008","event":"result","change":"power cap 250 W","status":"rejected","val_run":"20261024-151129-e012","val_S":19.5,"eta_vs_base":1.14,"j_per_req":254,"slo_met":"45/100","p95_tpot_ms":56,"accuracy":82.0,"lesson":"250W: J/req -18% but TTFT fails 30->48 (prefill slower)"}
+{"ts":"2026-10-24T15:13:34+07:00","id":"E013","parent":"E012","event":"start","change":"250W + long-prefill-token-threshold 2048","status":"running"}
