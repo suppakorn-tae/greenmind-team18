@@ -5,3 +5,8 @@
 - Smaller prefill chunks (2048) hurt: per-step fixed cost.
 - Repeat runs on one server with prefix caching are inflated (warm cache replays) — always fresh server, or prefix caching off.
 - Local val eta tracks official (1.22 vs 1.27); local val A is pessimistic because the agent class (n=20) is noisy.
+- Power cap 250/300 W: J/req -13..-18% but prefill (compute-bound) slows -> TTFT fails up; eta not better. Stay at 400 W default.
+- MTP k=1 worse than k=2 (J/req +23%).
+- TTFT fails at peak are a head-of-line staircase: short prompts wait behind a long (18-20K) prompt's prefill chunks. MAX_BT 4096 + --long-prefill-token-threshold 2048 together fix it (p95 TTFT 1.7 -> 1.3 s, final S 15.5 -> 17.3); each alone was neutral.
+- gpu-memory-utilization 0.95: no val benefit.
+- Noise: eta counts turns; agent episodes vary 136-158 turns/run. Per-arrival on-time per kJ is a steadier secondary metric. Champion repeat spread ±5-8% eta.

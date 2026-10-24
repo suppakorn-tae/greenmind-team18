@@ -18,7 +18,7 @@
 | E013 | E012 | 250W + chunk cap 2048 | rejected | 14.3 |  |  | 267 | 45/100 |  | 250W too slow at peak regardless of chunking |
 | E014 | E008 | power cap 300 W | rejected | 1.2 |  |  | 290 | 56/100, 53/100 |  | 300W: J/req -7..-13% but TTFT fails up; eta mean 1.11 < 1.22 |
 | E015 | E008 | gpu-memory-utilization 0.95 | rejected | 0.0 |  |  | 344 | 62/100 |  | no val gain; more energy |
-| E016 | E010 | MAX_BT 4096 + long-prefill-threshold 2048 | running |  |  |  |  |  |  |  |
+| E016 | E010 | MAX_BT 4096 + long-prefill-threshold 2048 | champion | 30.8 | 17.3 |  | 319 | 68/100, 63/100 | 81.0 | chunk 4096 + per-request cap 2048 fixes TTFT staircase; final S 17.3 > 15.5 |
 
 ## Key findings
 
@@ -29,4 +29,9 @@
 - Smaller prefill chunks (2048) hurt: per-step fixed cost.
 - Repeat runs on one server with prefix caching are inflated (warm cache replays) — always fresh server, or prefix caching off.
 - Local val eta tracks official (1.22 vs 1.27); local val A is pessimistic because the agent class (n=20) is noisy.
+- Power cap 250/300 W: J/req -13..-18% but prefill (compute-bound) slows -> TTFT fails up; eta not better. Stay at 400 W default.
+- MTP k=1 worse than k=2 (J/req +23%).
+- TTFT fails at peak are a head-of-line staircase: short prompts wait behind a long (18-20K) prompt's prefill chunks. MAX_BT 4096 + --long-prefill-token-threshold 2048 together fix it (p95 TTFT 1.7 -> 1.3 s, final S 15.5 -> 17.3); each alone was neutral.
+- gpu-memory-utilization 0.95: no val benefit.
+- Noise: eta counts turns; agent episodes vary 136-158 turns/run. Per-arrival on-time per kJ is a steadier secondary metric. Champion repeat spread ±5-8% eta.
 
