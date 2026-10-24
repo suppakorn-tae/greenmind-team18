@@ -18,8 +18,10 @@
 E017 has **no official val run yet**. Worth one if the Final budget is scarce, but the official final is what counts.
 
 ## Untested ideas, ranked by expected payoff
-1. **TPOT on the official final** (sT 0.62, p95 59 ms is now the weakest term). Try MTP k=3 on top of E017.
-   Under the old scheduler k=3 tied k=2, but the TPOT-bound regime may favour more tokens per step. Also `--max-num-seqs` 96–128 to bound decode batch on final.
+1. **TPOT on the official final** (sT 0.62, p95 59 ms is now the weakest term). MTP k=3 on E017 was **tested (E020)**.
+   Val tied, TPOT was excellent, and the final collapsed: with 4 GDN state slots per sequence, KV hit 98.7% with 51 waiting and p95 TTFT 19.8 s.
+   k=3 is only viable if memory is freed elsewhere (fp8 KV, a `--max-num-seqs` bound) — test it on the local final, not just val.
+   `--max-num-seqs` 96–128 on E017 is still untested.
 2. **Cap and budget fine-tune around 4096/1024**, e.g. 6144/1024 or 4096/768. 2048/1024, 4096/512 and 4096/2048 were all worse.
 3. **Power cap ~350 W or a locked SM clock on E017.** The prefill-scheduling fix may have created TTFT headroom that 250–300 W lacked before.
 4. **`--kv-cache-dtype fp8`** (Ampere, hybrid + spec decode = experimental). KV is no longer binding on val, so it only helps the final track. Check accuracy hard.

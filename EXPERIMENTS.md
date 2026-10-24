@@ -19,9 +19,10 @@
 | E014 | E008 | power cap 300 W | rejected | 1.2 |  |  | 290 | 56/100, 53/100 |  | 300W: J/req -7..-13% but TTFT fails up; eta mean 1.11 < 1.22 |
 | E015 | E008 | gpu-memory-utilization 0.95 | rejected | 0.0 |  |  | 344 | 62/100 |  | no val gain; more energy |
 | E016 | E010 | MAX_BT 4096 + long-prefill-threshold 2048 | champion | 30.8 | 17.3 |  | 319 | 68/100, 63/100 | 81.0 | chunk 4096 + per-request cap 2048 fixes TTFT staircase; final S 17.3 > 15.5 |
-| E017 | E016 | champion confirmation fresh server | official-final | 42.2 | 22.7 | 59.0 | 247 | 215/300 | 88.8 | OFFICIAL final: S 59.0, A 1.00, R 1.012, sE 0.53, sT 0.62, sL 0.80, p95 TTFT 1.91 s. Local final is harsher (117/300, TTFT 3.88 s) but ranks the same |
+| E017 | E016 | champion restored after E020 | champion | 42.2 | 22.7 | 59.0 | 247 | 215/300 | 88.8 | configs/champion.sh serving on :8000, 400 W, health PASS, KV pool 475,367 tokens |
 | E018 | E017 | long-prefill-threshold 512 | rejected | 22.5 |  |  | 331 | 76/100 | 79.0 | 512 too fine: long-prompt TTFT up; optimum ~1024 |
 | E019 | E017 | MAX_BT 2048 (cap 1024) | rejected | 20.6 |  |  | 332 | 70/100 | 80.0 | budget 2048 with cap 1024 re-creates queueing; keep 4096/1024 |
+| E020 | E017 | MTP k 2->3 on E017 | rejected | 31.7 | 2.9 |  | 292 | 75/100, 75/100 | 79.0 | val tie but final collapses: k+1 GDN state slots -> KV 98.7%, 51 waiting, p95 TTFT 19.8 s |
 
 ## Key findings
 
@@ -40,4 +41,5 @@
 - Per-request prefill cap 1024 with a 4096 budget (E017) is the big TTFT win: val TTFT fails ~30 -> ~10, per-arrival 63 -> 80/100. 2048 and 512 caps worse; budget 2048 worse (E019).
 - OFFICIAL: E008 val S 31.5; E017 final S 59.0 (eta 1.78x, 247 J/req, 215/300, acc 88.8%).
 - Local final track is harsher than official (117/300 vs 215/300) but ranks configs the same; local val tracks official val.
+- MTP k=3 on the champion (E020): val tie with -10% J/req, but final-track collapse (memory-capped admission, p95 TTFT 19.8 s). Always confirm on local final; val can't see this failure.
 

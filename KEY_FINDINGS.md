@@ -13,3 +13,4 @@
 - Per-request prefill cap 1024 with a 4096 budget (E017) is the big TTFT win: val TTFT fails ~30 -> ~10, per-arrival 63 -> 80/100. 2048 and 512 caps worse; budget 2048 worse (E019).
 - OFFICIAL: E008 val S 31.5; E017 final S 59.0 (eta 1.78x, 247 J/req, 215/300, acc 88.8%).
 - Local final track is harsher than official (117/300 vs 215/300) but ranks configs the same; local val tracks official val.
+- MTP k=3 on the champion (E020): val tie with -10% J/req, but final-track collapse (memory-capped admission, p95 TTFT 19.8 s). Always confirm on local final; val can't see this failure.
