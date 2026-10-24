@@ -1,4 +1,4 @@
-# Champion: E017 (since 2026-10-24 15:45 +07) — local; official run pending
+# Champion: E017 (since 2026-10-24 15:45 +07) — OFFICIAL final S 59.0
 Start: `configs/champion.sh` at default power (`greenmind-kit/power.sh reset` → 400 W, no clock lock).
 ```
 export PATH=$HOME/vllm-env/bin:/usr/local/cuda/bin:$PATH CUDA_HOME=/usr/local/cuda   # ninja/nvcc for FlashInfer JIT
@@ -14,6 +14,7 @@ vLLM 0.32.0, original BF16 weights only (no derived weights → nothing to push 
 
 | run | S | A | eta vs base | J/req | SLO-met | p95 TTFT | p95 TPOT | acc |
 |---|---|---|---|---|---|---|---|---|
+| **OFFICIAL final** (2026-10-24 08:54 UTC) | **59.0** | 1.00 | 1.78x | 247 | 215/300 | 1.91 s | 59 ms | 88.8% |
 | local val #1 / #2 / confirm | 35.7 / 13.3 / 42.2 | 0.74* / 0.34* / 1.00 | 1.44x / 1.30x / 1.34x | 311 / 338 / 334 | 80 / 78 / 80 of 100 | 1.49 / 1.50 / 1.48 s | 50 / 52 / 50 ms | 80 / 76 / 79% |
 | local final | 22.7 | 1.00 | 1.30x | 209 | 117/300 | 3.88 s | 80 ms | 81.0% |
 

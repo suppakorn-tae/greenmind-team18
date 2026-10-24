@@ -10,3 +10,6 @@
 - TTFT fails at peak are a head-of-line staircase: short prompts wait behind a long (18-20K) prompt's prefill chunks. MAX_BT 4096 + --long-prefill-token-threshold 2048 together fix it (p95 TTFT 1.7 -> 1.3 s, final S 15.5 -> 17.3); each alone was neutral.
 - gpu-memory-utilization 0.95: no val benefit.
 - Noise: eta counts turns; agent episodes vary 136-158 turns/run. Per-arrival on-time per kJ is a steadier secondary metric. Champion repeat spread ±5-8% eta.
+- Per-request prefill cap 1024 with a 4096 budget (E017) is the big TTFT win: val TTFT fails ~30 -> ~10, per-arrival 63 -> 80/100. 2048 and 512 caps worse; budget 2048 worse (E019).
+- OFFICIAL: E008 val S 31.5; E017 final S 59.0 (eta 1.78x, 247 J/req, 215/300, acc 88.8%).
+- Local final track is harsher than official (117/300 vs 215/300) but ranks configs the same; local val tracks official val.
