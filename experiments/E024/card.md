@@ -1,0 +1,2 @@
+# E024 — champion E017 with MAX_BT 4096 -> 3072 (cap 1024)
+Parent E017 (official final 59.0; weakest: sT 0.62, p95 TPOT 59 ms). One variable. Hypothesis: prefill-laden steps (~4096 tok, ~0.3 s) inflate decoders' TPOT at peak; 3072 cuts worst step ~25% while keeping 3 cap-sized prefill slots (2048 = 2 slots re-created queueing in E019). Judge on local final (predicted official ranking) + val. Start 2026-10-24T17:26:37+07:00.
