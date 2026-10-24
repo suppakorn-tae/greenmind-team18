@@ -26,3 +26,4 @@
 - Short-first scheduler patch (E040): throttling in-flight long prefills while short prompts wait makes TTFT worse overall (misses move to long/RAG prompts). Peak prefill capacity is the hard limit.
 - SGLang 0.5.22 (E041): works with this model but best val 58/100 vs vLLM 80/100 (spec-decode GDN intermediate states ~96 MB/slot -> 80 slots, 169K KV tokens; separate 4.2 GB MTP weights; no per-request prefill cap). vLLM stays.
 - TensorRT-LLM 1.4.0rc1 (E042): supports Qwen3.5+MTP but cold server stalls on runtime JIT (24/100), warm 56/100 vs vLLM 80/100, agent 2/20. Engine ranking for this model on 1x A100: vLLM >> SGLang (58) ~ TRT-LLM (56 warm).
+- Dynamic speculative decoding (E043 V2 runner, E044 V1): k=2 below 64 running / k=1 above cuts final TPOT fails (122 -> 95) but shrinks the KV pool 475K -> 368K tokens -> final memory collapse. GDN kernels: only Triton prefill on Ampere (FlashInfer/CuteDSL need SM90+).

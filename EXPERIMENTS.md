@@ -44,7 +44,9 @@
 | E039 | E038 | forced-end transition phrase (budget 1536) | official-final (below E030) | 62.8 | 23.6 | 85.97 | 158.7 | 226/300 | 88.7 | OFFICIAL 86.0 < 88.0: sE 0.974 but sT 0.636, sL 0.80 (ttft 0.77, tpot 0.83). TTFT is the weaker official latency term |
 | E040 | E030 | short-first prefill cap 256 | rejected | 50.3 | 29.2 |  | 269 | 80/100; 117/300 | 80.0 | short-first throttling moves TTFT misses to long prompts; 1024 cap is the balance |
 | E041 | E030 | engine vLLM -> SGLang 0.5.22 | abandoned | 0.0 |  |  | 324 | best 58/100 | 83.0 | SGLang: 80 slots max (spec GDN states), 169K KV, no per-request prefill cap -> best 58/100 vs vLLM 80/100 |
-| E042 | E030 | engine -> TensorRT-LLM 1.4.0rc1 | abandoned | 0.0 |  |  | 333 | cold 23-24/100, warm 54-56/100 | 74.0 | TRT-LLM: cold JIT stalls whole trace, warm still 56 vs vLLM 80/100, agent 2/20 |
+| E042 | E030 | engine -> TensorRT-LLM 1.4.0rc1 | cleanup | 0.0 |  |  | 333 | cold 23-24/100, warm 54-56/100 | 74.0 | ~/trtllm-env deleted at user request (7.4 GB); configs kept for reproducibility |
+| E043 | E030 | dynamic SD + V2 runner | rejected | 41.8 |  |  | 251 | 81/100; 90/300 | 79.0 | V2 runner: KV 368K vs 475K -> final memory collapse; TPOT fails down to 96 |
+| E044 | E043 | dynamic SD on V1 runner | rejected | 43.7 |  |  | 250 | 83/100; 92/300 | 80.0 | dynamic SD reserves ~23% KV -> final collapse |
 
 ## Key findings
 
@@ -76,4 +78,5 @@
 - Short-first scheduler patch (E040): throttling in-flight long prefills while short prompts wait makes TTFT worse overall (misses move to long/RAG prompts). Peak prefill capacity is the hard limit.
 - SGLang 0.5.22 (E041): works with this model but best val 58/100 vs vLLM 80/100 (spec-decode GDN intermediate states ~96 MB/slot -> 80 slots, 169K KV tokens; separate 4.2 GB MTP weights; no per-request prefill cap). vLLM stays.
 - TensorRT-LLM 1.4.0rc1 (E042): supports Qwen3.5+MTP but cold server stalls on runtime JIT (24/100), warm 56/100 vs vLLM 80/100, agent 2/20. Engine ranking for this model on 1x A100: vLLM >> SGLang (58) ~ TRT-LLM (56 warm).
+- Dynamic speculative decoding (E043 V2 runner, E044 V1): k=2 below 64 running / k=1 above cuts final TPOT fails (122 -> 95) but shrinks the KV pool 475K -> 368K tokens -> final memory collapse. GDN kernels: only Triton prefill on Ampere (FlashInfer/CuteDSL need SM90+).
 
