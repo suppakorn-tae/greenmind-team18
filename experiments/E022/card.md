@@ -1,0 +1,2 @@
+# E022 — champion E017 at 350 W power cap
+Parent E017. One variable: power 400 -> 350 W (set before start, held). Why: s_E (weight 0.6) is the largest official term (sE 0.53); 250/300 W failed (E012-E014) because slower prefill lengthened the head-of-line TTFT staircase, which E017's per-request prefill cap now removes. A mild cap clips prefill power spikes only. Expect J/req -5..-8% with SLO ~unchanged. Val gate x2 then final. Start 2026-10-24T16:56:38+07:00.

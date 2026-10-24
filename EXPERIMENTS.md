@@ -23,6 +23,8 @@
 | E018 | E017 | long-prefill-threshold 512 | rejected | 22.5 |  |  | 331 | 76/100 | 79.0 | 512 too fine: long-prompt TTFT up; optimum ~1024 |
 | E019 | E017 | MAX_BT 2048 (cap 1024) | rejected | 20.6 |  |  | 332 | 70/100 | 80.0 | budget 2048 with cap 1024 re-creates queueing; keep 4096/1024 |
 | E020 | E017 | MTP k 2->3 on E017 | rejected | 31.7 | 2.9 |  | 292 | 75/100, 75/100 | 79.0 | val tie but final collapses: k+1 GDN state slots -> KV 98.7%, 51 waiting, p95 TTFT 19.8 s |
+| E021 | E017 | kv-cache-dtype fp8 | rejected | 1.2 |  |  | 337 | 72/100 | 77.0 | fp8 KV forces FlashInfer + downgraded cudagraphs w/ spec decode -> TPOT 60ms |
+| E022 | E017 | power cap 350 W | running |  |  |  |  |  |  |  |
 
 ## Key findings
 
