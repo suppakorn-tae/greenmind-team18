@@ -1,6 +1,5 @@
-# Champion: E033 (since 2026-10-24 20:18 +07) — local; OFFICIAL pending
-= E030 (OFFICIAL final S 88.0) with `--gpu-memory-utilization 0.96` instead of 0.92 (only change). Fallback: `configs/E030.sh`.
-E033 local: val eta 1.77 / 1.74x, 82 / 80 of 100; final S 30.2 / 34.4 (E030 28.8 / 25.5), 122 / 129 of 300, p95 TTFT 3.1 / 2.9 s (E030 4.2 / 4.6 s).
+# Champion: E030 — OFFICIAL final S 88.0 (re-instated 2026-10-24 20:45 +07)
+E033 (E030 + gpu util 0.96) scored OFFICIAL 81.6 despite local +12% -> reverted. `configs/champion.sh` == `configs/E030.sh`.
 
 ## E030 — OFFICIAL final S 88.0
 OFFICIAL final: S 88.0, A 1.00, R 1.034, sE 0.96, sT 0.71, sL 0.85, eta 2.87x, 173 J/req, p95 TTFT 1.85 s, p95 TPOT 57 ms, 242/300, acc 90.7%.

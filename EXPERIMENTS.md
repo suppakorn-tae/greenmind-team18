@@ -35,7 +35,7 @@
 | E030 | E027 | thinking budget 5120->3072 | official-final CHAMPION | 47.4 | 27.2 | 88.0 | 173 | 242/300 | 90.7 | OFFICIAL final S 88.0 (E017 59.0): sE 0.96, sT 0.71, sL 0.85, eta 2.87x, 173 J/req, 242/300, p95 TTFT 1.85 s, acc 90.7%. sE near cap -> next gains must come from sT/sL |
 | E031 | E030 | thinking budget 2048 | rejected | 50.5 | 26.2 |  | 305 | 81/100; 115/300 | 81.0 | 2048 too tight: answer can then run to cutoff; 3072 best |
 | E032 | E030 | MTP k=3 with budget | rejected | 53.4 | 15.1 |  | 241 | 74/100; 100/300 | 81.0 | k=3 still memory-collapses on final even with budget |
-| E033 | E030 | final replicate + frontend CPU check | paused for official final; configs/champion.sh (=E033) serving | 63.4 | 30.4 |  | 253 | 82/100, 80/100; 122/300, 129/300 | 81.0 | final x3 mean 30.4; API server CPU max 25% - not a bottleneck |
+| E033 | E030 | final replicate + frontend CPU check | official-final (worse than E030) -> reverted | 63.4 | 30.4 | 81.6 | 176 | 231/300 | 90.4 | OFFICIAL final 81.6 < E030 88.0 (sT 0.66 vs 0.71, sL 0.76 vs 0.85) despite local +12%; second time a <=16% local edge fails officially |
 | E034 | E033 | gpu util 0.98 | crashed |  |  |  |  |  |  | CUDA OOM under load; 0.96 is the ceiling |
 | E035 | E033 | MAX_BT 3072 | rejected | 38.7 | 28.7 |  | 287 | 83/100; 123/300 | 78.0 | TPOT fails insensitive to chunking; decode-saturated |
 | E036 | E033 | max-num-seqs 112 | rejected | 45.7 | 19.0 |  | 240 | 83/100; 111/300 | 79.0 | admission cap: TPOT fails down, TTFT fails up more |
@@ -62,4 +62,5 @@
 - [GRAY, local only] Server-side thinking budget 5120 (E027): val eta 1.36 -> 1.67, J/req -17%, final S 22.7 -> 25.2, zero cutoffs, accuracy equal or better. Biggest remaining lever; needs organizer approval.
 - Cap 768 (E026): local final +16% over E017 (3 vs 4 runs) but OFFICIAL final 46.6 vs 59.0 -> a 1-flag local edge of ~15% is not reliable officially; official run-to-run noise is probably ±15-20%.
 - **Thinking budget 3072 (E030): OFFICIAL final S 88.0** (from 59.0): eta 1.78 -> 2.87x, J/req 247 -> 173, SLO 215 -> 242/300, accuracy 88.8 -> 90.7%. sE now 0.96 (near the 3x cap) -> remaining headroom is sT 0.71 / sL 0.85 (latency).
+- Official calibration: local-final edges of +12% (E033) and +16% (E026) both LOST officially (81.6 vs 88.0; 46.6 vs 59.0). Official run-to-run noise is probably ±10%; only structural changes (thinking budget: local +30%, official +49%) carried over. Don't spend official runs on <20% local edges.
 

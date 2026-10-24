@@ -18,3 +18,4 @@
 - [GRAY, local only] Server-side thinking budget 5120 (E027): val eta 1.36 -> 1.67, J/req -17%, final S 22.7 -> 25.2, zero cutoffs, accuracy equal or better. Biggest remaining lever; needs organizer approval.
 - Cap 768 (E026): local final +16% over E017 (3 vs 4 runs) but OFFICIAL final 46.6 vs 59.0 -> a 1-flag local edge of ~15% is not reliable officially; official run-to-run noise is probably ±15-20%.
 - **Thinking budget 3072 (E030): OFFICIAL final S 88.0** (from 59.0): eta 1.78 -> 2.87x, J/req 247 -> 173, SLO 215 -> 242/300, accuracy 88.8 -> 90.7%. sE now 0.96 (near the 3x cap) -> remaining headroom is sT 0.71 / sL 0.85 (latency).
+- Official calibration: local-final edges of +12% (E033) and +16% (E026) both LOST officially (81.6 vs 88.0; 46.6 vs 59.0). Official run-to-run noise is probably ±10%; only structural changes (thinking budget: local +30%, official +49%) carried over. Don't spend official runs on <20% local edges.

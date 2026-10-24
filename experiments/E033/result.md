@@ -6,3 +6,5 @@ Final mean S 32.3 vs 27.2 (+19%); val tie. Extra KV relieves the final-peak admi
 - final #3 20261024-203549-e033-3: S 26.7, 124/300, TTFT fails 161, TPOT fails 118, p95 TTFT 3.05 s. E033 final x3: 30.2 / 34.4 / 26.7 (mean 30.4 vs E030 27.2).
 - Frontend check during #3: API server instantaneous CPU max 25% (top, 1 s) -> not a bottleneck; --api-server-count not pursued.
 - 20:39 paused for OFFICIAL final (user request).
+- **OFFICIAL final (13:39 UTC): S 81.6** (E030 88.0), A 1.00, R 1.030, sE 0.90, sT 0.66, sL 0.76, eta 2.68x, 176 J/req, p95 TTFT 1.90 s, p95 TPOT 60 ms, SLO 231/300, acc 90.4%.
+- Verdict: reverted to E030. Local edge +12% did not carry over (official -7%, likely within official noise).
