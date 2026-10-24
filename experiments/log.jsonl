@@ -23,3 +23,5 @@
 {"ts":"2026-10-24T14:49:44+07:00","id":"E009","parent":"E008","event":"start","change":"MTP k 2->1","status":"running"}
 {"ts":"2026-10-24T14:59:17+07:00","id":"E009","parent":"E008","event":"result","change":"MTP k 2->1","status":"rejected","val_run":"20261024-145308-e009","final_run":"20261024-145509-e009","val_S":0.0,"final_S":4.2,"eta_vs_base":0.92,"j_per_req":381,"slo_met":"64/100","p95_tpot_ms":48,"accuracy":80.0,"lesson":"k=1 worse J/req and final TPOT; final TPOT tail = 8K prefill chunks starving decode"}
 {"ts":"2026-10-24T14:59:17+07:00","id":"E010","parent":"E008","event":"start","change":"max-num-batched-tokens 8192->4096","status":"running"}
+{"ts":"2026-10-24T15:04:57+07:00","id":"E010","parent":"E008","event":"result","change":"max-num-batched-tokens 4096","status":"rejected","val_run":"20261024-150244-e010","val_S":18.2,"eta_vs_base":1.16,"j_per_req":301,"slo_met":"64/100","p95_tpot_ms":56,"accuracy":80.0,"lesson":"within noise; TTFT fails are head-of-line blocking of short prompts behind long prefills"}
+{"ts":"2026-10-24T15:04:57+07:00","id":"E011","parent":"E008","event":"start","change":"long-prefill-token-threshold 2048","status":"running"}
