@@ -33,3 +33,5 @@
 {"ts":"2026-10-24T15:16:44+07:00","id":"E014","parent":"E008","event":"start","change":"power cap 400->300 W","status":"running"}
 {"ts":"2026-10-24T15:22:16+07:00","id":"E014","parent":"E008","event":"result","change":"power cap 300 W","status":"rejected","val_run":"20261024-151757-e014,20261024-151944-e014-2","val_S":1.2,"eta_vs_base":1.11,"j_per_req":290,"slo_met":"56/100, 53/100","p95_tpot_ms":71,"accuracy":null,"lesson":"300W: J/req -7..-13% but TTFT fails up; eta mean 1.11 < 1.22"}
 {"ts":"2026-10-24T15:22:16+07:00","id":"E008","event":"start","change":"champion repeat (fresh server, 400 W) to measure variance","status":"champion"}
+{"ts":"2026-10-24T15:25:15+07:00","id":"E008","event":"result","change":"champion repeat","status":"champion","val_run":"20261024-152321-e008-2","eta_vs_base":1.13,"j_per_req":302,"slo_met":"63/100","p95_tpot_ms":51,"lesson":"champion val eta over 2 fresh runs: 1.22, 1.13 (mean 1.18, spread +-0.05)"}
+{"ts":"2026-10-24T15:25:15+07:00","id":"E015","parent":"E008","event":"start","change":"gpu-memory-utilization 0.95","status":"running"}

@@ -6,3 +6,4 @@ Config: BF16 + MTP k=2 + SSM state bf16, no prefix caching, language-model-only,
 - MTP per-position acceptance 0.87, 0.74. Peak running 56, KV 48%.
 Calibration: local val eta 1.22 vs official 1.27 -> agrees. Local val A is pessimistic (agent n=20 noise); trust eta + final-track A.
 Lesson: k=2 >= k=3 (eta 1.22 vs 1.12, within noise); on final track the bottleneck is per-step compute (TPOT tail) at high concurrency.
+- Champion E008 local val repeat: eta 1.22 / 1.13 (mean 1.18) -> local run-to-run spread ≈ ±5-8% on eta; agent turn count varies 136-158 per run.
