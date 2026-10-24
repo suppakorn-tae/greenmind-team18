@@ -1,0 +1,7 @@
+# E017 result — CHAMPION (local), official pending
+Config: E016 with --long-prefill-token-threshold 1024 (MAX_BT 4096), 400 W default.
+- val #1 20261024-153804-e017 (fresh): 140/160 turns, 80/100 per arrival, eta 1.44x, 311 J/req, p95 TTFT 1.49 s, p95 TPOT 50 ms, fails ttft 10/tpot 9/cutoff 2, acc 80% (agent 4/20), local S 35.7 (A 0.74 agent noise).
+- val #2 20261024-153948-e017-2: 138/160, 78/100, eta 1.30x, 338 J/req, fails ttft 12/tpot 9/cutoff 4, acc 76% (long 2/5, reason 11/15 -> A 0.34; noise: run #1 and final are normal).
+- final 20261024-154141-e017: S 22.7 (E016 17.3, E008 15.5), A 1.00, eta 1.30x, 209 J/req, 117/300 per arrival, p95 TTFT 3.88 s, p95 TPOT 80 ms, fails ttft 175/tpot 123/cutoff 3, acc 81.0% (baseline 81.3%): agent 0.28 n=60, chat 1.0, long 0.6, rag 0.97, reason 0.93, thai 0.90.
+vs E016: val TTFT fails 24-28 -> 10-12, per-arrival 63-68 -> 78-80, eta mean 1.215 -> 1.37; final S +31%.
+Lesson: per-request prefill cap is the main TTFT lever on this trace; 1024 >> 2048.
