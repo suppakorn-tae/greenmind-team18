@@ -1,0 +1,2 @@
+# E033 — champion E030 + gpu-memory-utilization 0.92 -> 0.96
+Parent E030 (OFFICIAL 88.0; sE 0.96 near cap, sT 0.71, sL 0.85). One variable. Why: final peak is memory-capped (KV 97-100%, 8-17 waiting). E025 (0.96 on E017) shortened the final TTFT tail (p95 2.9-3.0 vs 3.9 s) at an energy cost that no longer matters with sE ~capped. Judge on local sT/sL + peak waiting, not local S (local S over-weights energy). Start 2026-10-24T20:08:07+07:00.

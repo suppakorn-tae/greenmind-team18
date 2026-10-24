@@ -1,5 +1,53 @@
-[PASS] stream+usage  ttft=0.0487876520055579 tokens=177 reasoning_chars=348 finish=stop err=None
-[PASS] tool calling  calls=[{'id': 'chatcmpl-tool-be69e171cbc0af00', 'name': 'get_weather', 'arguments': '{"city": "Chiang Mai"}'}] finish=tool_calls err=None
-run 20261024-195341-e032: track=final model=CMKL/MANGO1.5-Qwen3.5-9B items=300 bounds={'ramp': 30.0, 'peak': 45.0, 'quiet': 60.0} s
+[PASS] stream+usage  ttft=0.047892112997942604 tokens=177 reasoning_chars=348 finish=stop err=None
+[PASS] tool calling  calls=[{'id': 'chatcmpl-tool-ba2910b205fcd399', 'name': 'get_weather', 'arguments': '{"city": "Chiang Mai"}'}] finish=tool_calls err=None
+run 20261024-200457-e032: track=final model=CMKL/MANGO1.5-Qwen3.5-9B items=300 bounds={'ramp': 30.0, 'peak': 45.0, 'quiet': 60.0} s
 measuring idle power for 5s ...
-idle power ≈ 87 W
+idle power ≈ 86 W
+  30/300 items done @ 41s
+  60/300 items done @ 59s
+  90/300 items done @ 72s
+  120/300 items done @ 85s
+  150/300 items done @ 95s
+  180/300 items done @ 102s
+  210/300 items done @ 112s
+  240/300 items done @ 121s
+  270/300 items done @ 135s
+  300/300 items done @ 158s
+id: 20261024-200457-e032
+track: final
+label: E032
+notes: E032
+status: done
+started_at: 2026-10-24T20:04:57.869752
+ended_at: 2026-10-24T20:07:41.809788
+baseline: False
+model: CMKL/MANGO1.5-Qwen3.5-9B
+on-time: 160/412
+fail_reasons: {"tpot": 77, "ttft": 221}
+energy_J: 59002.356
+avg_power_W: 372.609
+idle_W: 86.270
+eta: 0.00271
+tokens_per_J: 4.725
+s_T: 0.1193
+s_L: 0.2356
+p95_tpot_ms: 67.573
+p95_ttft_over_slo: 13.3357
+macro_acc: 0.7787
+slo_met (per arrival): 100/300
+slo_met (per turn): 160/412
+j_per_req: 196.7
+p95_ttft_s: 7.998
+accuracy_pct: 81.7
+class_acc agent: acc=0.3167 n=60
+class_acc chat: acc=1.0000 n=90
+class_acc long: acc=0.5333 n=15
+class_acc rag: acc=0.9667 n=60
+class_acc reason: acc=0.9556 n=45
+class_acc thai: acc=0.9000 n=30
+score:
+  S: 15.1
+  A: 1.0000
+  s_E: 0.1409
+  eta_ratio: 1.1674
+  weakest_class: agent:0.95

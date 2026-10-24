@@ -1,53 +1,53 @@
-[PASS] stream+usage  ttft=0.5306395750085358 tokens=177 reasoning_chars=348 finish=stop err=None
-[PASS] tool calling  calls=[{'id': 'chatcmpl-tool-a11eda560af9fadf', 'name': 'get_weather', 'arguments': '{"city": "Chiang Mai"}'}] finish=tool_calls err=None
-run 20261024-195221-e032: track=val model=CMKL/MANGO1.5-Qwen3.5-9B items=100 bounds={'ramp': 10.0, 'peak': 15.0, 'quiet': 20.0} s
+[PASS] stream+usage  ttft=0.06814279100217391 tokens=177 reasoning_chars=348 finish=stop err=None
+[PASS] tool calling  calls=[{'id': 'chatcmpl-tool-b7e17d0bbb53f136', 'name': 'get_weather', 'arguments': '{"city": "Chiang Mai"}'}] finish=tool_calls err=None
+run 20261024-200342-e032: track=val model=CMKL/MANGO1.5-Qwen3.5-9B items=100 bounds={'ramp': 10.0, 'peak': 15.0, 'quiet': 20.0} s
 measuring idle power for 5s ...
-idle power ≈ 86 W
+idle power ≈ 88 W
   10/100 items done @ 15s
   20/100 items done @ 25s
   30/100 items done @ 29s
   40/100 items done @ 31s
-  50/100 items done @ 36s
-  60/100 items done @ 39s
-  70/100 items done @ 44s
-  80/100 items done @ 51s
-  90/100 items done @ 57s
-  100/100 items done @ 71s
-id: 20261024-195221-e032
+  50/100 items done @ 37s
+  60/100 items done @ 40s
+  70/100 items done @ 45s
+  80/100 items done @ 52s
+  90/100 items done @ 58s
+  100/100 items done @ 66s
+id: 20261024-200342-e032
 track: val
 label: E032
 notes: E032
 status: done
-started_at: 2026-10-24T19:52:21.838811
-ended_at: 2026-10-24T19:53:38.693159
+started_at: 2026-10-24T20:03:42.859544
+ended_at: 2026-10-24T20:04:54.632348
 baseline: False
 model: CMKL/MANGO1.5-Qwen3.5-9B
-on-time: 122/146
-fail_reasons: {"tpot": 8, "ttft": 18}
-energy_J: 25513.459
-avg_power_W: 357.967
-idle_W: 86.217
-eta: 0.00478
-tokens_per_J: 3.923
-s_T: 0.6761
-s_L: 0.8802
-p95_tpot_ms: 54.536
-p95_ttft_over_slo: 1.1833
-macro_acc: 0.7667
-slo_met (per arrival): 76/100
-slo_met (per turn): 122/146
-j_per_req: 255.1
-p95_ttft_s: 2.009
-accuracy_pct: 79.0
-class_acc agent: acc=0.2000 n=20
+on-time: 120/146
+fail_reasons: {"tpot": 8, "ttft": 19}
+energy_J: 24123.084
+avg_power_W: 364.444
+idle_W: 88.204
+eta: 0.00497
+tokens_per_J: 4.259
+s_T: 0.6479
+s_L: 0.9013
+p95_tpot_ms: 54.404
+p95_ttft_over_slo: 1.1314
+macro_acc: 0.7861
+slo_met (per arrival): 74/100
+slo_met (per turn): 120/146
+j_per_req: 241.2
+p95_ttft_s: 1.980
+accuracy_pct: 81.0
+class_acc agent: acc=0.2500 n=20
 class_acc chat: acc=1.0000 n=30
 class_acc long: acc=0.6000 n=5
 class_acc rag: acc=1.0000 n=20
-class_acc reason: acc=0.8000 n=15
+class_acc reason: acc=0.8667 n=15
 class_acc thai: acc=1.0000 n=10
 score:
-  S: 37.6
-  A: 0.7405
-  s_E: 0.3843
-  eta_ratio: 1.5253
-  weakest_class: agent:0.667
+  S: 53.4
+  A: 1.0000
+  s_E: 0.4203
+  eta_ratio: 1.5868
+  weakest_class: agent:0.833
