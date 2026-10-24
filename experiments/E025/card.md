@@ -1,0 +1,2 @@
+# E025 — champion E017 with gpu-memory-utilization 0.92 -> 0.96
+Parent E017. One variable: +~1.6 GB for KV/state pool. Why: local final peak is memory-bound (E017: 133 running, KV 100%, 12 waiting; E024: 99%, 31 waiting). E015 (0.95 on old E008) only tested on val, which is never memory-bound. Risk: OOM under load (sampler/prefill activations). Judge on local final. Start 2026-10-24T17:34:52+07:00.
