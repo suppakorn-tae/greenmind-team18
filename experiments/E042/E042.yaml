@@ -1,0 +1,15 @@
+# TensorRT-LLM 1.4.0rc1 extra LLM API options for E042 (E030-equivalent minus thinking budget)
+max_batch_size: 160
+max_num_tokens: 4096
+max_seq_len: 41984
+enable_chunked_prefill: true
+speculative_config:
+  decoding_type: MTP
+  max_draft_len: 2
+kv_cache_config:
+  enable_block_reuse: false
+  free_gpu_memory_fraction: 0.85
+  mamba_ssm_cache_dtype: bfloat16
+cuda_graph_config:
+  enable_padding: true
+  max_batch_size: 160
