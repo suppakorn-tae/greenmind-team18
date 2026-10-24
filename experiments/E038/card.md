@@ -1,0 +1,2 @@
+# E038 — champion E030 with thinking budget 3072 -> 1536
+Parent E030. One variable. Why: TPOT fails at peak are short requests (agent 54/170, rag 29/60 on final) hurt by slow steps under ~130-seq decode load; chat generates 51-59% of all tokens (~1150 reasoning + ~600 answer each). A 1536 budget trims chat/reason reasoning tails -> less peak load -> faster steps. Risks: reason accuracy; forced-early answers running to the 8192 cutoff (seen once at 2048, E031). Reject on any accuracy drop or cutoffs. Start 2026-10-24T20:58:19+07:00.
