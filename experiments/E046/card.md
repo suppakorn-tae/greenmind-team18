@@ -1,0 +1,2 @@
+# E046 — E045 with served model name "mango" (label only)
+Identical to E045 (weights suppakorn-k/MANGO1.5-Qwen3.5-9B-W8A8 @ 1909e853, team W8A8 INT8 derivative of CMKL/MANGO1.5-Qwen3.5-9B). Only the API label (/v1/models id) changes, at the team lead's request for the official run. No effect on serving or measurement. Weights remain disclosed in CHAMPION.md / README / HF link for final deliverables. 2026-10-24T23:39:02+07:00
