@@ -13,3 +13,5 @@ kv_cache_config:
 cuda_graph_config:
   enable_padding: true
   max_batch_size: 160
+scheduler_config:
+  capacity_scheduler_policy: MAX_UTILIZATION
