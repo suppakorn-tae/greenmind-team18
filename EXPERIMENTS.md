@@ -19,7 +19,7 @@
 | E014 | E008 | power cap 300 W | rejected | 1.2 |  |  | 290 | 56/100, 53/100 |  | 300W: J/req -7..-13% but TTFT fails up; eta mean 1.11 < 1.22 |
 | E015 | E008 | gpu-memory-utilization 0.95 | rejected | 0.0 |  |  | 344 | 62/100 |  | no val gain; more energy |
 | E016 | E010 | MAX_BT 4096 + long-prefill-threshold 2048 | champion | 30.8 | 17.3 |  | 319 | 68/100, 63/100 | 81.0 | chunk 4096 + per-request cap 2048 fixes TTFT staircase; final S 17.3 > 15.5 |
-| E017 | E016 | champion restored after E020 | champion | 42.2 | 22.7 | 59.0 | 247 | 215/300 | 88.8 | configs/champion.sh serving on :8000, 400 W, health PASS, KV pool 475,367 tokens |
+| E017 | E016 | local final variance | champion | 42.2 | 21.0 | 59.0 | 247 | 215/300 | 88.8 | champion final S 22.7/22.1/18.3; cutoffs 3-7 per run drive variance |
 | E018 | E017 | long-prefill-threshold 512 | rejected | 22.5 |  |  | 331 | 76/100 | 79.0 | 512 too fine: long-prompt TTFT up; optimum ~1024 |
 | E019 | E017 | MAX_BT 2048 (cap 1024) | rejected | 20.6 |  |  | 332 | 70/100 | 80.0 | budget 2048 with cap 1024 re-creates queueing; keep 4096/1024 |
 | E020 | E017 | MTP k 2->3 on E017 | rejected | 31.7 | 2.9 |  | 292 | 75/100, 75/100 | 79.0 | val tie but final collapses: k+1 GDN state slots -> KV 98.7%, 51 waiting, p95 TTFT 19.8 s |
@@ -28,9 +28,10 @@
 | E023 | E017 | SM clock lock 1215 MHz | official-final (worse than champion) | 44.6 | 20.2 | 52.5 | 186 | 164/300 | 89.1 | OFFICIAL final S 52.5 < E017 59.0: J/req -25% but on-time 215->164, sT 0.62->0.37, sL 0.80->0.69; eta only 1.78->1.80. Local final ranking was correct |
 | E024 | E017 | MAX_BT 3072 | rejected | 29.9 | 8.0 |  | 311 | 79/100; 108/300 | 79.0 | TPOT fails halve on final but KV-full queueing -> TTFT 11.7s |
 | E025 | E017 | gpu util 0.96 | rejected | 37.0 | 22.9 |  | 347 | 77/100; 124/300 | 79.0 | final tie (22.9/22.3 vs 22.7), val eta lower |
-| E026 | E017 | cap 768 | tie (not promoted) | 39.7 | 23.6 |  | 335 | 83/100, 79/100; 116/300 | 79.0 | cap optimum flat 768-1024 |
-| E027 | E017 | [GRAY local-only] thinking budget 5120 | gray-local-win (not shippable) | 47.2 | 25.2 |  | 270 | 84/100, 80/100; 118/300 | 80.0 | thinking budget 5120: val eta +23%, J/req -17%, 0 cutoffs, accuracy equal/better; needs organizer OK |
-| E028 | E017 | MAX_BT 4096->5120 (cap 1024) | running |  |  |  |  |  |  |  |
+| E026 | E017 | long-prefill-threshold 1024->768 | paused; serving configs/champion.sh (=E026) for official final | 40.5 | 23.8 |  | 336 | 83/79/82 of 100; 116/116/118 of 300 | 79.0 | 3x3 replicates: local final mean 23.8 vs champion 20.5 (+16%), fewer TTFT fails |
+| E027 | E017 | [GRAY local-only] thinking budget 5120 | gray-local-win (not shippable) | 47.2 | 25.2 |  | 270 | 84/100, 80/100; 118/300 | 80.0 | replicates via mislabelled E028 runs: val eta 1.45, final S 25.0; 3-val mean eta 1.60 |
+| E028 | E017 | MAX_BT 5120 | rejected | 27.7 | 0.0 |  | 318 | 80/100; 99/300 | 80.0 | final backlog collapse (36 waiting); local final may be bistable |
+| E029 | E017 | stream-interval 4 (not applied) | abandoned |  |  |  |  |  |  | config edit failed -> champion replicate: val eta 1.26, final S 18.9 |
 
 ## Key findings
 
