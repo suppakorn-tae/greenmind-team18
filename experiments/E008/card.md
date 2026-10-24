@@ -1,0 +1,2 @@
+# E008 — E007 with MTP k=3 -> 2 (backlog #2)
+Parent E007. One variable: num_speculative_tokens 2. Hypothesis: at ~50 concurrent seqs the verify batch (4 tokens/seq) + 3 draft passes makes steps compute-bound (p95 TPOT 60 ms); k=2 cuts per-step cost and GDN state slots; per-position acceptance falls off so tokens/step drops less than cost. Expect lower p95 TPOT, fewer tpot+ttft fails. Risk: lower tokens/step -> higher J/req. Start 2026-10-24T14:30:25+07:00.

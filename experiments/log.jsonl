@@ -14,3 +14,5 @@
 {"ts":"2026-10-24T14:22:00+07:00","id":"E006","parent":"E005","event":"start","change":"prefix caching off (no align mode)","status":"running"}
 {"ts":"2026-10-24T14:30:00+07:00","id":"E006","parent":"E005","event":"result","change":"prefix caching off","status":"neutral","val_run":"20261024-142219-e006","val_S":0.0,"eta_vs_base":0.84,"j_per_req":328,"slo_met":"86/148","p95_tpot_ms":33,"accuracy":76.0,"lesson":"prefix cache irrelevant (3% hits); KV still full at 46 seqs; agent class noisy 3-7/20 on BF16"}
 {"ts":"2026-10-24T14:31:00+07:00","id":"E007","parent":"E006","event":"start","change":"mamba ssm cache bf16","status":"running"}
+{"ts":"2026-10-24T14:30:25+07:00","id":"E007","parent":"E006","event":"result","change":"mamba ssm cache bf16","status":"promoted","val_run":"20261024-142829-e007","val_S":14.5,"eta_vs_base":1.12,"j_per_req":303,"slo_met":"106/148 (60/100)","p95_tpot_ms":60,"accuracy":79.0,"lesson":"bf16 SSM state frees memory: peak KV 98->56%, TTFT fails 59->33; now TPOT-bound (60ms)"}
+{"ts":"2026-10-24T14:30:25+07:00","id":"E008","parent":"E007","event":"start","change":"MTP k 3->2","status":"running"}
