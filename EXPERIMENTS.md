@@ -41,7 +41,7 @@
 | E036 | E033 | max-num-seqs 112 | rejected | 45.7 | 19.0 |  | 240 | 83/100; 111/300 | 79.0 | admission cap: TPOT fails down, TTFT fails up more |
 | E037 | E030 | online fp8 weights | rejected | 0.0 | 0.0 |  | 254 | 47/100; 61/300 | 80.0 | FP8 Marlin W8A16 slow at batch on A100 + accuracy dip |
 | E038 | E030 | thinking budget 1536 | rejected | 63.8 | 17.5 |  | 248 | 81/100; 112/300 | 81.0 | low budgets -> answer runaway to 8192 cutoff (reason class) |
-| E039 | E038 | forced-end transition phrase (budget 1536) | neutral (safety option) | 62.8 | 23.6 |  | 248 | 80/100; 116/300 | 81.0 | phrase removes low-budget answer runaway; no SLO gain; peak is prefill-capacity bound |
+| E039 | E038 | forced-end transition phrase (budget 1536) | official-final (below E030) | 62.8 | 23.6 | 85.97 | 158.7 | 226/300 | 88.7 | OFFICIAL 86.0 < 88.0: sE 0.974 but sT 0.636, sL 0.80 (ttft 0.77, tpot 0.83). TTFT is the weaker official latency term |
 
 ## Key findings
 
@@ -69,4 +69,5 @@
 - Quantization on A100 (AWQ W4, online FP8 W8): Marlin kernels slow at serving batch; FP8 also costs accuracy (E037). Dead end.
 - Thinking budget below ~3072 makes some reason answers run away to the 8192 cutoff; a transition phrase in `--reasoning-config reasoning_end_str` fixes that (E039) but lower budgets don't improve peak SLO.
 - Remaining loss is peak prefill capacity: ~65K long-prompt tokens arriving within 3 s at peak; misses are marginal (TTFT 0.52-0.88 vs 0.51-0.65 s; TPOT 51-72 ms). Score sensitivity: sT/sL have exponent 0.2 each, so +10% sT = +2% S.
+- OFFICIAL detail (E039 run): s_l_ttft 0.77 < s_l_tpot 0.83, p95 TTFT 1.30x its SLO, p50 TTFT 0.38 s; official agentic accuracy 0.82 (local agent checker ~0.25 is not representative). Lower thinking budget = more sE but less sT; 3072 remains best officially (88.0 vs 86.0).
 
