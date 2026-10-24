@@ -1,0 +1,13 @@
+# environment (recreated by setup_env.sh)
+venv/
+env.sh
+__pycache__/
+
+# model weights, HF cache, quantized outputs, eval results
+hf/
+out/
+results/
+*.safetensors
+
+# calibration data may contain private prompts
+*.jsonl

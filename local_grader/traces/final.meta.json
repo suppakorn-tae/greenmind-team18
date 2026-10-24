@@ -1,0 +1,20 @@
+{
+ "track": "final",
+ "n": 300,
+ "seed": 0,
+ "arrivals": "uniform",
+ "bounds": {
+  "ramp": [
+   0.0,
+   30.0
+  ],
+  "peak": [
+   30.0,
+   75.0
+  ],
+  "quiet": [
+   75.0,
+   135.0
+  ]
+ }
+}

@@ -132,3 +132,6 @@
 {"ts":"2026-10-24T23:39:02+07:00","id":"E046","parent":"E045","event":"start","change":"served-model-name mango (label only)","status":"serving for official"}
 {"ts":"2026-10-24T23:44:25+07:00","id":"E046","parent":"E045","event":"result","change":"served-model-name mango","status":"champion","final_run":"20261024-234133-e046-final","final_S":94.8,"eta_vs_base":3.11,"j_per_req":179,"slo_met":"257/300","p95_tpot_ms":49.6,"accuracy":82.3,"lesson":"local final S 94.8, consistent with E045; rag .90 / reason .87 slightly below BF16"}
 {"ts":"2026-10-24T23:56:19+07:00","id":"E046","event":"official","status":"OFFICIAL CHAMPION","final_run":"20261024-234133-e046-final","official_S":99.38,"eta_vs_base":3.82,"j_per_req":157.5,"slo_met":"294/300","p95_tpot_ms":37.4,"accuracy":88.3,"lesson":"OFFICIAL final 99.38 (E030 88.0): sE 1.0, sT 0.97, sL 1.0. longctx retention 0.71 (n=15, ungated) is the only weak spot"}
+{"ts":"2026-10-25T00:19:48+07:00","id":"E030","event":"result","status":"superseded by E046 (OFFICIAL 88.0)"}
+{"ts":"2026-10-25T00:19:48+07:00","id":"E045","event":"result","status":"superseded by E046 (same server, label only)"}
+{"ts":"2026-10-25T00:19:48+07:00","id":"E046","event":"champion","status":"FINAL SUBMISSION (OFFICIAL Final 99.38, attempt 20261024T164844-c109c6)"}

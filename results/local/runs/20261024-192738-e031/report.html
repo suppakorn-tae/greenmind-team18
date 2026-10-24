@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Run report</title>
+<style>
+
+:root { --bg: #ffffff; --text: #1c1e21; --muted: #5c6670; --grid: #d8dce1; --axis: #8a94a0;
+        --accent: #1457a0; --accent-soft: rgba(20, 87, 160, 0.12); --band: rgba(20, 87, 160, 0.10);
+        --hl: #b3261e; --ok: #1a7f37; }
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #0e1218; --text: #e6e9ee; --muted: #9aa5b1; --grid: #2b3440; --axis: #4a5562;
+         --accent: #6ea8ff; --accent-soft: rgba(110, 168, 255, 0.14); --band: rgba(110, 168, 255, 0.12);
+         --hl: #ff8a80; --ok: #3fb950; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
+main { max-width: 1120px; margin: 0 auto; padding: 24px 20px 60px; }
+h1 { font-size: 1.5rem; margin: 0 0 4px; }
+h2 { font-size: 1.15rem; margin: 28px 0 10px; }
+h3 { font-size: 1rem; margin: 18px 0 8px; }
+p, li, td, th { line-height: 1.45; }
+table.grid { border-collapse: collapse; width: 100%; margin: 6px 0 10px; font-size: 0.9rem; }
+table.grid th, table.grid td { border: 1px solid var(--grid); padding: 5px 8px; text-align: left; vertical-align: top; }
+table.grid th { background: var(--accent-soft); }
+table.grid th.hl, table.grid td.hl { background: var(--hl); color: #ffffff; font-weight: 700; }
+td.mono, th.mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+td.num, th.num { text-align: right; }
+.fact { display: grid; grid-template-columns: 170px 1fr; gap: 4px 12px; margin: 0 0 8px; }
+.fact dt { color: var(--muted); font-weight: 600; }
+.fact dd { margin: 0; overflow-wrap: anywhere; }
+table.kv { border-collapse: collapse; margin: 6px 0 10px; font-size: 0.9rem; }
+table.kv th, table.kv td { border: 1px solid var(--grid); padding: 4px 8px; }
+.score-card { border: 1px solid var(--grid); border-radius: 10px; padding: 14px 18px; margin: 10px 0 6px;
+             background: var(--accent-soft); }
+.score-value { font-size: 1.6rem; font-weight: 700; }
+.score-facts { display: flex; flex-wrap: wrap; gap: 8px 28px; margin-top: 8px; }
+.score-facts div { display: inline-block; }
+.score-facts dt { color: var(--muted); font-weight: 600; }
+.score-facts dd { margin: 0; font-size: 1.15rem; font-weight: 600; }
+.note { color: var(--muted); font-style: italic; }
+.baseline-note { margin: 8px 0 0; }
+.hl { background: var(--hl); color: #ffffff; font-weight: 700; }
+svg.power-chart { width: 100%; height: auto; display: block; background: var(--bg); }
+svg.power-chart .grid { stroke: var(--grid); stroke-width: 1; }
+svg.power-chart .axis { stroke: var(--axis); stroke-width: 1.5; }
+svg.power-chart .tick { fill: var(--muted); font-size: 12px; }
+svg.power-chart .power-line { stroke: var(--accent); stroke-width: 2; }
+svg.power-chart .arrival { stroke: var(--hl); stroke-width: 2; }
+svg.power-chart .band { stroke: none; }
+footer { margin-top: 34px; color: var(--muted); font-size: 0.8rem; }
+
+</style>
+</head>
+<body>
+<main>
+<h1>Run report</h1>
+<p class="muted">Run <strong>20261024-192738-e031</strong> — self-contained local report.</p>
+<h2>1. Header</h2>
+<dl class="fact">
+<dt>Label</dt><dd>E031</dd>
+<dt>Track</dt><dd>val</dd>
+<dt>Status</dt><dd>done</dd>
+<dt>Started</dt><dd>2026-10-24T19:27:38.217451</dd>
+<dt>Ended</dt><dd>2026-10-24T19:29:13.523605</dd>
+<dt>Model</dt><dd>CMKL/MANGO1.5-Qwen3.5-9B</dd>
+<dt>Server command</dt><dd>/home/researcher/vllm-env/bin/python /home/researcher/repo/tools/gray/vllm_think_budget.py serve CMKL/MANGO1.5-Qwen3.5-9B --host 0.0.0.0 --port 8000 --enable-auto-tool-choice --tool-call-parser qwen3_coder --reasoning-parser qwen3 --language-model-only --max-model-len 41984 --gpu-memory-utilization 0.92 --max-num-seqs 256 --max-num-batched-tokens 4096 --long-prefill-token-threshold 1024 --enable-chunked-prefill --no-enable-prefix-caching --mamba-ssm-cache-dtype bfloat16 --speculative-config {&quot;model&quot;:&quot;CMKL/MANGO1.5-Qwen3.5-9B&quot;,&quot;method&quot;:&quot;mtp&quot;,&quot;num_speculative_tokens&quot;:2}</dd>
+<dt>Power limit / clocks</dt><dd>{&#x27;name&#x27;: &#x27;NVIDIA A100-SXM4-40GB&#x27;, &#x27;driver_version&#x27;: &#x27;580.173.02&#x27;, &#x27;power.limit&#x27;: &#x27;400.00&#x27;, &#x27;power.draw&#x27;: &#x27;288.94&#x27;, &#x27;clocks.sm&#x27;: &#x27;1410&#x27;, &#x27;clocks.mem&#x27;: &#x27;1215&#x27;, &#x27;clocks.max.sm&#x27;: &#x27;1410&#x27;, &#x27;clocks.max.mem&#x27;: &#x27;1215&#x27;, &#x27;persistence_mode&#x27;: &#x27;Enabled&#x27;}</dd>
+</dl>
+<h3>Calibration settings</h3>
+<table class="kv"><thead><tr><th>key</th><th>value</th></tr></thead><tbody>
+<tr><td>ARRIVALS</td><td>uniform</td></tr>
+<tr><td>ENERGY_WINDOW</td><td>first_arrival_to_last_done</td></tr>
+<tr><td>EPISODE_TURNS_SCORED</td><td>each_turn</td></tr>
+<tr><td>FAILED_IN_ACCURACY</td><td>wrong</td></tr>
+<tr><td>TPOT_MODE</td><td>per_request</td></tr>
+<tr><td>TTFT_FROM</td><td>any</td></tr>
+</tbody></table>
+<h2>2. Score card</h2>
+<div class="score-card">
+<div class="score-value">S = <span>50.467</span></div>
+<div class="score-facts">
+<div><dt>A</dt><dd>1</dd></div>
+<div><dt>s_E</dt><dd>0.353</dd></div>
+<div><dt>eta ratio</dt><dd>1.474</dd></div>
+<div><dt>s_T</dt><dd>0.75</dd></div>
+<div><dt>s_L</dt><dd>0.99</dd></div>
+</div></div>
+<p class="baseline-note">Baseline run: <strong>20261024-120300-vllm-val-baseline</strong>.</p>
+<h2>3. SLO</h2>
+<h3>Overall</h3>
+<table class="grid"><thead><tr><th>on-time / total</th><th>fail reasons</th><th>p50 ttft/slo</th><th>p95 ttft/slo</th><th>p50 tpot ms</th><th>p95 tpot ms</th><th>cutoffs</th></tr></thead><tbody><tr><td>141/160</td><td>tpot: 9, ttft: 10, cutoff: 1</td><td>0.335</td><td>1.013</td><td>16.304</td><td>50.332</td><td>1</td></tr></tbody></table>
+<h3>By phase</h3>
+<table class="grid"><thead><tr><th>phase</th><th>n</th><th>on-time</th><th>fails</th><th>p95 tpot ms</th><th>p95 ttft/slo</th><th>cutoffs</th></tr></thead><tbody><tr><td>ramp</td><td>20</td><td>19</td><td>cutoff: 1</td><td>27.073</td><td>0.875</td><td>1</td></tr><tr><td>peak</td><td>72</td><td>54</td><td>tpot: 9, ttft: 10</td><td>64.984</td><td>1.305</td><td>0</td></tr><tr><td>quiet</td><td>47</td><td>47</td><td>—</td><td>16.345</td><td>0.531</td><td>0</td></tr><tr><td>drain</td><td>21</td><td>21</td><td>—</td><td>11.268</td><td>0.326</td><td>0</td></tr></tbody></table>
+<h3>By class</h3>
+<table class="grid"><thead><tr><th>class</th><th>n</th><th>on-time</th><th>fails</th><th>p95 tpot ms</th><th>p95 ttft/slo</th><th>cutoffs</th></tr></thead><tbody><tr><td>agent</td><td>80</td><td>72</td><td>tpot: 5, ttft: 4</td><td>50.332</td><td>0.971</td><td>0</td></tr><tr><td>chat</td><td>30</td><td>28</td><td>ttft: 2</td><td>25.923</td><td>1.013</td><td>0</td></tr><tr><td>long</td><td>5</td><td>3</td><td>tpot: 2</td><td>67.195</td><td>0.759</td><td>0</td></tr><tr><td>rag</td><td>20</td><td>17</td><td>tpot: 2, ttft: 1</td><td>58.312</td><td>0.937</td><td>0</td></tr><tr><td>reason</td><td>15</td><td>11</td><td>ttft: 3, cutoff: 1</td><td>35.3</td><td>1.545</td><td>1</td></tr><tr><td>thai</td><td>10</td><td>10</td><td>—</td><td>32.254</td><td>0.923</td><td>0</td></tr></tbody></table>
+<h2>4. Energy</h2>
+<table class="kv"><thead><tr><th>metric</th><th>value</th></tr></thead><tbody>
+<tr><th>total energy (J)</th><td>30510.858</td></tr>
+<tr><th>avg power (W)</th><td>340.001</td></tr>
+<tr><th>idle power (W)</th><td>83.805</td></tr>
+<tr><th>tokens / J</th><td>3.319</td></tr>
+<tr><th>joules per phase</th><td>ramp: 2954.168, peak: 5844.235, quiet: 7762.437, drain: 13950.019</td></tr>
+</tbody></table>
+<svg class="power-chart" viewBox="0 0 800 320" width="800" height="320" role="img" aria-label="power over time">
+<rect class="band band-ramp" x="48.0" y="14.0" width="82.2" height="272.0"/>
+<rect class="band band-peak" x="130.2" y="14.0" width="123.4" height="272.0"/>
+<rect class="band band-quiet" x="253.6" y="14.0" width="164.5" height="272.0"/>
+<rect class="band band-drain" x="418.1" y="14.0" width="367.9" height="272.0"/>
+<line class="grid" x1="48.0" x2="786.0" y1="286.0" y2="286.0"/>
+<text class="tick" x="42.0" y="290.0" text-anchor="end">0 W</text>
+<line class="grid" x1="48.0" x2="786.0" y1="218.0" y2="218.0"/>
+<text class="tick" x="42.0" y="222.0" text-anchor="end">137 W</text>
+<line class="grid" x1="48.0" x2="786.0" y1="150.0" y2="150.0"/>
+<text class="tick" x="42.0" y="154.0" text-anchor="end">274 W</text>
+<line class="grid" x1="48.0" x2="786.0" y1="82.0" y2="82.0"/>
+<text class="tick" x="42.0" y="86.0" text-anchor="end">411 W</text>
+<line class="grid" x1="48.0" x2="786.0" y1="14.0" y2="14.0"/>
+<text class="tick" x="42.0" y="18.0" text-anchor="end">549 W</text>
+<line class="grid" x1="48.0" x2="48.0" y1="14.0" y2="286.0"/>
+<text class="tick" x="48.0" y="302.0" text-anchor="middle">0 s</text>
+<line class="grid" x1="195.6" x2="195.6" y1="14.0" y2="286.0"/>
+<text class="tick" x="195.6" y="302.0" text-anchor="middle">18 s</text>
+<line class="grid" x1="343.2" x2="343.2" y1="14.0" y2="286.0"/>
+<text class="tick" x="343.2" y="302.0" text-anchor="middle">36 s</text>
+<line class="grid" x1="490.80000000000007" x2="490.80000000000007" y1="14.0" y2="286.0"/>
+<text class="tick" x="490.80000000000007" y="302.0" text-anchor="middle">54 s</text>
+<line class="grid" x1="638.4" x2="638.4" y1="14.0" y2="286.0"/>
+<text class="tick" x="638.4" y="302.0" text-anchor="middle">72 s</text>
+<line class="grid" x1="786.0" x2="786.0" y1="14.0" y2="286.0"/>
+<text class="tick" x="786.0" y="302.0" text-anchor="middle">90 s</text>
+<line class="axis" x1="48.0" x2="786.0" y1="286.0" y2="286.0"/>
+<path class="power-line" d="M 48.0 286.0 L 48.9 248.9 L 50.6 248.9 L 52.3 248.9 L 54.0 248.9 L 55.7 248.9 L 57.4 248.9 L 59.1 248.9 L 60.8 248.9 L 62.5 181.4 L 64.2 142.7 L 65.9 142.6 L 67.6 143.3 L 69.3 142.6 L 71.3 202.3 L 73.0 140.6 L 74.7 140.3 L 76.4 140.7 L 78.1 86.9 L 79.8 95.4 L 81.6 140.1 L 83.3 142.1 L 85.0 144.2 L 86.7 140.6 L 88.4 133.1 L 90.1 85.7 L 91.8 87.9 L 93.6 86.8 L 95.3 85.9 L 97.0 84.9 L 98.7 79.8 L 100.3 84.1 L 102.1 98.7 L 103.9 146.1 L 105.6 159.0 L 107.3 152.6 L 109.0 75.0 L 110.7 133.3 L 112.5 132.6 L 114.2 133.6 L 115.9 83.8 L 117.7 86.8 L 119.4 104.9 L 121.1 100.8 L 122.8 86.3 L 124.5 90.6 L 126.3 90.4 L 128.0 88.3 L 129.7 93.5 L 131.4 83.5 L 133.1 103.3 L 134.8 94.6 L 136.5 91.4 L 138.2 88.8 L 139.9 133.3 L 141.6 90.2 L 143.3 94.1 L 145.1 86.8 L 146.7 101.4 L 148.4 132.7 L 150.2 85.2 L 151.9 83.1 L 153.6 86.0 L 155.3 86.6 L 157.0 132.3 L 158.7 123.3 L 160.4 124.9 L 162.1 85.0 L 163.8 85.4 L 165.5 121.3 L 167.3 119.4 L 169.0 130.5 L 170.7 121.9 L 172.4 111.4 L 174.1 107.2 L 175.8 114.9 L 177.5 110.1 L 179.3 108.6 L 181.0 108.9 L 182.7 79.1 L 184.4 94.6 L 186.1 92.1 L 187.8 89.9 L 189.5 91.5 L 191.2 85.2 L 192.9 87.7 L 194.6 87.7 L 196.3 92.6 L 198.0 91.1 L 199.7 84.9 L 201.5 96.8 L 203.2 89.2 L 204.9 87.7 L 206.6 92.7 L 208.3 83.2 L 210.0 89.0 L 211.8 83.3 L 213.4 81.0 L 215.2 105.5 L 216.9 86.4 L 218.5 79.7 L 220.2 89.2 L 221.9 89.7 L 223.7 88.9 L 225.4 89.2 L 227.1 80.3 L 228.8 93.3 L 230.5 96.0 L 232.2 87.5 L 233.9 86.3 L 235.6 95.1 L 237.3 89.0 L 239.0 85.2 L 240.7 81.3 L 242.5 84.9 L 244.2 87.5 L 245.9 84.7 L 247.6 88.6 L 249.3 86.5 L 251.0 89.4 L 252.8 86.2 L 254.5 85.3 L 256.2 91.2 L 257.9 90.5 L 259.6 90.8 L 261.3 87.5 L 263.0 84.3 L 264.7 97.5 L 266.4 101.0 L 268.1 102.8 L 269.8 89.9 L 271.5 101.0 L 273.2 88.2 L 274.9 97.0 L 276.6 104.5 L 278.3 108.6 L 280.0 90.8 L 281.7 87.7 L 283.5 90.8 L 285.2 99.9 L 286.9 97.9 L 288.6 96.9 L 290.3 88.9 L 292.0 81.0 L 293.7 84.9 L 295.4 92.1 L 297.1 90.5 L 298.8 94.6 L 300.6 89.8 L 302.3 89.9 L 304.0 87.2 L 305.7 88.5 L 307.4 83.1 L 309.1 87.9 L 310.8 89.5 L 312.5 85.2 L 314.3 89.1 L 316.0 88.5 L 317.7 83.8 L 319.4 89.8 L 321.1 84.4 L 322.8 87.9 L 324.5 101.7 L 326.2 101.0 L 327.9 87.6 L 329.6 91.4 L 331.3 88.9 L 333.0 82.8 L 334.7 88.9 L 336.4 85.6 L 338.1 106.3 L 339.8 93.8 L 341.5 101.0 L 343.2 101.4 L 344.9 95.2 L 346.7 93.2 L 348.4 96.6 L 350.1 104.3 L 351.8 90.7 L 353.5 92.0 L 355.2 84.1 L 356.9 88.2 L 358.6 87.9 L 360.3 85.2 L 362.0 85.4 L 363.8 79.5 L 365.5 99.5 L 367.2 100.7 L 368.9 98.5 L 370.6 100.8 L 372.3 99.5 L 374.0 100.7 L 375.7 101.5 L 377.4 102.0 L 379.1 101.5 L 380.9 101.0 L 382.6 86.3 L 384.3 99.5 L 386.0 104.2 L 387.7 104.0 L 389.4 104.0 L 391.1 91.7 L 392.8 103.7 L 394.5 94.1 L 396.2 63.2 L 397.9 101.1 L 399.6 85.0 L 401.4 84.0 L 403.1 84.3 L 404.9 83.8 L 406.6 106.2 L 408.3 83.1 L 410.0 108.0 L 411.7 106.4 L 413.4 108.5 L 415.1 113.6 L 416.9 103.4 L 418.6 98.7 L 420.3 103.9 L 422.0 84.3 L 423.7 97.5 L 425.4 98.8 L 427.1 104.6 L 428.8 99.9 L 430.5 95.4 L 432.2 104.9 L 434.0 99.5 L 435.7 92.6 L 437.4 107.2 L 439.1 98.1 L 440.8 62.7 L 442.5 103.3 L 444.2 99.2 L 445.9 100.4 L 447.6 100.2 L 449.3 75.7 L 451.0 103.3 L 452.8 89.9 L 454.5 100.5 L 456.2 104.3 L 457.9 82.5 L 459.6 108.6 L 461.3 103.7 L 463.0 102.2 L 464.8 102.4 L 466.5 87.7 L 468.2 59.3 L 469.9 102.4 L 471.6 103.1 L 473.3 104.4 L 475.0 103.3 L 476.7 103.3 L 478.4 108.9 L 480.1 103.8 L 481.8 106.4 L 483.6 104.7 L 485.3 63.2 L 487.0 92.6 L 488.7 95.3 L 490.4 114.6 L 492.1 114.9 L 493.8 68.8 L 495.6 122.0 L 497.2 107.0 L 499.0 120.2 L 500.7 121.8 L 502.4 88.2 L 504.1 122.7 L 505.8 61.1 L 507.5 127.1 L 509.3 122.6 L 511.0 122.9 L 512.7 122.1 L 514.4 81.7 L 516.1 90.1 L 517.8 123.1 L 519.5 123.8 L 521.2 123.1 L 523.0 125.6 L 524.7 126.5 L 526.4 126.9 L 528.1 127.5 L 529.8 129.6 L 531.5 128.8 L 533.2 128.7 L 534.9 134.3 L 536.6 134.6 L 538.3 132.9 L 540.1 134.8 L 541.8 134.8 L 543.5 134.2 L 545.2 132.4 L 546.9 132.4 L 548.6 135.1 L 550.3 135.4 L 552.0 135.6 L 553.7 134.0 L 555.4 136.6 L 557.2 137.0 L 558.9 136.9 L 560.6 135.1 L 562.3 135.1 L 564.0 135.6 L 565.7 136.8 L 567.4 136.9 L 569.1 133.7 L 570.8 134.5 L 572.5 135.7 L 574.2 137.8 L 575.9 136.0 L 577.6 136.5 L 579.4 135.4 L 581.1 138.1 L 582.8 138.1 L 584.5 137.0 L 586.2 137.3 L 587.9 139.3 L 589.6 140.4 L 591.3 142.3 L 593.0 141.3 L 594.7 141.5 L 596.4 139.0 L 598.1 143.7 L 599.9 138.5 L 601.6 142.3 L 603.3 142.0 L 605.0 142.9 L 606.7 142.6 L 608.4 140.9 L 610.1 144.6 L 611.8 140.3 L 613.5 142.4 L 615.2 139.4 L 616.9 144.5 L 618.6 142.9 L 620.4 143.6 L 622.1 144.0 L 623.8 141.0 L 625.5 144.9 L 627.2 141.4 L 628.9 147.3 L 630.6 144.8 L 632.3 142.3 L 634.0 147.6 L 635.7 141.7 L 637.4 146.7 L 639.1 144.6 L 640.9 147.6 L 642.6 141.5 L 644.3 145.2 L 646.0 143.9 L 647.7 144.0 L 649.4 145.1 L 651.1 143.5 L 652.8 147.9 L 654.5 143.3 L 656.2 146.7 L 657.9 143.5 L 659.6 147.9 L 661.4 144.0 L 663.1 144.9 L 664.8 147.1 L 666.5 144.0 L 668.2 145.4 L 669.9 145.7 L 671.6 144.0 L 673.3 144.5 L 675.0 145.5 L 676.7 144.5 L 678.4 146.8 L 680.1 143.5 L 681.8 146.1 L 683.5 148.4 L 685.2 145.2 L 686.9 144.2 L 688.6 146.2 L 690.4 146.7 L 692.1 142.9 L 693.8 146.1 L 695.5 147.1 L 697.2 146.8 L 698.9 143.6 L 700.6 145.9 L 702.3 148.8 L 704.0 146.8 L 705.7 143.3 L 707.4 146.1 L 709.1 147.3 L 710.8 147.8 L 712.5 145.4 L 714.3 143.6 L 716.0 146.4 L 717.7 145.2 L 719.4 146.7 L 721.1 148.5 L 722.8 147.1 L 724.5 144.0 L 726.2 144.9 L 727.9 145.8 L 729.6 147.9 L 731.3 147.6 L 733.0 148.4 L 734.8 147.3 L 736.5 147.9 L 738.2 148.4 L 739.9 146.2 L 741.6 144.2 L 743.3 144.9 L 745.0 145.5 L 746.7 147.8 L 748.4 146.1 L 750.2 148.1 L 751.9 146.5 L 753.6 147.5 L 755.3 147.9 L 757.0 147.9 L 758.7 147.9 L 760.4 149.0 L 762.1 148.1 L 763.8 148.4 L 765.5 148.7 L 767.2 148.5 L 769.0 147.4 L 770.7 147.9 L 772.4 147.4 L 774.1 147.1 L 775.8 145.5 L 777.5 145.7 L 779.2 145.1 L 780.9 144.5 L 782.6 145.4 L 784.3 147.5 L 786.0 286.0" fill="none"/>
+<line class="arrival" x1="61.0" x2="61.0" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="70.5" x2="70.5" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="77.1" x2="77.1" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="82.4" x2="82.4" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="87.0" x2="87.0" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="91.1" x2="91.1" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="94.9" x2="94.9" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="98.3" x2="98.3" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="101.6" x2="101.6" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="104.7" x2="104.7" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="107.6" x2="107.6" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="110.3" x2="110.3" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="113.0" x2="113.0" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="115.5" x2="115.5" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="118.0" x2="118.0" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="120.4" x2="120.4" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="122.7" x2="122.7" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="124.9" x2="124.9" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="127.1" x2="127.1" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="129.2" x2="129.2" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="131.2" x2="131.2" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="133.3" x2="133.3" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="135.4" x2="135.4" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="137.4" x2="137.4" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="139.5" x2="139.5" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="141.5" x2="141.5" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="143.6" x2="143.6" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="145.6" x2="145.6" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="147.7" x2="147.7" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="149.8" x2="149.8" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="151.8" x2="151.8" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="153.9" x2="153.9" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="155.9" x2="155.9" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="158.0" x2="158.0" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="160.0" x2="160.0" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="162.1" x2="162.1" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="164.1" x2="164.1" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="166.2" x2="166.2" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="168.3" x2="168.3" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="170.3" x2="170.3" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="172.4" x2="172.4" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="174.4" x2="174.4" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="176.5" x2="176.5" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="178.5" x2="178.5" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="180.6" x2="180.6" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="182.6" x2="182.6" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="184.7" x2="184.7" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="186.8" x2="186.8" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="188.8" x2="188.8" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="190.9" x2="190.9" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="192.9" x2="192.9" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="195.0" x2="195.0" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="197.0" x2="197.0" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="199.1" x2="199.1" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="201.2" x2="201.2" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="203.2" x2="203.2" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="205.3" x2="205.3" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="207.3" x2="207.3" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="209.4" x2="209.4" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="211.4" x2="211.4" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="213.5" x2="213.5" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="215.5" x2="215.5" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="217.6" x2="217.6" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="219.7" x2="219.7" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="221.7" x2="221.7" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="223.8" x2="223.8" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="225.8" x2="225.8" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="227.9" x2="227.9" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="229.9" x2="229.9" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="232.0" x2="232.0" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="234.1" x2="234.1" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="236.1" x2="236.1" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="238.2" x2="238.2" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="240.2" x2="240.2" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="242.3" x2="242.3" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="244.3" x2="244.3" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="246.4" x2="246.4" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="248.4" x2="248.4" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="250.5" x2="250.5" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="252.6" x2="252.6" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="257.7" x2="257.7" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="265.9" x2="265.9" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="274.1" x2="274.1" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="282.4" x2="282.4" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="290.6" x2="290.6" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="298.8" x2="298.8" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="307.0" x2="307.0" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="315.3" x2="315.3" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="323.5" x2="323.5" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="331.7" x2="331.7" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="339.9" x2="339.9" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="348.2" x2="348.2" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="356.4" x2="356.4" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="364.6" x2="364.6" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="372.8" x2="372.8" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="381.1" x2="381.1" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="389.3" x2="389.3" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="397.5" x2="397.5" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="405.7" x2="405.7" y1="286.0" y2="278.0"/>
+<line class="arrival" x1="414.0" x2="414.0" y1="286.0" y2="278.0"/>
+</svg>
+<h2>5. Accuracy</h2>
+<table class="grid"><thead><tr><th>class</th><th>accuracy</th><th>n</th><th>baseline acc</th><th>ratio vs baseline</th><th>flag</th></tr></thead><tbody>
+<tr>
+<td>agent</td>
+<td>0.25</td>
+<td>20</td>
+<td>0.3</td>
+<td>0.833</td>
+<th></th>
+</tr>
+<tr>
+<td>chat</td>
+<td>1</td>
+<td>30</td>
+<td>1</td>
+<td>1</td>
+<th></th>
+</tr>
+<tr>
+<td>long</td>
+<td>0.6</td>
+<td>5</td>
+<td>0.6</td>
+<td>1</td>
+<th></th>
+</tr>
+<tr>
+<td>rag</td>
+<td>1</td>
+<td>20</td>
+<td>1</td>
+<td>1</td>
+<th></th>
+</tr>
+<tr>
+<td>reason</td>
+<td>0.867</td>
+<td>15</td>
+<td>0.8</td>
+<td>1.083</td>
+<th></th>
+</tr>
+<tr>
+<td>thai</td>
+<td>1</td>
+<td>10</td>
+<td>1</td>
+<td>1</td>
+<th></th>
+</tr>
+</tbody></table>
+<p>Macro accuracy: 0.786</p>
+<h2>6. Completion tokens</h2>
+<table class="grid"><thead><tr><th>class</th><th>n</th><th>mean completion tokens</th><th>p95 completion tokens</th><th>cutoffs</th></tr></thead><tbody><tr><td>agent</td><td>80</td><td>135.662</td><td>262</td><td>0</td></tr><tr><td>chat</td><td>30</td><td>1655.967</td><td>2371</td><td>0</td></tr><tr><td>long</td><td>5</td><td>104.4</td><td>185</td><td>0</td></tr><tr><td>rag</td><td>20</td><td>210.05</td><td>318</td><td>0</td></tr><tr><td>reason</td><td>15</td><td>1800.867</td><td>8192</td><td>1</td></tr><tr><td>thai</td><td>10</td><td>900.6</td><td>1234</td><td>0</td></tr></tbody></table>
+<h2>7. Worst 20 requests</h2>
+<table class="grid"><thead><tr><th>id</th><th>class</th><th>turn</th><th>phase</th><th>ttft</th><th>ttft ratio</th><th>tpot ms</th><th>fails</th><th>answer tail</th></tr></thead><tbody><tr><td>61</td><td>agent</td><td>0</td><td>peak</td><td>1.037</td><td>1.605</td><td>29.976</td><td>ttft</td><td></td></tr><tr><td>62</td><td>reason</td><td>0</td><td>peak</td><td>0.786</td><td>1.545</td><td>14.214</td><td>ttft</td><td>3 modulo 5):
+$6k \equiv 2 \pmod{5}$
+$k \equiv 2 \pmod{5}$
+
+So $k = 5m + 2$ for some integer $m$.
+Substituting back into $x = 8k$:
+$x = 8(5m + 2) = 40m + 16$.
+Thus, $x \equiv 16 \pmod{40}$.
+
+\boxed{16}</td></tr><tr><td>60</td><td>chat</td><td>0</td><td>peak</td><td>0.704</td><td>1.392</td><td>18.449</td><td>ttft</td><td>an the value of the video games (fun for a few hours), you might decide to go to the gym instead. You are essentially comparing the &quot;cost&quot; of the choice against the &quot;benefit&quot; to see if it is worth it.</td></tr><tr><td>42</td><td>agent</td><td>1</td><td>peak</td><td>0.859</td><td>1.305</td><td>68.514</td><td>ttft, tpot</td><td></td></tr><tr><td>58</td><td>reason</td><td>0</td><td>peak</td><td>0.667</td><td>1.276</td><td>26.331</td><td>ttft</td><td>e function sums the squares of the elements that are divisible by 3.  
+From the list, the numbers divisible by 3 are 39, 30, and 3.
+
+\[
+39^2 + 30^2 + 3^2 = 1521 + 900 + 9 = 2430
+\]
+
+\[
+\boxed{2430}
+\]</td></tr><tr><td>63</td><td>agent</td><td>0</td><td>peak</td><td>0.764</td><td>1.189</td><td>34.475</td><td>ttft</td><td></td></tr><tr><td>76</td><td>reason</td><td>0</td><td>peak</td><td>0.542</td><td>1.065</td><td>13.065</td><td>ttft</td><td> = 60
+23 + 29 = 52
+31 + 37 = 68
+41 + 43 + 47 = 131
+53 + 59 = 112
+61 + 67 = 128
+71 + 73 + 79 = 223
+83 + 89 = 172
+97
+
+Total sum:
+17 + 60 + 52 + 68 + 131 + 112 + 128 + 223 + 172 + 97 = 1060
+
+\boxed{1060}</td></tr><tr><td>59</td><td>rag</td><td>0</td><td>peak</td><td>1.985</td><td>1.016</td><td>28.387</td><td>ttft</td><td>
+
+X6-2031</td></tr><tr><td>71</td><td>chat</td><td>0</td><td>peak</td><td>0.514</td><td>1.013</td><td>20.813</td><td>ttft</td><td>red an issue with the report and are working to resolve it as soon as possible.&quot;
+
+**Option 3: Formal and accountable**
+&gt; &quot;There was an oversight in the report; we are currently working to rectify it.&quot;</td></tr><tr><td>69</td><td>agent</td><td>0</td><td>peak</td><td>0.653</td><td>1.008</td><td>24.713</td><td>ttft</td><td></td></tr><tr><td>20</td><td>agent</td><td>2</td><td>peak</td><td>0.715</td><td>0.971</td><td>42.477</td><td>—</td><td>
+
+The total units of SKU-6098 in stock across warehouses BKK-1, CNX-2, and HKT-3 is 32 + 137 + 136 = 305.
+
+\boxed{305}</td></tr><tr><td>18</td><td>chat</td><td>0</td><td>ramp</td><td>0.491</td><td>0.967</td><td>26.171</td><td>—</td><td> instantly signaling the dual nature of the business.
+
+3.  **Bloom &amp; Brew**
+    *   *Rationale:* This evokes a sense of growth and energy, suggesting a place where both plants and coffee come to life.</td></tr><tr><td>70</td><td>agent</td><td>0</td><td>peak</td><td>0.624</td><td>0.963</td><td>24.19</td><td>—</td><td></td></tr><tr><td>57</td><td>rag</td><td>0</td><td>peak</td><td>2.264</td><td>0.937</td><td>19.608</td><td>—</td><td>
+
+T4-8904</td></tr><tr><td>54</td><td>thai</td><td>0</td><td>peak</td><td>0.48</td><td>0.923</td><td>19.34</td><td>—</td><td>ranges
+    Total cost = $96 + 69 = 165$ Baht
+
+4.  **Calculate the change received:**
+    Amount paid = 1000 Baht
+    Change = Amount paid - Total cost
+    Change = $1000 - 165 = 835$ Baht
+
+\boxed{835}</td></tr><tr><td>48</td><td>chat</td><td>0</td><td>peak</td><td>0.466</td><td>0.921</td><td>21.479</td><td>—</td><td>ust a quick heads-up that we are in the final stretch for **[Project Name]**. Let&#x27;s make sure everything is submitted by Friday. If you need a hand with anything, I&#x27;m here. Let&#x27;s finish this strong! 🚀</td></tr><tr><td>17</td><td>agent</td><td>2</td><td>peak</td><td>0.651</td><td>0.885</td><td>75.671</td><td>tpot</td><td></td></tr><tr><td>17</td><td>agent</td><td>0</td><td>ramp</td><td>0.565</td><td>0.875</td><td>20.355</td><td>—</td><td></td></tr><tr><td>79</td><td>chat</td><td>0</td><td>peak</td><td>0.441</td><td>0.87</td><td>16.376</td><td>—</td><td>ponents argue that the structural reality of a 24/7 economy and the difficulty of coordinating schedules make a universal four-day week impractical without significant changes to how society operates.</td></tr><tr><td>75</td><td>rag</td><td>0</td><td>peak</td><td>0.793</td><td>0.861</td><td>22.991</td><td>—</td><td>
+
+K8-1645</td></tr></tbody></table>
+</main>
+</body>
+</html>

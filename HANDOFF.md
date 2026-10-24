@@ -1,41 +1,59 @@
-# Handoff — end of session Sat 24 Oct 2026 ~16:15 +07
+# Handoff (updated 2026-10-25 ~00:30 +07)
 
 ## State
-- **Champion E017** is serving on :8000 (`configs/champion.sh`, 400 W default, no clock lock), and health passes.
-  Restart it with `tools/restart.sh champion`. That script stops any vLLM, waits for the GPU to go idle, starts the config in its own session, and waits for `/health`.
-  Don't `pkill -f "vllm serve"` from a shell whose own command line contains that string, because it kills the shell.
-- Fallback: `configs/E008.sh` (official val S 31.5).
+- **Final submission: E046**, OFFICIAL Final S **99.38** (attempt `20261024T164844-c109c6`).
+  - Weights: team W8A8 INT8 weights `suppakorn-k/MANGO1.5-Qwen3.5-9B-W8A8` rev `1909e853`.
+  - Serving: vLLM 0.32.0, MTP k=2, bf16 SSM state, prefill 4096/1024, thinking budget 3072, served as `mango`.
+  - Power: default 400 W, no clock lock.
+- **Launch:** `scripts/power.sh reset && scripts/restart.sh final`. `restart.sh` stops whatever owns :8000, waits for an idle GPU, starts the config detached, and waits for `/health`. `final` is `configs/final.sh`, which points to `scripts/serve_final.sh`.
+  - **Gotcha:** don't `pkill -f "vllm serve"` from a shell whose own command line contains that string. It kills the shell.
+- **Fallbacks:**
 
-## Numbers (OFFICIAL vs local are labelled)
-| | S | η vs base | J/req | SLO-met | p95 TTFT | p95 TPOT | acc |
-|---|---|---|---|---|---|---|---|
-| OFFICIAL baseline val | — | 0.89× | 467 | 64/100 | 2.06 s | 48 ms | 87.2% |
-| OFFICIAL E008 val | 31.5 | 1.27× | 333 | 65/100 | 2.02 s | 38 ms | 88.9% |
-| **OFFICIAL E017 final** | **59.0** | 1.78× | 247 | 215/300 | 1.91 s | 59 ms | 88.8% |
-| local E017 val (3 runs) | 13–42 (A noise) | 1.30–1.44× | 311–338 | 78–80/100 | 1.5 s | 50 ms | 76–80% |
-| local E017 final | 22.7 | 1.30× | 209 | 117/300 | 3.88 s | 80 ms | 81.0% |
+| Config | Weights | Official Final S |
+|---|---|---|
+| `configs/E030.sh` | original BF16, same flags | 88.0 |
+| `configs/E017.sh` | original BF16, no thinking budget | 59.0 |
 
-E017 has **no official val run yet**. Worth one if the Final budget is scarce, but the official final is what counts.
+## Official results, all of them
 
-## Untested ideas, ranked by expected payoff
-1. **TPOT on the official final** (sT 0.62, p95 59 ms is now the weakest term). MTP k=3 on E017 was **tested (E020)**.
-   Val tied, TPOT was excellent, and the final collapsed: with 4 GDN state slots per sequence, KV hit 98.7% with 51 waiting and p95 TTFT 19.8 s.
-   k=3 is only viable if memory is freed elsewhere (fp8 KV, a `--max-num-seqs` bound) — test it on the local final, not just val.
-   `--max-num-seqs` 96–128 on E017 is still untested.
-2. **Cap and budget fine-tune around 4096/1024**, e.g. 6144/1024 or 4096/768. 2048/1024, 4096/512 and 4096/2048 were all worse.
-3. **Power cap ~350 W or a locked SM clock on E017.** The prefill-scheduling fix may have created TTFT headroom that 250–300 W lacked before.
-4. **`--kv-cache-dtype fp8`** (Ampere, hybrid + spec decode = experimental). KV is no longer binding on val, so it only helps the final track. Check accuracy hard.
-5. **Own AWQ/GPTQ quantization with tool-calling and Thai calibration data.** Only worth it if agent accuracy holds, and the provided AWQ didn't hold it.
-6. **Gray area, needs organizer OK:** thinking budget (2–5 cutoffs per run only, so small gain) and SLO-aware shedding.
+| ID | Track | S | Note |
+|---|---|---|---|
+| baseline | val | – | 64/100, 467 J/req |
+| E008 | val | 31.5 | |
+| E017 | final | 59.0 | |
+| E023 | final | 52.5 | clock lock |
+| E026 | final | 46.6 | cap 768 |
+| E030 | final | 88.0 | |
+| E033 | final | 81.6 | util 0.96 |
+| E039 | final | 86.0 | budget 1536 |
+| **E046** | **final** | **99.38** | |
 
-## Open questions for organizers
-- Is a pre-measurement warmup request burst allowed? Not used. Triton JIT warnings appear on the first requests.
-- Is the provided AWQ-mtp checkpoint counted as "made during the event"? Moot, since we don't use it.
-- Are the thinking budget and deadline-based shedding allowed? Neither is used.
+Details are in `results/official/` and in the README table.
+
+## Open items / TODO (team)
+1. **Make `suppakorn-k/MANGO1.5-Qwen3.5-9B-W8A8` public**, or share it with the organizers. The deliverables require HF links to the optimized weights.
+2. **Organizer ruling on the server-side thinking budget.** The briefing says the grader fixes thinking mode. It was authorized by the team lead and should be confirmed with the organizers.
+3. **Revoke the HF read token** that was pasted into the agent chat on 2026-10-24. It isn't stored anywhere in this repo.
+4. **Quantization provenance:**
+   - The exact llmcompressor / torch / transformers versions and command used for rev `1909e853`. The vendored toolkit commit postdates the artifact by 54 minutes.
+   - The Open-Platypus license.
+   - Any A/B Thai-benchmark results from `quantization/eval_ab.sh`.
+5. **Official evidence:** attempt IDs and exports or screenshots for the official runs other than E039 and E046, plus the official Final baseline numbers if they're available.
+6. **Recreating the venv** from `requirements/vllm-env.lock.txt` on a fresh machine is untested. The VM image shipped the env.
+
+## Untested ideas (ranked)
+1. **Long-context retention.** It's officially 0.71, the only weak class. Things to try:
+   - Re-quantize with long RAG/document samples in the calibration set (`--calib-jsonl` with open long-document data, not test items).
+   - Keep the full-attention layers' `o_proj`/`qkv` in BF16.
+   - Check locally whether the drop comes from W8A8 or the thinking budget.
+2. **With W8A8 there is memory headroom.** The KV pool is 503–609K tokens and the final peak had 0 waiting. MTP k=3 and dynamic k were memory-limited on BF16 and could be re-tested on W8A8.
+3. Repeat the official run of E046 to measure noise. The best finished run counts.
 
 ## Pitch notes
-- Diagnosis first: we read the vLLM scheduler log at peak (KV%, waiting queue, prompt vs generation throughput) and per-request TTFT staircases instead of sweeping blindly.
-- Hybrid-model specific insight: MTP multiplies Gated-DeltaNet recurrent state per sequence, so a bf16 state is what makes speculative decoding pay off on this model.
-- Scheduling insight: one long-context request blocks every short request behind it. A per-request prefill cap fixed TTFT without any accuracy or energy trade.
-- Energy: 247 J/request official vs 467 baseline (−47%), accuracy 88.8% vs 87.2%. Original weights, open-source vLLM only.
-- Failures we can explain: AWQ (agent accuracy), power caps (prefill compute-bound), prefix caching (3% hits), warm-run artifacts.
+- **Diagnose first.** We read the vLLM scheduler log at peak (KV %, waiting queue, prompt vs generation throughput), per-request TTFT staircases and the per-phase energy split, and changed one variable at a time. That's 47 experiments, all logged, including failures.
+- **Three structural wins, in order:**
+  1. bf16 recurrent-state cache, so MTP fits in memory on a GDN hybrid model.
+  2. Thinking budget: cut-off requests always fail and burn the energy tail. 59 → 88.
+  3. INT8 W8A8: the right quantization for Ampere tensor cores. 88 → 99.4.
+- **Energy:** 157.5 J/request official vs the 467 baseline (−66%). 294/300 requests on time. Accuracy 88.3% vs 87.2%.
+- **Engine bake-off:** vLLM 0.32 (80/100 val) beat SGLang 0.5.22 (58/100) and TensorRT-LLM 1.4.0rc1 (56/100 warm) on this model and GPU.

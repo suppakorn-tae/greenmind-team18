@@ -1,0 +1,20 @@
+{
+  "model": "CMKL/MANGO1.5-Qwen3.5-9B",
+  "scheme": "w8a8",
+  "out": null,
+  "num_samples": 512,
+  "max_seq_len": 2048,
+  "calib_jsonl": null,
+  "custom_frac": 0.5,
+  "seed": 42,
+  "act_offload": "cuda:0",
+  "no_sample": false,
+  "patch_aux": null,
+  "ignore": [
+    "re:.*lm_head",
+    "re:.*embed_tokens$",
+    "re:.*visual.*",
+    "re:.*linear_attn.*",
+    "re:.*mtp.*"
+  ]
+}

@@ -1,6 +1,7 @@
 # Champion: E046 = E045 served as "mango" — OFFICIAL final S 99.38 (2026-10-24 16:48 UTC)
 OFFICIAL: S 99.38, A 1.00, sE 1.00, sT 0.969, sL 1.00, eta 3.82x, 157 J/req, 294/300 on time, 0 truncated/errors, p95 TTFT 1.21 s, p95 TPOT 37 ms, accuracy 88.3%.
 Caveat: longctx retention 0.71 (n=15, below the 20-question gate size). `configs/champion.sh` == `configs/E046.sh` (= E045 + `--served-model-name mango`).
+**Launch the final server with `scripts/serve_final.sh`** (same flags as `configs/E046.sh`, portable paths). The command block below is the E045 record (served name `suppakorn-k/...`; E046 uses `mango`).
 
 = E030 (OFFICIAL final 88.0) with the team's W8A8 INT8 checkpoint `suppakorn-k/MANGO1.5-Qwen3.5-9B-W8A8` (private HF repo,
 rev 1909e853, made 2026-10-24 by a teammate with llm-compressor GPTQ W8A8 from the official CMKL weights; open calibration data:
@@ -11,7 +12,7 @@ HF cache (download once with a read token), and the config serves the local snap
 ```
 export PATH=$HOME/vllm-env/bin:/usr/local/cuda/bin:$PATH CUDA_HOME=/usr/local/cuda HF_HUB_OFFLINE=1
 M=$HOME/.cache/huggingface/hub/models--suppakorn-k--MANGO1.5-Qwen3.5-9B-W8A8/snapshots/1909e853b46b2618457ba4205e48a61df6a0d888
-THINK_BUDGET=3072 ~/vllm-env/bin/python ~/repo/tools/gray/vllm_think_budget.py serve $M --served-model-name suppakorn-k/MANGO1.5-Qwen3.5-9B-W8A8 \
+THINK_BUDGET=3072 ~/vllm-env/bin/python ~/repo/serving/vllm_think_budget.py serve $M --served-model-name suppakorn-k/MANGO1.5-Qwen3.5-9B-W8A8 \
   --host 0.0.0.0 --port 8000 --enable-auto-tool-choice --tool-call-parser qwen3_coder --reasoning-parser qwen3 \
   --language-model-only --max-model-len 41984 --gpu-memory-utilization 0.92 --max-num-seqs 256 \
   --max-num-batched-tokens 4096 --long-prefill-token-threshold 1024 --enable-chunked-prefill \
@@ -42,7 +43,7 @@ organizer confirmation still recommended). Fallback without the budget: `configs
 Start: `configs/champion.sh` at default power (`greenmind-kit/power.sh reset` → 400 W, no clock lock).
 ```
 export PATH=$HOME/vllm-env/bin:/usr/local/cuda/bin:$PATH CUDA_HOME=/usr/local/cuda   # ninja/nvcc for FlashInfer JIT
-THINK_BUDGET=3072 python ~/repo/tools/gray/vllm_think_budget.py  # E030; E027 used 5120 serve CMKL/MANGO1.5-Qwen3.5-9B --host 0.0.0.0 --port 8000 \
+THINK_BUDGET=3072 python ~/repo/serving/vllm_think_budget.py  # E030; E027 used 5120 serve CMKL/MANGO1.5-Qwen3.5-9B --host 0.0.0.0 --port 8000 \
   --enable-auto-tool-choice --tool-call-parser qwen3_coder --reasoning-parser qwen3 \
   --language-model-only --max-model-len 41984 --gpu-memory-utilization 0.92 \
   --max-num-seqs 256 --max-num-batched-tokens 4096 --long-prefill-token-threshold 1024 \
@@ -50,7 +51,7 @@ THINK_BUDGET=3072 python ~/repo/tools/gray/vllm_think_budget.py  # E030; E027 us
   --mamba-ssm-cache-dtype bfloat16 \
   --speculative-config '{"model":"CMKL/MANGO1.5-Qwen3.5-9B","method":"mtp","num_speculative_tokens":2}'
 ```
-`tools/gray/vllm_think_budget.py` = `vllm serve` plus one patch: chat requests that don't set `thinking_token_budget`
+`serving/vllm_think_budget.py` = `vllm serve` plus one patch: chat requests that don't set `thinking_token_budget`
 get 5120 (vLLM's built-in budget logic forces the reasoning end marker). The client's max_tokens, temperature and thinking mode are untouched.
 
 | E027 (local) | val | final |

@@ -1,54 +1,62 @@
 # Experiments
 
-| id | parent | change | status | val S | final S | official S | J/req | SLO | acc | lesson |
-|---|---|---|---|---|---|---|---|---|---|---|
-| E000 |  | default vllm serve BF16 baseline | baseline | 0.0 | 0.0 | 0.0 | 467 | 64/100 | 87.2 | official val baseline: s_T 0.51 s_L 0.59 p95 TTFT 2.06s |
-| E001 | E000 | AWQ+MTP k=3 tuned flags | rejected-cold | 0.0 |  |  | 272 | 45/100 cold; 132/138 warm | 77.0 | cold: 51 TTFT fails from Triton JIT in inference. warm: eta 1.85x, TPOT 20ms, 227 J/req. agent acc 0.1 vs baseline 0.2-0.3 (n=20, A=0.05) - suspect AWQ |
-| E002 | E001 | warmup.py | rejected | 0.0 |  |  | 269 | 81/137 | 78.0 | warm repeats are prefix-cache artifacts; peak TTFT stalls from 8192-token prefill chunks |
-| E003 | E002 | max-num-batched-tokens 2048 | rejected | 0.0 |  |  | 283 | 72/135 | 76.0 | smaller chunks worse; per-step fixed cost dominates, suspect MTP; ablate |
-| E004 | E001 | remove MTP (ablation) | rejected | 0.0 |  |  | 315 | 80/134 | 77.0 | agent 2/20 without MTP too -> AWQ (or flags) culprit; MTP improves J/req |
-| E005 | E001 | AWQ -> BF16 (MTP k=3 + flags) | promoted-mainline | 0.0 |  |  | 298 | 87/148 | 82.0 | BF16 restores agent 7/20 (A=1.0); TTFT fails from KV-full admission queueing at peak (96.6% KV, prefix hit 3%) |
-| E006 | E005 | prefix caching off | neutral | 0.0 |  |  | 328 | 86/148 | 76.0 | prefix cache irrelevant (3% hits); KV still full at 46 seqs; agent class noisy 3-7/20 on BF16 |
-| E007 | E006 | mamba ssm cache bf16 | promoted | 14.5 |  |  | 303 | 106/148 (60/100) | 79.0 | bf16 SSM state frees memory: peak KV 98->56%, TTFT fails 59->33; now TPOT-bound (60ms) |
-| E008 | E007 | champion repeat | champion | 21.2 | 15.5 | 31.5 | 302 | 63/100 | 79.0 | champion val eta over 2 fresh runs: 1.22, 1.13 (mean 1.18, spread +-0.05) |
-| E009 | E008 | MTP k 2->1 | rejected | 0.0 | 4.2 |  | 381 | 64/100 | 80.0 | k=1 worse J/req and final TPOT; final TPOT tail = 8K prefill chunks starving decode |
-| E010 | E008 | max-num-batched-tokens 4096 | rejected | 18.2 |  |  | 301 | 64/100 | 80.0 | within noise; TTFT fails are head-of-line blocking of short prompts behind long prefills |
-| E011 | E008 | long-prefill-token-threshold 2048 | rejected | 14.1 |  |  | 318 | 66/100, 64/100 | 79.0 | s_L 0.56->0.74 but eta mean 1.05 vs 1.22; s_E dominates |
-| E012 | E008 | power cap 250 W | rejected | 19.5 |  |  | 254 | 45/100 | 82.0 | 250W: J/req -18% but TTFT fails 30->48 (prefill slower) |
-| E013 | E012 | 250W + chunk cap 2048 | rejected | 14.3 |  |  | 267 | 45/100 |  | 250W too slow at peak regardless of chunking |
-| E014 | E008 | power cap 300 W | rejected | 1.2 |  |  | 290 | 56/100, 53/100 |  | 300W: J/req -7..-13% but TTFT fails up; eta mean 1.11 < 1.22 |
-| E015 | E008 | gpu-memory-utilization 0.95 | rejected | 0.0 |  |  | 344 | 62/100 |  | no val gain; more energy |
-| E016 | E010 | MAX_BT 4096 + long-prefill-threshold 2048 | champion | 30.8 | 17.3 |  | 319 | 68/100, 63/100 | 81.0 | chunk 4096 + per-request cap 2048 fixes TTFT staircase; final S 17.3 > 15.5 |
-| E017 | E016 | local final variance | champion | 42.2 | 21.0 | 59.0 | 247 | 215/300 | 88.8 | champion final S 22.7/22.1/18.3; cutoffs 3-7 per run drive variance |
-| E018 | E017 | long-prefill-threshold 512 | rejected | 22.5 |  |  | 331 | 76/100 | 79.0 | 512 too fine: long-prompt TTFT up; optimum ~1024 |
-| E019 | E017 | MAX_BT 2048 (cap 1024) | rejected | 20.6 |  |  | 332 | 70/100 | 80.0 | budget 2048 with cap 1024 re-creates queueing; keep 4096/1024 |
-| E020 | E017 | MTP k 2->3 on E017 | rejected | 31.7 | 2.9 |  | 292 | 75/100, 75/100 | 79.0 | val tie but final collapses: k+1 GDN state slots -> KV 98.7%, 51 waiting, p95 TTFT 19.8 s |
-| E021 | E017 | kv-cache-dtype fp8 | rejected | 1.2 |  |  | 337 | 72/100 | 77.0 | fp8 KV forces FlashInfer + downgraded cudagraphs w/ spec decode -> TPOT 60ms |
-| E022 | E017 | power cap 350 W | rejected | 30.2 |  |  | 310 | 77/100, 70/100 | 79.0 | 350W slightly worse; ~50% of val energy is drain phase (cutoff reasoning reqs at low batch) |
-| E023 | E017 | SM clock lock 1215 MHz | official-final (worse than champion) | 44.6 | 20.2 | 52.5 | 186 | 164/300 | 89.1 | OFFICIAL final S 52.5 < E017 59.0: J/req -25% but on-time 215->164, sT 0.62->0.37, sL 0.80->0.69; eta only 1.78->1.80. Local final ranking was correct |
-| E024 | E017 | MAX_BT 3072 | rejected | 29.9 | 8.0 |  | 311 | 79/100; 108/300 | 79.0 | TPOT fails halve on final but KV-full queueing -> TTFT 11.7s |
-| E025 | E017 | gpu util 0.96 | rejected | 37.0 | 22.9 |  | 347 | 77/100; 124/300 | 79.0 | final tie (22.9/22.3 vs 22.7), val eta lower |
-| E026 | E017 | long-prefill-threshold 1024->768 | official-final (worse than E017) | 40.5 | 23.8 | 46.6 | 264 | 193/300 | 90.3 | OFFICIAL final 46.6 < E017 59.0 despite local final +16% -> local/official disagree on a 1-flag change; official noise likely large; E017 stays the base |
-| E027 | E017 | E017 + server-side thinking budget 5120 (user-authorized) | paused; serving configs/champion.sh (=E027) for official final | 51.1 | 26.6 |  | 297 | 83/100; 120/300 | 81.0 | budget removes 8192 cutoffs (always failures) and the drain-phase energy; final mean +25% vs E017 |
-| E028 | E017 | MAX_BT 5120 | rejected | 27.7 | 0.0 |  | 318 | 80/100; 99/300 | 80.0 | final backlog collapse (36 waiting); local final may be bistable |
-| E029 | E017 | stream-interval 4 (not applied) | abandoned |  |  |  |  |  |  | config edit failed -> champion replicate: val eta 1.26, final S 18.9 |
-| E030 | E027 | thinking budget 5120->3072 | official-final CHAMPION | 47.4 | 27.2 | 88.0 | 173 | 242/300 | 90.7 | OFFICIAL final S 88.0 (E017 59.0): sE 0.96, sT 0.71, sL 0.85, eta 2.87x, 173 J/req, 242/300, p95 TTFT 1.85 s, acc 90.7%. sE near cap -> next gains must come from sT/sL |
-| E031 | E030 | thinking budget 2048 | rejected | 50.5 | 26.2 |  | 305 | 81/100; 115/300 | 81.0 | 2048 too tight: answer can then run to cutoff; 3072 best |
-| E032 | E030 | MTP k=3 with budget | rejected | 53.4 | 15.1 |  | 241 | 74/100; 100/300 | 81.0 | k=3 still memory-collapses on final even with budget |
-| E033 | E030 | final replicate + frontend CPU check | official-final (worse than E030) -> reverted | 63.4 | 30.4 | 81.6 | 176 | 231/300 | 90.4 | OFFICIAL final 81.6 < E030 88.0 (sT 0.66 vs 0.71, sL 0.76 vs 0.85) despite local +12%; second time a <=16% local edge fails officially |
-| E034 | E033 | gpu util 0.98 | crashed |  |  |  |  |  |  | CUDA OOM under load; 0.96 is the ceiling |
-| E035 | E033 | MAX_BT 3072 | rejected | 38.7 | 28.7 |  | 287 | 83/100; 123/300 | 78.0 | TPOT fails insensitive to chunking; decode-saturated |
-| E036 | E033 | max-num-seqs 112 | rejected | 45.7 | 19.0 |  | 240 | 83/100; 111/300 | 79.0 | admission cap: TPOT fails down, TTFT fails up more |
-| E037 | E030 | online fp8 weights | rejected | 0.0 | 0.0 |  | 254 | 47/100; 61/300 | 80.0 | FP8 Marlin W8A16 slow at batch on A100 + accuracy dip |
-| E038 | E030 | thinking budget 1536 | rejected | 63.8 | 17.5 |  | 248 | 81/100; 112/300 | 81.0 | low budgets -> answer runaway to 8192 cutoff (reason class) |
-| E039 | E038 | forced-end transition phrase (budget 1536) | official-final (below E030) | 62.8 | 23.6 | 85.97 | 158.7 | 226/300 | 88.7 | OFFICIAL 86.0 < 88.0: sE 0.974 but sT 0.636, sL 0.80 (ttft 0.77, tpot 0.83). TTFT is the weaker official latency term |
-| E040 | E030 | short-first prefill cap 256 | rejected | 50.3 | 29.2 |  | 269 | 80/100; 117/300 | 80.0 | short-first throttling moves TTFT misses to long prompts; 1024 cap is the balance |
-| E041 | E030 | engine vLLM -> SGLang 0.5.22 | abandoned | 0.0 |  |  | 324 | best 58/100 | 83.0 | SGLang: 80 slots max (spec GDN states), 169K KV, no per-request prefill cap -> best 58/100 vs vLLM 80/100 |
-| E042 | E030 | engine -> TensorRT-LLM 1.4.0rc1 | cleanup | 0.0 |  |  | 333 | cold 23-24/100, warm 54-56/100 | 74.0 | ~/trtllm-env deleted at user request (7.4 GB); configs kept for reproducibility |
-| E043 | E030 | dynamic SD + V2 runner | rejected | 41.8 |  |  | 251 | 81/100; 90/300 | 79.0 | V2 runner: KV 368K vs 475K -> final memory collapse; TPOT fails down to 96 |
-| E044 | E043 | dynamic SD on V1 runner | rejected | 43.7 |  |  | 250 | 83/100; 92/300 | 80.0 | dynamic SD reserves ~23% KV -> final collapse |
-| E045 | E030 | weights -> team W8A8 INT8 (CUTLASS int8) | configs/champion.sh (=E045) serving for official final | 60.3 | 94.4 |  | 209 | 100/100, 100/100; 245/300, 261/300 | 83.5 | W8A8 INT8 on A100 tensor cores ~2x prefill -> peak no longer saturated: val 100/100, local final S 94; accuracy equal or better overall |
-| E046 | E045 | served-model-name mango | OFFICIAL CHAMPION |  | 94.8 | 99.38 | 157.5 | 294/300 | 88.3 | OFFICIAL final 99.38 (E030 88.0): sE 1.0, sT 0.97, sL 1.0. longctx retention 0.71 (n=15, ungated) is the only weak spot |
+Generated by `experiments/render.py` from `experiments/log.jsonl` (append-only event log). Per-experiment
+details: `experiments/<id>/{card,result}.md`, exact launch command `experiments/<id>/config.sh` (as run; later
+edits to `configs/<id>.sh` only moved the wrapper path), server logs `experiments/<id>/server*.log`.
+Local columns = our local grader (`local_grader/`, scored vs our local baseline; local Val S is depressed by
+agent-class noise, n=20). OFFICIAL columns = organizer grader. Official track is Final unless marked (val).
+Local timestamps in log.jsonl for E000-E007 were hand-entered and can be up to ~30 min off; grader run IDs carry
+true start times.
+
+| id | parent | change | status | local Val S | local Final S | local J/req | local SLO-met | local acc % | OFFICIAL S (track) | off. J/req | off. SLO-met | off. acc % | lesson |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| E000 |  | default vllm serve BF16 baseline | baseline | 0.0 | 0.0 | 463 | 78/100 local val | 81.0 | 0.0 (val) | 467 | 64/100 | 87.2 | local baseline (S=0 by definition). Repeats on same warm server look far better (98/100, TPOT 24ms) -> prefix-cache warmup inflates repeats; use fresh server per run |
+| E001 | E000 | AWQ+MTP k=3 tuned flags | rejected-cold | 0.0 |  | 272 | 45/100 cold; 132/138 warm | 77.0 |  |  |  |  | cold: 51 TTFT fails from Triton JIT in inference. warm: eta 1.85x, TPOT 20ms, 227 J/req. agent acc 0.1 vs baseline 0.2-0.3 (n=20, A=0.05) - suspect AWQ |
+| E002 | E001 | warmup.py | rejected | 0.0 |  | 269 | 81/137 | 78.0 |  |  |  |  | warm repeats are prefix-cache artifacts; peak TTFT stalls from 8192-token prefill chunks |
+| E003 | E002 | max-num-batched-tokens 2048 | rejected | 0.0 |  | 283 | 72/135 | 76.0 |  |  |  |  | smaller chunks worse; per-step fixed cost dominates, suspect MTP; ablate |
+| E004 | E001 | remove MTP (ablation) | rejected | 0.0 |  | 315 | 80/134 | 77.0 |  |  |  |  | agent 2/20 without MTP too -> AWQ (or flags) culprit; MTP improves J/req |
+| E005 | E001 | AWQ -> BF16 (MTP k=3 + flags) | promoted-mainline | 0.0 |  | 298 | 87/148 | 82.0 |  |  |  |  | BF16 restores agent 7/20 (A=1.0); TTFT fails from KV-full admission queueing at peak (96.6% KV, prefix hit 3%) |
+| E006 | E005 | prefix caching off | neutral | 0.0 |  | 328 | 86/148 | 76.0 |  |  |  |  | prefix cache irrelevant (3% hits); KV still full at 46 seqs; agent class noisy 3-7/20 on BF16 |
+| E007 | E006 | mamba ssm cache bf16 | promoted | 14.5 |  | 303 | 106/148 (60/100) | 79.0 |  |  |  |  | bf16 SSM state frees memory: peak KV 98->56%, TTFT fails 59->33; now TPOT-bound (60ms) |
+| E008 | E007 | champion repeat | champion | 21.2 | 15.5 | 302 | 63/100 | 79.0 | 31.5 (val) | 333 | 65/100 | 88.9 | champion val eta over 2 fresh runs: 1.22, 1.13 (mean 1.18, spread +-0.05) |
+| E009 | E008 | MTP k 2->1 | rejected | 0.0 | 4.2 | 381 | 64/100 | 80.0 |  |  |  |  | k=1 worse J/req and final TPOT; final TPOT tail = 8K prefill chunks starving decode |
+| E010 | E008 | max-num-batched-tokens 4096 | rejected | 18.2 |  | 301 | 64/100 | 80.0 |  |  |  |  | within noise; TTFT fails are head-of-line blocking of short prompts behind long prefills |
+| E011 | E008 | long-prefill-token-threshold 2048 | rejected | 14.1 |  | 318 | 66/100, 64/100 | 79.0 |  |  |  |  | s_L 0.56->0.74 but eta mean 1.05 vs 1.22; s_E dominates |
+| E012 | E008 | power cap 250 W | rejected | 19.5 |  | 254 | 45/100 | 82.0 |  |  |  |  | 250W: J/req -18% but TTFT fails 30->48 (prefill slower) |
+| E013 | E012 | 250W + chunk cap 2048 | rejected | 14.3 |  | 267 | 45/100 |  |  |  |  |  | 250W too slow at peak regardless of chunking |
+| E014 | E008 | power cap 300 W | rejected | 1.2 |  | 290 | 56/100, 53/100 |  |  |  |  |  | 300W: J/req -7..-13% but TTFT fails up; eta mean 1.11 < 1.22 |
+| E015 | E008 | gpu-memory-utilization 0.95 | rejected | 0.0 |  | 344 | 62/100 |  |  |  |  |  | no val gain; more energy |
+| E016 | E010 | MAX_BT 4096 + long-prefill-threshold 2048 | champion | 30.8 | 17.3 | 319 | 68/100, 63/100 | 81.0 |  |  |  |  | chunk 4096 + per-request cap 2048 fixes TTFT staircase; final S 17.3 > 15.5 |
+| E017 | E016 | local final variance | champion | 42.2 | 21.0 | 334 | 80/100 | 79.0 | 59.0 (final) | 247 | 215/300 | 88.8 | champion final S 22.7/22.1/18.3; cutoffs 3-7 per run drive variance |
+| E018 | E017 | long-prefill-threshold 512 | rejected | 22.5 |  | 331 | 76/100 | 79.0 |  |  |  |  | 512 too fine: long-prompt TTFT up; optimum ~1024 |
+| E019 | E017 | MAX_BT 2048 (cap 1024) | rejected | 20.6 |  | 332 | 70/100 | 80.0 |  |  |  |  | budget 2048 with cap 1024 re-creates queueing; keep 4096/1024 |
+| E020 | E017 | MTP k 2->3 on E017 | rejected | 31.7 | 2.9 | 292 | 75/100, 75/100 | 79.0 |  |  |  |  | val tie but final collapses: k+1 GDN state slots -> KV 98.7%, 51 waiting, p95 TTFT 19.8 s |
+| E021 | E017 | kv-cache-dtype fp8 | rejected | 1.2 |  | 337 | 72/100 | 77.0 |  |  |  |  | fp8 KV forces FlashInfer + downgraded cudagraphs w/ spec decode -> TPOT 60ms |
+| E022 | E017 | power cap 350 W | rejected | 30.2 |  | 310 | 77/100, 70/100 | 79.0 |  |  |  |  | 350W slightly worse; ~50% of val energy is drain phase (cutoff reasoning reqs at low batch) |
+| E023 | E017 | SM clock lock 1215 MHz | official-final (worse than champion) | 44.6 | 20.2 | 263 | 67/100, 72/100 | 80.0 | 52.5 (final) | 186 | 164/300 | 89.1 | clock lock: J/req -20%, eta up on both tracks, but SLO down; local final S 20.2 < 22.7 |
+| E024 | E017 | MAX_BT 3072 | rejected | 29.9 | 8.0 | 311 | 79/100; 108/300 | 79.0 |  |  |  |  | TPOT fails halve on final but KV-full queueing -> TTFT 11.7s |
+| E025 | E017 | gpu util 0.96 | rejected | 37.0 | 22.9 | 347 | 77/100; 124/300 | 79.0 |  |  |  |  | final tie (22.9/22.3 vs 22.7), val eta lower |
+| E026 | E017 | long-prefill-threshold 1024->768 | official-final (worse than E017) | 40.5 | 23.8 | 336 | 83/79/82 of 100; 116/116/118 of 300 | 79.0 | 46.6 (final) | 264 | 193/300 | 90.3 | 3x3 replicates: local final mean 23.8 vs champion 20.5 (+16%), fewer TTFT fails |
+| E027 | E017 | E017 + server-side thinking budget 5120 (user-authorized) | champion | 51.1 | 26.6 | 297 | 83/100; 120/300 | 81.0 |  |  |  |  | budget removes 8192 cutoffs (always failures) and the drain-phase energy; final mean +25% vs E017 |
+| E028 | E017 | MAX_BT 5120 | rejected | 27.7 | 0.0 | 318 | 80/100; 99/300 | 80.0 |  |  |  |  | final backlog collapse (36 waiting); local final may be bistable |
+| E029 | E017 | stream-interval 4 (not applied) | abandoned |  |  |  |  |  |  |  |  |  | config edit failed -> champion replicate: val eta 1.26, final S 18.9 |
+| E030 | E027 | thinking budget 5120->3072 | superseded by E046 (OFFICIAL 88.0) | 47.4 | 27.2 | 260 | 83/100, 81/100; 123/300, 114/300 | 80.0 | 88.0 (final) | 173 | 242/300 | 90.7 | budget 3072: val eta +10%, final +6% vs 5120, accuracy equal |
+| E031 | E030 | thinking budget 2048 | rejected | 50.5 | 26.2 | 305 | 81/100; 115/300 | 81.0 |  |  |  |  | 2048 too tight: answer can then run to cutoff; 3072 best |
+| E032 | E030 | MTP k=3 with budget | rejected | 53.4 | 15.1 | 241 | 74/100; 100/300 | 81.0 |  |  |  |  | k=3 still memory-collapses on final even with budget |
+| E033 | E030 | final replicate + frontend CPU check | official-final (worse than E030) -> reverted | 63.4 | 30.4 | 253 | 82/100, 80/100; 122/300, 129/300 | 81.0 | 81.6 (final) | 176 | 231/300 | 90.4 | final x3 mean 30.4; API server CPU max 25% - not a bottleneck |
+| E034 | E033 | gpu util 0.98 | crashed |  |  |  |  |  |  |  |  |  | CUDA OOM under load; 0.96 is the ceiling |
+| E035 | E033 | MAX_BT 3072 | rejected | 38.7 | 28.7 | 287 | 83/100; 123/300 | 78.0 |  |  |  |  | TPOT fails insensitive to chunking; decode-saturated |
+| E036 | E033 | max-num-seqs 112 | rejected | 45.7 | 19.0 | 240 | 83/100; 111/300 | 79.0 |  |  |  |  | admission cap: TPOT fails down, TTFT fails up more |
+| E037 | E030 | online fp8 weights | rejected | 0.0 | 0.0 | 254 | 47/100; 61/300 | 80.0 |  |  |  |  | FP8 Marlin W8A16 slow at batch on A100 + accuracy dip |
+| E038 | E030 | thinking budget 1536 | rejected | 63.8 | 17.5 | 248 | 81/100; 112/300 | 81.0 |  |  |  |  | low budgets -> answer runaway to 8192 cutoff (reason class) |
+| E039 | E038 | forced-end transition phrase (budget 1536) | official-final (below E030) | 62.8 | 23.6 | 248 | 80/100; 116/300 | 81.0 | 85.97 (final) | 158.7 | 226/300 | 88.7 | phrase removes low-budget answer runaway; no SLO gain; peak is prefill-capacity bound |
+| E040 | E030 | short-first prefill cap 256 | rejected | 50.3 | 29.2 | 269 | 80/100; 117/300 | 80.0 |  |  |  |  | short-first throttling moves TTFT misses to long prompts; 1024 cap is the balance |
+| E041 | E030 | engine vLLM -> SGLang 0.5.22 | abandoned | 0.0 |  | 324 | best 58/100 | 83.0 |  |  |  |  | SGLang: 80 slots max (spec GDN states), 169K KV, no per-request prefill cap -> best 58/100 vs vLLM 80/100 |
+| E042 | E030 | engine -> TensorRT-LLM 1.4.0rc1 | cleanup | 0.0 |  | 333 | cold 23-24/100, warm 54-56/100 | 74.0 |  |  |  |  | ~/trtllm-env deleted at user request (7.4 GB); configs kept for reproducibility |
+| E043 | E030 | dynamic SD + V2 runner | rejected | 41.8 |  | 251 | 81/100; 90/300 | 79.0 |  |  |  |  | V2 runner: KV 368K vs 475K -> final memory collapse; TPOT fails down to 96 |
+| E044 | E043 | dynamic SD on V1 runner | rejected | 43.7 |  | 250 | 83/100; 92/300 | 80.0 |  |  |  |  | dynamic SD reserves ~23% KV -> final collapse |
+| E045 | E030 | weights -> team W8A8 INT8 (CUTLASS int8) | superseded by E046 (same server, label only) | 60.3 | 94.4 | 209 | 100/100, 100/100; 245/300, 261/300 | 83.5 |  |  |  |  | W8A8 INT8 on A100 tensor cores ~2x prefill -> peak no longer saturated: val 100/100, local final S 94; accuracy equal or better overall |
+| E046 | E045 | served-model-name mango | FINAL SUBMISSION (OFFICIAL Final 99.38, attempt 20261024T164844-c109c6) |  | 94.8 | 179 | 257/300 | 82.3 | 99.38 (final) | 157.5 | 294/300 | 88.3 | local final S 94.8, consistent with E045; rag .90 / reason .87 slightly below BF16 |
 
 ## Key findings
 
