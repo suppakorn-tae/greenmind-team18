@@ -104,3 +104,4 @@
 {"ts":"2026-10-24T20:38:45+07:00","id":"E033","event":"result","change":"final replicate + frontend CPU check","status":"champion","final_run":"20261024-203549-e033-3","final_S":30.4,"lesson":"final x3 mean 30.4; API server CPU max 25% - not a bottleneck"}
 {"ts":"2026-10-24T20:38:45+07:00","id":"E033","event":"official-pending","status":"paused for official final; configs/champion.sh (=E033) serving"}
 {"ts":"2026-10-24T20:44:53+07:00","id":"E033","event":"official","status":"official-final (worse than E030) -> reverted","final_run":"20261024-201325-e033-2","official_S":81.6,"eta_vs_base":2.68,"j_per_req":176,"slo_met":"231/300","p95_tpot_ms":60,"accuracy":90.4,"lesson":"OFFICIAL final 81.6 < E030 88.0 (sT 0.66 vs 0.71, sL 0.76 vs 0.85) despite local +12%; second time a <=16% local edge fails officially"}
+{"ts":"2026-10-24T20:49:36+07:00","id":"E037","parent":"E030","event":"start","change":"--quantization fp8 (online W8A16)","status":"running"}
