@@ -1,0 +1,145 @@
+(APIServer pid=190368) INFO 10-24 23:21:28 [api_utils.py:347] 
+(APIServer pid=190368) INFO 10-24 23:21:28 [api_utils.py:347]        █     █     █▄   ▄█
+(APIServer pid=190368) INFO 10-24 23:21:28 [api_utils.py:347]  ▄▄ ▄█ █     █     █ ▀▄▀ █  version 0.32.0
+(APIServer pid=190368) INFO 10-24 23:21:28 [api_utils.py:347]   █▄█▀ █     █     █     █  model   suppakorn-k/MANGO1.5-Qwen3.5-9B-W8A8
+(APIServer pid=190368) INFO 10-24 23:21:28 [api_utils.py:347]    ▀▀  ▀▀▀▀▀ ▀▀▀▀▀ ▀     ▀
+(APIServer pid=190368) INFO 10-24 23:21:28 [api_utils.py:347] 
+(APIServer pid=190368) INFO 10-24 23:21:28 [api_utils.py:286] non-default args: {'model_tag': 'suppakorn-k/MANGO1.5-Qwen3.5-9B-W8A8', 'enable_auto_tool_choice': True, 'tool_call_parser': 'qwen3_coder', 'host': '0.0.0.0', 'model': 'suppakorn-k/MANGO1.5-Qwen3.5-9B-W8A8', 'max_model_len': 41984, 'reasoning_parser': 'qwen3', 'enable_prefix_caching': False, 'mamba_ssm_cache_dtype': 'bfloat16', 'language_model_only': True, 'max_num_batched_tokens': 4096, 'max_num_seqs': 256, 'long_prefill_token_threshold': 1024, 'enable_chunked_prefill': True, 'speculative_config': {'model': 'suppakorn-k/MANGO1.5-Qwen3.5-9B-W8A8', 'method': 'mtp', 'num_speculative_tokens': 2}}
+(APIServer pid=190368) ERROR 10-24 23:21:29 [repo_utils.py:126] Error retrieving file list: 404 Client Error. (Request ID: Root=1-6adcdb09-51b5d1d2790b7bc90a09ab85;2d6543c8-5811-4df0-b10d-a5ea8b2f2f44)
+(APIServer pid=190368) ERROR 10-24 23:21:29 [repo_utils.py:126] 
+(APIServer pid=190368) ERROR 10-24 23:21:29 [repo_utils.py:126] Repository Not Found for url: https://huggingface.co/api/models/suppakorn-k/MANGO1.5-Qwen3.5-9B-W8A8/tree/main?recursive=true&expand=false.
+(APIServer pid=190368) ERROR 10-24 23:21:29 [repo_utils.py:126] Please make sure you specified the correct `repo_id` and `repo_type`.
+(APIServer pid=190368) ERROR 10-24 23:21:29 [repo_utils.py:126] If you are trying to access a private or gated repo, make sure you are authenticated and your token has the required permissions.
+(APIServer pid=190368) ERROR 10-24 23:21:29 [repo_utils.py:126] For more details, see https://huggingface.co/docs/huggingface_hub/authentication, retrying 1 of 2
+(APIServer pid=190368) ERROR 10-24 23:21:32 [repo_utils.py:124] Error retrieving file list: 404 Client Error. (Request ID: Root=1-6adcdb0c-13c459ae5ac551131b034f01;dc5eb4f4-4056-4d99-be2e-e5016195c382)
+(APIServer pid=190368) ERROR 10-24 23:21:32 [repo_utils.py:124] 
+(APIServer pid=190368) ERROR 10-24 23:21:32 [repo_utils.py:124] Repository Not Found for url: https://huggingface.co/api/models/suppakorn-k/MANGO1.5-Qwen3.5-9B-W8A8/tree/main?recursive=true&expand=false.
+(APIServer pid=190368) ERROR 10-24 23:21:32 [repo_utils.py:124] Please make sure you specified the correct `repo_id` and `repo_type`.
+(APIServer pid=190368) ERROR 10-24 23:21:32 [repo_utils.py:124] If you are trying to access a private or gated repo, make sure you are authenticated and your token has the required permissions.
+(APIServer pid=190368) ERROR 10-24 23:21:32 [repo_utils.py:124] For more details, see https://huggingface.co/docs/huggingface_hub/authentication
+(APIServer pid=190368) ERROR 10-24 23:21:32 [repo_utils.py:189] Error retrieving file list. Please ensure your `model_name_or_path``repo_type`, `token` and `revision` arguments are correctly set. Returning an empty list.
+(APIServer pid=190368) ERROR 10-24 23:21:33 [repo_utils.py:126] Error retrieving file list: 404 Client Error. (Request ID: Root=1-6adcdb0d-625b4b0e551211b35bebb05f;bec2e4cf-eac2-4103-b6b5-46601eb60250)
+(APIServer pid=190368) ERROR 10-24 23:21:33 [repo_utils.py:126] 
+(APIServer pid=190368) ERROR 10-24 23:21:33 [repo_utils.py:126] Repository Not Found for url: https://huggingface.co/api/models/suppakorn-k/MANGO1.5-Qwen3.5-9B-W8A8/tree/main?recursive=true&expand=false.
+(APIServer pid=190368) ERROR 10-24 23:21:33 [repo_utils.py:126] Please make sure you specified the correct `repo_id` and `repo_type`.
+(APIServer pid=190368) ERROR 10-24 23:21:33 [repo_utils.py:126] If you are trying to access a private or gated repo, make sure you are authenticated and your token has the required permissions.
+(APIServer pid=190368) ERROR 10-24 23:21:33 [repo_utils.py:126] For more details, see https://huggingface.co/docs/huggingface_hub/authentication, retrying 1 of 2
+(APIServer pid=190368) ERROR 10-24 23:21:36 [repo_utils.py:124] Error retrieving file list: 404 Client Error. (Request ID: Root=1-6adcdb10-05048315784ff4e96e77471c;38b0d429-3b16-4f21-aa23-8730ba6e46f5)
+(APIServer pid=190368) ERROR 10-24 23:21:36 [repo_utils.py:124] 
+(APIServer pid=190368) ERROR 10-24 23:21:36 [repo_utils.py:124] Repository Not Found for url: https://huggingface.co/api/models/suppakorn-k/MANGO1.5-Qwen3.5-9B-W8A8/tree/main?recursive=true&expand=false.
+(APIServer pid=190368) ERROR 10-24 23:21:36 [repo_utils.py:124] Please make sure you specified the correct `repo_id` and `repo_type`.
+(APIServer pid=190368) ERROR 10-24 23:21:36 [repo_utils.py:124] If you are trying to access a private or gated repo, make sure you are authenticated and your token has the required permissions.
+(APIServer pid=190368) ERROR 10-24 23:21:36 [repo_utils.py:124] For more details, see https://huggingface.co/docs/huggingface_hub/authentication
+(APIServer pid=190368) ERROR 10-24 23:21:36 [repo_utils.py:126] Error retrieving file list: 404 Client Error. (Request ID: Root=1-6adcdb10-32a291a6012c050f5c420c6a;8e89f67c-2b63-4409-b594-0a73d7727767)
+(APIServer pid=190368) ERROR 10-24 23:21:36 [repo_utils.py:126] 
+(APIServer pid=190368) ERROR 10-24 23:21:36 [repo_utils.py:126] Repository Not Found for url: https://huggingface.co/api/models/suppakorn-k/MANGO1.5-Qwen3.5-9B-W8A8/tree/main?recursive=true&expand=false.
+(APIServer pid=190368) ERROR 10-24 23:21:36 [repo_utils.py:126] Please make sure you specified the correct `repo_id` and `repo_type`.
+(APIServer pid=190368) ERROR 10-24 23:21:36 [repo_utils.py:126] If you are trying to access a private or gated repo, make sure you are authenticated and your token has the required permissions.
+(APIServer pid=190368) ERROR 10-24 23:21:36 [repo_utils.py:126] For more details, see https://huggingface.co/docs/huggingface_hub/authentication, retrying 1 of 2
+(APIServer pid=190368) ERROR 10-24 23:21:38 [repo_utils.py:124] Error retrieving file list: 404 Client Error. (Request ID: Root=1-6adcdb12-660244190f2b88b360157379;8ec3d73d-35ef-4426-80a0-314683849797)
+(APIServer pid=190368) ERROR 10-24 23:21:38 [repo_utils.py:124] 
+(APIServer pid=190368) ERROR 10-24 23:21:38 [repo_utils.py:124] Repository Not Found for url: https://huggingface.co/api/models/suppakorn-k/MANGO1.5-Qwen3.5-9B-W8A8/tree/main?recursive=true&expand=false.
+(APIServer pid=190368) ERROR 10-24 23:21:38 [repo_utils.py:124] Please make sure you specified the correct `repo_id` and `repo_type`.
+(APIServer pid=190368) ERROR 10-24 23:21:38 [repo_utils.py:124] If you are trying to access a private or gated repo, make sure you are authenticated and your token has the required permissions.
+(APIServer pid=190368) ERROR 10-24 23:21:38 [repo_utils.py:124] For more details, see https://huggingface.co/docs/huggingface_hub/authentication
+Traceback (most recent call last):
+  File "/home/researcher/vllm-env/lib/python3.12/site-packages/huggingface_hub/utils/_http.py", line 866, in hf_raise_for_status
+    response.raise_for_status()
+  File "/home/researcher/vllm-env/lib/python3.12/site-packages/httpx2/_models.py", line 828, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx2.HTTPStatusError: Client error '404 Not Found' for url 'https://huggingface.co/api/models/suppakorn-k/MANGO1.5-Qwen3.5-9B-W8A8/tree/main?recursive=true&expand=false'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/researcher/repo/tools/gray/vllm_think_budget.py", line 47, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/researcher/vllm-env/lib/python3.12/site-packages/vllm/entrypoints/cli/main.py", line 120, in main
+    args.dispatch_function(args)
+  File "/home/researcher/vllm-env/lib/python3.12/site-packages/vllm/entrypoints/cli/serve.py", line 156, in cmd
+    uvloop.run(run_server(args))
+  File "/home/researcher/vllm-env/lib/python3.12/site-packages/uvloop/__init__.py", line 96, in run
+    return __asyncio.run(
+           ^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "uvloop/loop.pyx", line 1515, in uvloop.loop.Loop.run_until_complete
+  File "/home/researcher/vllm-env/lib/python3.12/site-packages/uvloop/__init__.py", line 48, in wrapper
+    return await main
+           ^^^^^^^^^^
+  File "/home/researcher/vllm-env/lib/python3.12/site-packages/vllm/entrypoints/launchers/api_server/entry.py", line 177, in run_server
+    await run_server_worker(listen_address, sock, args, **uvicorn_kwargs)
+  File "/home/researcher/vllm-env/lib/python3.12/site-packages/vllm/entrypoints/launchers/api_server/entry.py", line 195, in run_server_worker
+    async with build_async_engine_client(
+  File "/usr/lib/python3.12/contextlib.py", line 210, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/researcher/vllm-env/lib/python3.12/site-packages/vllm/entrypoints/launchers/api_server/entry.py", line 61, in build_async_engine_client
+    async with build_async_engine_client_from_engine_args(
+  File "/usr/lib/python3.12/contextlib.py", line 210, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/researcher/vllm-env/lib/python3.12/site-packages/vllm/entrypoints/launchers/api_server/entry.py", line 83, in build_async_engine_client_from_engine_args
+    vllm_config = engine_args.create_engine_config(usage_context=usage_context)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/researcher/vllm-env/lib/python3.12/site-packages/vllm/engine/arg_utils.py", line 2240, in create_engine_config
+    model_config = self.create_model_config()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/researcher/vllm-env/lib/python3.12/site-packages/vllm/engine/arg_utils.py", line 1955, in create_model_config
+    return ModelConfig(
+           ^^^^^^^^^^^^
+  File "/home/researcher/vllm-env/lib/python3.12/site-packages/pydantic/_internal/_dataclasses.py", line 121, in __init__
+    s.__pydantic_validator__.validate_python(ArgsKwargs(args, kwargs), self_instance=s)
+  File "/home/researcher/vllm-env/lib/python3.12/site-packages/vllm/config/model.py", line 697, in __post_init__
+    self.runner_type = self._get_runner_type(
+                       ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/researcher/vllm-env/lib/python3.12/site-packages/vllm/config/model.py", line 1304, in _get_runner_type
+    runner_type = self._get_default_runner_type(architectures)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/researcher/vllm-env/lib/python3.12/site-packages/vllm/config/model.py", line 1277, in _get_default_runner_type
+    if get_pooling_config(self.model, self.revision):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/researcher/vllm-env/lib/python3.12/site-packages/vllm/transformers_utils/config.py", line 970, in get_pooling_config
+    if file_or_path_exists(
+       ^^^^^^^^^^^^^^^^^^^^
+  File "/home/researcher/vllm-env/lib/python3.12/site-packages/vllm/transformers_utils/repo_utils.py", line 281, in file_or_path_exists
+    return file_exists(str(model), config_name, revision=revision)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/researcher/vllm-env/lib/python3.12/site-packages/vllm/transformers_utils/repo_utils.py", line 255, in file_exists
+    file_list = list_repo_files(
+                ^^^^^^^^^^^^^^^^
+  File "/home/researcher/vllm-env/lib/python3.12/site-packages/vllm/transformers_utils/repo_utils.py", line 171, in list_repo_files
+    return with_retry(lookup_files, "Error retrieving file list")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/researcher/vllm-env/lib/python3.12/site-packages/vllm/transformers_utils/repo_utils.py", line 119, in with_retry
+    return func()
+           ^^^^^^
+  File "/home/researcher/vllm-env/lib/python3.12/site-packages/vllm/transformers_utils/repo_utils.py", line 162, in lookup_files
+    return hf_api().list_repo_files(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/researcher/vllm-env/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py", line 89, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/researcher/vllm-env/lib/python3.12/site-packages/huggingface_hub/hf_api.py", line 3858, in list_repo_files
+    return [
+           ^
+  File "/home/researcher/vllm-env/lib/python3.12/site-packages/huggingface_hub/hf_api.py", line 3989, in list_repo_tree
+    for page, _ in self._iter_repo_tree_pages(
+  File "/home/researcher/vllm-env/lib/python3.12/site-packages/huggingface_hub/hf_api.py", line 4024, in _iter_repo_tree_pages
+    for page, finished in _paginate_pages(
+  File "/home/researcher/vllm-env/lib/python3.12/site-packages/huggingface_hub/utils/_pagination.py", line 42, in _paginate_pages
+    hf_raise_for_status(r)
+  File "/home/researcher/vllm-env/lib/python3.12/site-packages/huggingface_hub/utils/_http.py", line 953, in hf_raise_for_status
+    raise _format(RepositoryNotFoundError, message, response, repo_type=repo_type, repo_id=repo_id) from e
+huggingface_hub.errors.RepositoryNotFoundError: 404 Client Error. (Request ID: Root=1-6adcdb12-660244190f2b88b360157379;8ec3d73d-35ef-4426-80a0-314683849797)
+
+Repository Not Found for url: https://huggingface.co/api/models/suppakorn-k/MANGO1.5-Qwen3.5-9B-W8A8/tree/main?recursive=true&expand=false.
+Please make sure you specified the correct `repo_id` and `repo_type`.
+If you are trying to access a private or gated repo, make sure you are authenticated and your token has the required permissions.
+For more details, see https://huggingface.co/docs/huggingface_hub/authentication

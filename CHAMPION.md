@@ -1,4 +1,30 @@
-# Champion: E030 — OFFICIAL final S 88.0 (re-instated 2026-10-24 20:45 +07)
+# Champion: E045 (since 2026-10-24 23:34 +07) — local; OFFICIAL pending
+= E030 (OFFICIAL final 88.0) with the team's W8A8 INT8 checkpoint `suppakorn-k/MANGO1.5-Qwen3.5-9B-W8A8` (private HF repo,
+rev 1909e853, made 2026-10-24 by a teammate with llm-compressor GPTQ W8A8 from the official CMKL weights; open calibration data:
+WangchanThaiInstruct, UltraChat, Open-Platypus). Fallback: `configs/E030.sh` (official BF16 weights).
+
+Start: `configs/champion.sh` at default power (400 W, no clock lock). The repo is private, so the weights must already be in the
+HF cache (download once with a read token), and the config serves the local snapshot with `HF_HUB_OFFLINE=1` (no token at runtime).
+```
+export PATH=$HOME/vllm-env/bin:/usr/local/cuda/bin:$PATH CUDA_HOME=/usr/local/cuda HF_HUB_OFFLINE=1
+M=$HOME/.cache/huggingface/hub/models--suppakorn-k--MANGO1.5-Qwen3.5-9B-W8A8/snapshots/1909e853b46b2618457ba4205e48a61df6a0d888
+THINK_BUDGET=3072 ~/vllm-env/bin/python ~/repo/tools/gray/vllm_think_budget.py serve $M --served-model-name suppakorn-k/MANGO1.5-Qwen3.5-9B-W8A8 \
+  --host 0.0.0.0 --port 8000 --enable-auto-tool-choice --tool-call-parser qwen3_coder --reasoning-parser qwen3 \
+  --language-model-only --max-model-len 41984 --gpu-memory-utilization 0.92 --max-num-seqs 256 \
+  --max-num-batched-tokens 4096 --long-prefill-token-threshold 1024 --enable-chunked-prefill \
+  --no-enable-prefix-caching --mamba-ssm-cache-dtype bfloat16 \
+  --speculative-config '{"model":"'$M'","method":"mtp","num_speculative_tokens":2}'
+```
+| E045 local | val #1 / #2 | final #1 / #2 |
+|---|---|---|
+| SLO-met (per arrival) | 100 / 100 of 100 | 245 / 261 of 300 |
+| eta vs base | 2.13 / 2.19x | 3.07 / 2.99x |
+| J/req | 205 / 213 | 175 / 180 |
+| p95 TTFT / TPOT | 1.11 s / 36 ms, 1.09 s / 36 ms | 1.62 s / 51 ms, 1.61 s / 48 ms |
+| accuracy | 81 / 78% (agent noise) | 83.0 / 84.0%, A 1.00 |
+| local S | 4.0 / 60.3 (agent-class A noise) | **93.7 / 95.0** (E030: 28.8 / 25.5) |
+
+## E030 — OFFICIAL final S 88.0 (previous champion)
 E033 (E030 + gpu util 0.96) scored OFFICIAL 81.6 despite local +12% -> reverted. `configs/champion.sh` == `configs/E030.sh`.
 
 ## E030 — OFFICIAL final S 88.0
