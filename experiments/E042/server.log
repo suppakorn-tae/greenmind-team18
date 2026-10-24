@@ -702,3 +702,11 @@ INFO:     127.0.0.1:47672 - "POST /v1/chat/completions HTTP/1.1" 200 OK
 INFO:     127.0.0.1:54864 - "POST /v1/chat/completions HTTP/1.1" 200 OK
 INFO:     127.0.0.1:54876 - "POST /v1/chat/completions HTTP/1.1" 200 OK
 INFO:     127.0.0.1:54882 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+[10/24/2026-22:43:21] [TRT-LLM] [I] [llmapi] Thread proxy_dispatch_result_thread stopped.
+[10/24/2026-22:43:22] [TRT-LLM] [I] [llmapi] Thread await_response_thread stopped.
+[10/24/2026-22:43:23] [TRT-LLM] [I] [llmapi] MpiPoolSession.shutdown: joining 1 worker(s) (wait=True)
+[10/24/2026-22:43:23] [TRT-LLM] [I] [llmapi] MpiPoolSession.shutdown: done
+INFO:     Application shutdown complete.
+INFO:     Finished server process [177283]
