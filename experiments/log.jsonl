@@ -73,3 +73,4 @@
 {"ts":"2026-10-24T18:29:15+07:00","id":"E028","parent":"E017","event":"result","change":"MAX_BT 5120","status":"rejected","val_run":"20261024-182357-e028","final_run":"20261024-182542-e028","val_S":27.7,"final_S":0.0,"eta_vs_base":1.16,"j_per_req":318,"slo_met":"80/100; 99/300","p95_tpot_ms":62,"accuracy":80.0,"lesson":"final backlog collapse (36 waiting); local final may be bistable"}
 {"ts":"2026-10-24T18:29:15+07:00","id":"E017","event":"start","change":"champion local-final variance check (2 repeats)","status":"champion"}
 {"ts":"2026-10-24T18:36:42+07:00","id":"E017","event":"result","change":"local final variance","status":"champion","final_run":"20261024-183020-e017-final-2,20261024-183314-e017-final-3","final_S":21.0,"lesson":"champion final S 22.7/22.1/18.3; cutoffs 3-7 per run drive variance"}
+{"ts":"2026-10-24T18:37:07+07:00","id":"E029","parent":"E017","event":"start","change":"stream-interval 4","status":"running"}

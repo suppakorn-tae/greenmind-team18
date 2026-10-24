@@ -1,0 +1,2 @@
+# E029 — champion E017 + --stream-interval 4
+Parent E017. One variable (rule-safe; still streamed, usage unchanged). Why: ~130 concurrent streams at final peak with MTP (2-3 tokens/step) -> API server detokenize+SSE per token per stream on one Python process may lag the engine. Buffering 4 tokens per SSE chunk cuts that work ~4x. TPOT metric uses full token span so chunking doesn't change it; TTFT may gain a few ms per first chunk. Measure API-server CPU% during final. Start 2026-10-24T18:37:07+07:00.
