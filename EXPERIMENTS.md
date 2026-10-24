@@ -25,7 +25,7 @@
 | E020 | E017 | MTP k 2->3 on E017 | rejected | 31.7 | 2.9 |  | 292 | 75/100, 75/100 | 79.0 | val tie but final collapses: k+1 GDN state slots -> KV 98.7%, 51 waiting, p95 TTFT 19.8 s |
 | E021 | E017 | kv-cache-dtype fp8 | rejected | 1.2 |  |  | 337 | 72/100 | 77.0 | fp8 KV forces FlashInfer + downgraded cudagraphs w/ spec decode -> TPOT 60ms |
 | E022 | E017 | power cap 350 W | rejected | 30.2 |  |  | 310 | 77/100, 70/100 | 79.0 | 350W slightly worse; ~50% of val energy is drain phase (cutoff reasoning reqs at low batch) |
-| E023 | E017 | SM clock lock 1215 MHz | running |  |  |  |  |  |  |  |
+| E023 | E017 | SM clock lock 1215 MHz | rejected-local (official A/B candidate) | 44.6 | 20.2 |  | 263 | 67/100, 72/100 | 80.0 | clock lock: J/req -20%, eta up on both tracks, but SLO down; local final S 20.2 < 22.7 |
 
 ## Key findings
 
