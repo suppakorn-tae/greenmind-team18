@@ -9,3 +9,4 @@ Lesson: per-request prefill cap is the main TTFT lever on this trace; 1024 >> 20
 - 15:51 paused for Tae's official run; champion left serving on :8000.
 - **OFFICIAL final (2026-10-24 08:54 UTC): S 59.0, A 1.00, R 1.012, sE 0.53, sT 0.62, sL 0.80, eta 1.78x, 247 J/req, p95 TTFT 1.91 s, p95 TPOT 59 ms, SLO-met 215/300, accuracy 88.8%.** Linked to local final 20261024-154141-e017 (official #3).
 - Calibration: local final is much harsher than official (117/300 vs 215/300, p95 TTFT 3.88 vs 1.91 s); local val tracks official val closely (E008 eta 1.22 vs 1.27). Use local val as primary, local final as a stress test.
+- Local final variance (18:30): #2 20261024-183020-e017-final-2 S 22.1, 121/300, p95 TTFT 3.80 s, cutoff 3; #3 20261024-183314-e017-final-3 S 18.3, 115/300, p95 TTFT 3.99 s, cutoff 7. => champion local final S 22.7/22.1/18.3 (mean 21.0), never collapses; E024/E028 collapses are real.
