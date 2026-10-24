@@ -5,3 +5,5 @@ Config: E016 with --long-prefill-token-threshold 1024 (MAX_BT 4096), 400 W defau
 - final 20261024-154141-e017: S 22.7 (E016 17.3, E008 15.5), A 1.00, eta 1.30x, 209 J/req, 117/300 per arrival, p95 TTFT 3.88 s, p95 TPOT 80 ms, fails ttft 175/tpot 123/cutoff 3, acc 81.0% (baseline 81.3%): agent 0.28 n=60, chat 1.0, long 0.6, rag 0.97, reason 0.93, thai 0.90.
 vs E016: val TTFT fails 24-28 -> 10-12, per-arrival 63-68 -> 78-80, eta mean 1.215 -> 1.37; final S +31%.
 Lesson: per-request prefill cap is the main TTFT lever on this trace; 1024 >> 2048.
+- Confirmation (configs/champion.sh, fresh server, 400 W) 20261024-154907-e017-confirm: 140/160 turns, 80/100 per arrival, eta 1.34x, 334 J/req, p95 TTFT 1.48 s, p95 TPOT 50 ms, fails ttft 9/tpot 9/cutoff 3, acc 79% (agent 5/20), local val S 42.2 (A 1.00). Reproduces runs #1/#2.
+- 15:51 paused for Tae's official run; champion left serving on :8000.
