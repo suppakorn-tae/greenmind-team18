@@ -32,8 +32,9 @@
 | E027 | E017 | E017 + server-side thinking budget 5120 (user-authorized) | paused; serving configs/champion.sh (=E027) for official final | 51.1 | 26.6 |  | 297 | 83/100; 120/300 | 81.0 | budget removes 8192 cutoffs (always failures) and the drain-phase energy; final mean +25% vs E017 |
 | E028 | E017 | MAX_BT 5120 | rejected | 27.7 | 0.0 |  | 318 | 80/100; 99/300 | 80.0 | final backlog collapse (36 waiting); local final may be bistable |
 | E029 | E017 | stream-interval 4 (not applied) | abandoned |  |  |  |  |  |  | config edit failed -> champion replicate: val eta 1.26, final S 18.9 |
-| E030 | E027 | thinking budget 5120->3072 | paused; serving configs/champion.sh (=E030) for official final | 47.4 | 27.2 |  | 260 | 83/100, 81/100; 123/300, 114/300 | 80.0 | budget 3072: val eta +10%, final +6% vs 5120, accuracy equal |
+| E030 | E027 | thinking budget 5120->3072 | paused at user request; configs/champion.sh (=E030) serving on :8000 | 47.4 | 27.2 |  | 260 | 83/100, 81/100; 123/300, 114/300 | 80.0 | budget 3072: val eta +10%, final +6% vs 5120, accuracy equal |
 | E031 | E030 | thinking budget 2048 | rejected | 50.5 | 26.2 |  | 305 | 81/100; 115/300 | 81.0 | 2048 too tight: answer can then run to cutoff; 3072 best |
+| E032 | E030 | MTP k 2->3 (with budget 3072) | abandoned |  |  |  |  |  |  | interrupted by user before any grader run; champion E030 restored |
 
 ## Key findings
 

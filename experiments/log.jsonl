@@ -89,3 +89,5 @@
 {"ts":"2026-10-24T19:37:43+07:00","id":"E030","parent":"E027","event":"champion","change":"thinking budget 5120->3072","status":"champion","val_run":"20261024-192201-e030,20261024-193314-e030-2","final_run":"20261024-192326-e030,20261024-193434-e030-2","val_S":47.4,"final_S":27.2,"eta_vs_base":1.75,"j_per_req":260,"slo_met":"83/100, 81/100; 123/300, 114/300","p95_tpot_ms":50,"accuracy":80.0,"lesson":"budget 3072: val eta +10%, final +6% vs 5120, accuracy equal"}
 {"ts":"2026-10-24T19:37:43+07:00","id":"E030","event":"official-pending","status":"paused; serving configs/champion.sh (=E030) for official final"}
 {"ts":"2026-10-24T19:51:16+07:00","id":"E032","parent":"E030","event":"start","change":"MTP k 2->3 (with budget 3072)","status":"running"}
+{"ts":"2026-10-24T19:56:06+07:00","id":"E032","event":"abandoned","status":"abandoned","lesson":"interrupted by user before any grader run; champion E030 restored"}
+{"ts":"2026-10-24T19:56:06+07:00","id":"E030","event":"official-pending","status":"paused at user request; configs/champion.sh (=E030) serving on :8000"}

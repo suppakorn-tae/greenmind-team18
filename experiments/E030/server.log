@@ -1169,3 +1169,45 @@ INFO:     103.153.118.95:43490 - "POST /v1/chat/completions HTTP/1.1" 200 OK
 (APIServer pid=122357) INFO 10-24 19:51:02 [metrics.py:120] SpecDecoding metrics: Mean acceptance length: 2.71, Accepted throughput: 90.30 tokens/s, Drafted throughput: 105.80 tokens/s, Accepted: 903 tokens, Drafted: 1058 tokens, Per-position acceptance rate: 0.909, 0.798, Avg Draft acceptance rate: 85.3%
 (APIServer pid=122357) INFO 10-24 19:51:12 [loggers.py:335] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 139.7 tokens/s, Running: 1 reqs, Waiting: 0 reqs, GPU KV cache usage: 1.9%
 (APIServer pid=122357) INFO 10-24 19:51:12 [metrics.py:120] SpecDecoding metrics: Mean acceptance length: 2.72, Accepted throughput: 88.29 tokens/s, Drafted throughput: 102.79 tokens/s, Accepted: 883 tokens, Drafted: 1028 tokens, Per-position acceptance rate: 0.932, 0.786, Avg Draft acceptance rate: 85.9%
+(APIServer pid=122357) INFO 10-24 19:51:17 [launcher.py:254] [shutdown] API server: shutdown triggered
+(APIServer pid=122357) INFO 10-24 19:51:17 [launcher.py:270] [shutdown] API server: stopping engine client mode=abort timeout=0s
+(APIServer pid=122357) INFO 10-24 19:51:17 [core_client.py:770] [shutdown] MPClient: start timeout=0s
+(APIServer pid=122357) INFO 10-24 19:51:17 [core_client.py:772] [shutdown] MPClient: stopping engine manager
+(APIServer pid=122357) INFO 10-24 19:51:17 [utils.py:628] [shutdown] Process manager: send sigterm to process EngineCore
+(APIServer pid=122357) WARNING 10-24 19:51:17 [utils.py:648] [shutdown] Process manager: force killing remaining processes count=1
+(EngineCore pid=122512) INFO 10-24 19:51:17 [core.py:1454] [shutdown] EngineCore: trigger received signal=SIGTERM
+(APIServer pid=122357) WARNING 10-24 19:51:17 [utils.py:653] [shutdown] Process manager: force killing remaining process EngineCore pid 122512
+(APIServer pid=122357) INFO 10-24 19:51:17 [core_client.py:774] [shutdown] MPClient: engine manager stopped
+(APIServer pid=122357) INFO 10-24 19:51:17 [core_client.py:775] [shutdown] MPClient: cleaning up background resources
+(APIServer pid=122357) INFO 10-24 19:51:17 [core_client.py:777] [shutdown] MPClient: complete
+(APIServer pid=122357) ERROR 10-24 19:51:17 [async_llm.py:906] AsyncLLM output_handler failed.
+(APIServer pid=122357) ERROR 10-24 19:51:17 [async_llm.py:906] Traceback (most recent call last):
+(APIServer pid=122357) ERROR 10-24 19:51:17 [async_llm.py:906]   File "/home/researcher/vllm-env/lib/python3.12/site-packages/vllm/v1/engine/async_llm.py", line 849, in output_handler
+(APIServer pid=122357) ERROR 10-24 19:51:17 [async_llm.py:906]     outputs = await engine_core.get_output_async()
+(APIServer pid=122357) ERROR 10-24 19:51:17 [async_llm.py:906]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(APIServer pid=122357) ERROR 10-24 19:51:17 [async_llm.py:906]   File "/home/researcher/vllm-env/lib/python3.12/site-packages/vllm/v1/engine/core_client.py", line 1235, in get_output_async
+(APIServer pid=122357) ERROR 10-24 19:51:17 [async_llm.py:906]     raise self._format_exception(outputs) from None
+(APIServer pid=122357) ERROR 10-24 19:51:17 [async_llm.py:906] vllm.v1.engine.exceptions.EngineDeadError: EngineCore encountered an issue. See stack trace (above) for the root cause.
+(APIServer pid=122357) ERROR 10-24 19:51:17 [serving.py:929] Error in chat completion stream generator.
+(APIServer pid=122357) ERROR 10-24 19:51:17 [serving.py:929] Traceback (most recent call last):
+(APIServer pid=122357) ERROR 10-24 19:51:17 [serving.py:929]   File "/home/researcher/vllm-env/lib/python3.12/site-packages/vllm/entrypoints/openai/chat_completion/serving.py", line 527, in chat_completion_stream_generator
+(APIServer pid=122357) ERROR 10-24 19:51:17 [serving.py:929]     async for res in result_generator:
+(APIServer pid=122357) ERROR 10-24 19:51:17 [serving.py:929]   File "/home/researcher/vllm-env/lib/python3.12/site-packages/vllm/v1/engine/async_llm.py", line 767, in generate
+(APIServer pid=122357) ERROR 10-24 19:51:17 [serving.py:929]     out = q.get_nowait() or await q.get()
+(APIServer pid=122357) ERROR 10-24 19:51:17 [serving.py:929]                             ^^^^^^^^^^^^^
+(APIServer pid=122357) ERROR 10-24 19:51:17 [serving.py:929]   File "/home/researcher/vllm-env/lib/python3.12/site-packages/vllm/v1/engine/output_processor.py", line 92, in get
+(APIServer pid=122357) ERROR 10-24 19:51:17 [serving.py:929]     raise output
+(APIServer pid=122357) ERROR 10-24 19:51:17 [serving.py:929]   File "/home/researcher/vllm-env/lib/python3.12/site-packages/vllm/v1/engine/async_llm.py", line 849, in output_handler
+(APIServer pid=122357) ERROR 10-24 19:51:17 [serving.py:929]     outputs = await engine_core.get_output_async()
+(APIServer pid=122357) ERROR 10-24 19:51:17 [serving.py:929]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(APIServer pid=122357) ERROR 10-24 19:51:17 [serving.py:929]   File "/home/researcher/vllm-env/lib/python3.12/site-packages/vllm/v1/engine/core_client.py", line 1235, in get_output_async
+(APIServer pid=122357) ERROR 10-24 19:51:17 [serving.py:929]     raise self._format_exception(outputs) from None
+(APIServer pid=122357) ERROR 10-24 19:51:17 [serving.py:929] vllm.v1.engine.exceptions.EngineDeadError: EngineCore encountered an issue. See stack trace (above) for the root cause.
+(APIServer pid=122357) INFO 10-24 19:51:17 [launcher.py:279] [shutdown] API server: engine client stopped
+(APIServer pid=122357) INFO 10-24 19:51:17 [launcher.py:282] [shutdown] API server: signalling HTTP server shutdown
+(APIServer pid=122357) INFO 10-24 19:51:17 [launcher.py:304] [shutdown] API server: shutting down FastAPI HTTP server
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+/usr/lib/python3.12/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
