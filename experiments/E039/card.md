@@ -1,0 +1,3 @@
+# E039 — E038 (budget 1536) + transition phrase in forced reasoning end
+Parent E038. One variable: --reasoning-config reasoning_end_str = "\n\nConsidering the limited time, I have to stop thinking and give the final answer directly now.\n</think>\n\n" (vLLM supports a transition phrase before the parser's end marker; Qwen budget recipe).
+Why: E031/E038 cutoffs = model keeps reasoning inside the answer after a bare forced </think>. An explicit instruction should make it answer. If cutoffs vanish with accuracy intact, low budgets cut peak load. Check server log that reasoning end ids tokenized. Start 2026-10-24T21:04:21+07:00.
