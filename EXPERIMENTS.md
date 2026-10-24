@@ -28,8 +28,8 @@
 | E023 | E017 | SM clock lock 1215 MHz | official-final (worse than champion) | 44.6 | 20.2 | 52.5 | 186 | 164/300 | 89.1 | OFFICIAL final S 52.5 < E017 59.0: J/req -25% but on-time 215->164, sT 0.62->0.37, sL 0.80->0.69; eta only 1.78->1.80. Local final ranking was correct |
 | E024 | E017 | MAX_BT 3072 | rejected | 29.9 | 8.0 |  | 311 | 79/100; 108/300 | 79.0 | TPOT fails halve on final but KV-full queueing -> TTFT 11.7s |
 | E025 | E017 | gpu util 0.96 | rejected | 37.0 | 22.9 |  | 347 | 77/100; 124/300 | 79.0 | final tie (22.9/22.3 vs 22.7), val eta lower |
-| E026 | E017 | long-prefill-threshold 1024->768 | paused; serving configs/champion.sh (=E026) for official final | 40.5 | 23.8 |  | 336 | 83/79/82 of 100; 116/116/118 of 300 | 79.0 | 3x3 replicates: local final mean 23.8 vs champion 20.5 (+16%), fewer TTFT fails |
-| E027 | E017 | [GRAY local-only] thinking budget 5120 | gray-local-win (not shippable) | 47.2 | 25.2 |  | 270 | 84/100, 80/100; 118/300 | 80.0 | replicates via mislabelled E028 runs: val eta 1.45, final S 25.0; 3-val mean eta 1.60 |
+| E026 | E017 | long-prefill-threshold 1024->768 | official-final (worse than E017) | 40.5 | 23.8 | 46.6 | 264 | 193/300 | 90.3 | OFFICIAL final 46.6 < E017 59.0 despite local final +16% -> local/official disagree on a 1-flag change; official noise likely large; E017 stays the base |
+| E027 | E017 | E017 + server-side thinking budget 5120 (user-authorized) | paused; serving configs/champion.sh (=E027) for official final | 51.1 | 26.6 |  | 297 | 83/100; 120/300 | 81.0 | budget removes 8192 cutoffs (always failures) and the drain-phase energy; final mean +25% vs E017 |
 | E028 | E017 | MAX_BT 5120 | rejected | 27.7 | 0.0 |  | 318 | 80/100; 99/300 | 80.0 | final backlog collapse (36 waiting); local final may be bistable |
 | E029 | E017 | stream-interval 4 (not applied) | abandoned |  |  |  |  |  |  | config edit failed -> champion replicate: val eta 1.26, final S 18.9 |
 
@@ -53,4 +53,5 @@
 - MTP k=3 on the champion (E020): val tie with -10% J/req, but final-track collapse (memory-capped admission, p95 TTFT 19.8 s). Always confirm on local final; val can't see this failure.
 - Clock lock 1215 MHz (E023): OFFICIAL final 52.5 vs 59.0 — J/req -25% but on-time -24%; eta flat, sT/sL down. On this workload, any clock/power reduction loses SLO about 1:1 with energy. Local final predicted the ranking; val didn't.
 - [GRAY, local only] Server-side thinking budget 5120 (E027): val eta 1.36 -> 1.67, J/req -17%, final S 22.7 -> 25.2, zero cutoffs, accuracy equal or better. Biggest remaining lever; needs organizer approval.
+- Cap 768 (E026): local final +16% over E017 (3 vs 4 runs) but OFFICIAL final 46.6 vs 59.0 -> a 1-flag local edge of ~15% is not reliable officially; official run-to-run noise is probably ±15-20%.
 

@@ -1,28 +1,31 @@
-# Champion: E026 (since 2026-10-24 18:50 +07) — local; OFFICIAL final pending
-Officially confirmed fallback: E017 (`configs/E017.sh`, OFFICIAL final S 59.0) — differs only in `--long-prefill-token-threshold 1024`.
+# Champion: E027 (since 2026-10-24 19:19 +07) — local; OFFICIAL final pending
+= E017 (OFFICIAL final S 59.0) + server-side default thinking budget 5120 tokens (authorized by the team lead 2026-10-24 ~19:00;
+organizer confirmation still recommended). Fallback without the budget: `configs/E017.sh`.
 
 Start: `configs/champion.sh` at default power (`greenmind-kit/power.sh reset` → 400 W, no clock lock).
 ```
 export PATH=$HOME/vllm-env/bin:/usr/local/cuda/bin:$PATH CUDA_HOME=/usr/local/cuda   # ninja/nvcc for FlashInfer JIT
-vllm serve CMKL/MANGO1.5-Qwen3.5-9B --host 0.0.0.0 --port 8000 \
+THINK_BUDGET=5120 python ~/repo/tools/gray/vllm_think_budget.py serve CMKL/MANGO1.5-Qwen3.5-9B --host 0.0.0.0 --port 8000 \
   --enable-auto-tool-choice --tool-call-parser qwen3_coder --reasoning-parser qwen3 \
   --language-model-only --max-model-len 41984 --gpu-memory-utilization 0.92 \
-  --max-num-seqs 256 --max-num-batched-tokens 4096 --long-prefill-token-threshold 768 \
+  --max-num-seqs 256 --max-num-batched-tokens 4096 --long-prefill-token-threshold 1024 \
   --enable-chunked-prefill --no-enable-prefix-caching \
   --mamba-ssm-cache-dtype bfloat16 \
   --speculative-config '{"model":"CMKL/MANGO1.5-Qwen3.5-9B","method":"mtp","num_speculative_tokens":2}'
 ```
-vLLM 0.32.0, original BF16 weights only.
+`tools/gray/vllm_think_budget.py` = `vllm serve` plus one patch: chat requests that don't set `thinking_token_budget`
+get 5120 (vLLM's built-in budget logic forces the reasoning end marker). The client's max_tokens, temperature and thinking mode are untouched.
 
-| E026 (local, 3 runs) | val | final |
+| E027 (local) | val | final |
 |---|---|---|
-| S | 39.7 / 35.8 / 40.5 | 23.6 / 22.6 / 25.3 (mean 23.8) |
-| eta vs base | 1.30 / 1.28 / 1.34x | 1.33 / 1.30 / 1.39x |
-| SLO-met | 83 / 79 / 82 of 100 | 116 / 116 / 118 of 300 |
-| TTFT fails | 6 / 9 / 6 | 175 / 180 / 176 |
-| J/req | 322 / 347 / 338 | 233 / 210 / 215 |
+| runs | 4 | 3 |
+| S | 47.2 / 39.5 / 36.7 / 51.1 | 25.2 / 25.0 / 26.6 (mean 25.6; E017 20.5) |
+| eta vs base | 1.76 / 1.58 / 1.45 / 1.51x (mean 1.58; E017 1.34) | 1.38 / 1.36 / 1.41x |
+| SLO-met | 84 / 80 / 82 / 83 of 100 | 118 / 115 / 120 of 300 |
+| cutoffs | 0 / 0 / 1 / 0 | 0 / 0 / 0 |
+| J/req | 261 / 280 / 312 / 297 | 200 / 201 / 198 |
 
-# Previous champion: E017
+# Previous champion: E017 (OFFICIAL final S 59.0)
 | run | S | A | eta vs base | J/req | SLO-met | p95 TTFT | p95 TPOT | acc |
 |---|---|---|---|---|---|---|---|---|
 | **OFFICIAL final** (2026-10-24 08:54 UTC) | **59.0** | 1.00 | 1.78x | 247 | 215/300 | 1.91 s | 59 ms | 88.8% |

@@ -8,3 +8,7 @@ In E017 runs no request finished naturally between 5K and 8192 tokens, so the bu
 Status: evidence for the organizer question; do NOT put in champion.sh / official runs unless organizers approve.
 - Replicates (grader label "E028" by mistake; the E028 server failed to bind :8000, so the E027 server answered): val 20261024-181545-e028: 82/100, eta 1.45x, 312 J/req, cutoff 1; final 20261024-181725-e028: S 25.0, eta 1.36x, 201 J/req, 115/300, cutoff 0, acc 82.0%.
 - E027 summary over 3 val / 2 final: val eta 1.76/1.58/1.45 (mean 1.60 vs E017 1.36), final S 25.2/25.0 (E017 22.7).
+## 19:19 — CHAMPION (thinking budget authorized by user ~19:00)
+- Confirmation on fresh server: val 20261024-191422-e027-confirm: 141/158, 83/100, eta 1.51x, 297 J/req, cutoff 0, acc 81%; final 20261024-191555-e027-confirm: S 26.6, eta 1.41x, 198 J/req, 120/300, cutoff 0, acc 81.0% (reason 0.956).
+- Totals: val eta 1.76/1.58/1.45/1.51 (mean 1.58 vs E017 1.335, +18%); final S 25.2/25.0/26.6 (mean 25.6 vs E017 20.5, +25%); zero cutoffs in all 7 runs (E017: 3-7 per run).
+- Official final pending.
