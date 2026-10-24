@@ -18,3 +18,4 @@
 {"ts":"2026-10-24T14:30:25+07:00","id":"E008","parent":"E007","event":"start","change":"MTP k 3->2","status":"running"}
 {"ts":"2026-10-24T14:35:16+07:00","id":"E008","event":"crashed","status":"relaunched","lesson":"launch 1 got SIGTERM when the tool call wrapping it was interrupted; relaunched with setsid. Healthy 14:35, KV pool 462,636 tokens, 400 W default, health PASS"}
 {"ts":"2026-10-24T14:35:16+07:00","id":"E008","event":"official-pending","status":"serving for Tae official run","lesson":"no local val yet; Tae testing E008 on the real grader"}
+{"ts":"2026-10-24T14:42:55+07:00","id":"E008","event":"official","status":"official-val","official_S":31.5,"eta_vs_base":1.27,"j_per_req":333,"slo_met":"65/100","p95_tpot_ms":38,"accuracy":88.9,"lesson":"OFFICIAL val: S 31.5, A 1.00, sE 0.22, sT 0.51, sL 0.59, p95 TTFT 2.02s; J/req 333 vs baseline 467 (-29%); accuracy 88.9 vs 87.2"}
