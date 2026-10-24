@@ -1,0 +1,53 @@
+[PASS] stream+usage  ttft=0.04917739200027427 tokens=177 reasoning_chars=348 finish=stop err=None
+[PASS] tool calling  calls=[{'id': 'chatcmpl-tool-99fa977f5d299b17', 'name': 'get_weather', 'arguments': '{"city": "Chiang Mai"}'}] finish=tool_calls err=None
+run 20261024-151944-e014-2: track=val model=CMKL/MANGO1.5-Qwen3.5-9B items=100 bounds={'ramp': 10.0, 'peak': 15.0, 'quiet': 20.0} s
+measuring idle power for 5s ...
+idle power ≈ 85 W
+  10/100 items done @ 15s
+  20/100 items done @ 28s
+  30/100 items done @ 30s
+  40/100 items done @ 34s
+  50/100 items done @ 39s
+  60/100 items done @ 42s
+  70/100 items done @ 48s
+  80/100 items done @ 56s
+  90/100 items done @ 61s
+  100/100 items done @ 105s
+id: 20261024-151944-e014-2
+track: val
+label: E014#2
+notes: repeat 300 W same server
+status: done
+started_at: 2026-10-24T15:19:44.040767
+ended_at: 2026-10-24T15:21:34.741874
+baseline: False
+model: CMKL/MANGO1.5-Qwen3.5-9B
+on-time: 100/148
+fail_reasons: {"cutoff": 4, "tpot": 10, "ttft": 37}
+energy_J: 30803.855
+avg_power_W: 292.999
+idle_W: 84.692
+eta: 0.00325
+tokens_per_J: 3.956
+s_T: 0.4328
+s_L: 0.4407
+p95_tpot_ms: 70.736
+p95_ttft_over_slo: 3.6397
+macro_acc: 0.7556
+slo_met (per arrival): 53/100
+slo_met (per turn): 100/148
+j_per_req: 308.0
+p95_ttft_s: 2.142
+accuracy_pct: 78.0
+class_acc agent: acc=0.2000 n=20
+class_acc chat: acc=1.0000 n=30
+class_acc long: acc=0.6000 n=5
+class_acc rag: acc=1.0000 n=20
+class_acc reason: acc=0.7333 n=15
+class_acc thai: acc=1.0000 n=10
+score:
+  S: 6.5
+  A: 0.7118
+  s_E: 0.0318
+  eta_ratio: 1.0355
+  weakest_class: agent:0.667

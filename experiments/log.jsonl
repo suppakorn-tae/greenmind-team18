@@ -31,3 +31,5 @@
 {"ts":"2026-10-24T15:13:34+07:00","id":"E013","parent":"E012","event":"start","change":"250W + long-prefill-token-threshold 2048","status":"running"}
 {"ts":"2026-10-24T15:16:44+07:00","id":"E013","parent":"E012","event":"result","change":"250W + chunk cap 2048","status":"rejected","val_run":"20261024-151438-e013","val_S":14.3,"eta_vs_base":1.08,"j_per_req":267,"slo_met":"45/100","p95_tpot_ms":47,"accuracy":null,"lesson":"250W too slow at peak regardless of chunking"}
 {"ts":"2026-10-24T15:16:44+07:00","id":"E014","parent":"E008","event":"start","change":"power cap 400->300 W","status":"running"}
+{"ts":"2026-10-24T15:22:16+07:00","id":"E014","parent":"E008","event":"result","change":"power cap 300 W","status":"rejected","val_run":"20261024-151757-e014,20261024-151944-e014-2","val_S":1.2,"eta_vs_base":1.11,"j_per_req":290,"slo_met":"56/100, 53/100","p95_tpot_ms":71,"accuracy":null,"lesson":"300W: J/req -7..-13% but TTFT fails up; eta mean 1.11 < 1.22"}
+{"ts":"2026-10-24T15:22:16+07:00","id":"E008","event":"start","change":"champion repeat (fresh server, 400 W) to measure variance","status":"champion"}
