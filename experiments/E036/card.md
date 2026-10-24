@@ -1,0 +1,2 @@
+# E036 — champion E033 with max-num-seqs 256 -> 112 (admission control)
+Parent E033. One variable. Why: final-peak TPOT fails (~120/400) persist regardless of chunking: ~140 concurrent decodes saturate the GPU so every admitted request runs > 50 ms/token. Capping concurrency keeps admitted requests under the TPOT SLO at the cost of queueing (TTFT fails) — net effect on on-time count unknown. Val (peak ~60 running) should be unaffected. Start 2026-10-24T20:27:05+07:00.
