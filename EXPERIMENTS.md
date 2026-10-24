@@ -35,8 +35,10 @@
 | E030 | E027 | thinking budget 5120->3072 | official-final CHAMPION | 47.4 | 27.2 | 88.0 | 173 | 242/300 | 90.7 | OFFICIAL final S 88.0 (E017 59.0): sE 0.96, sT 0.71, sL 0.85, eta 2.87x, 173 J/req, 242/300, p95 TTFT 1.85 s, acc 90.7%. sE near cap -> next gains must come from sT/sL |
 | E031 | E030 | thinking budget 2048 | rejected | 50.5 | 26.2 |  | 305 | 81/100; 115/300 | 81.0 | 2048 too tight: answer can then run to cutoff; 3072 best |
 | E032 | E030 | MTP k=3 with budget | rejected | 53.4 | 15.1 |  | 241 | 74/100; 100/300 | 81.0 | k=3 still memory-collapses on final even with budget |
-| E033 | E030 | gpu util 0.96 | champion | 63.4 | 32.3 |  | 253 | 82/100, 80/100; 122/300, 129/300 | 81.0 | util 0.96 on E030: final mean S 32.3 vs 27.2, TTFT tail shorter; val tie |
-| E034 | E033 | gpu util 0.98 | running |  |  |  |  |  |  |  |
+| E033 | E030 | final replicate + frontend CPU check | paused for official final; configs/champion.sh (=E033) serving | 63.4 | 30.4 |  | 253 | 82/100, 80/100; 122/300, 129/300 | 81.0 | final x3 mean 30.4; API server CPU max 25% - not a bottleneck |
+| E034 | E033 | gpu util 0.98 | crashed |  |  |  |  |  |  | CUDA OOM under load; 0.96 is the ceiling |
+| E035 | E033 | MAX_BT 3072 | rejected | 38.7 | 28.7 |  | 287 | 83/100; 123/300 | 78.0 | TPOT fails insensitive to chunking; decode-saturated |
+| E036 | E033 | max-num-seqs 112 | rejected | 45.7 | 19.0 |  | 240 | 83/100; 111/300 | 79.0 | admission cap: TPOT fails down, TTFT fails up more |
 
 ## Key findings
 
