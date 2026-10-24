@@ -800,3 +800,4 @@ INFO:     127.0.0.1:38160 - "POST /v1/chat/completions HTTP/1.1" 200 OK
 (APIServer pid=118039) INFO 10-24 19:18:43 [loggers.py:335] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 189.9 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%
 (APIServer pid=118039) INFO 10-24 19:18:43 [metrics.py:120] SpecDecoding metrics: Mean acceptance length: 2.06, Accepted throughput: 97.69 tokens/s, Drafted throughput: 184.58 tokens/s, Accepted: 977 tokens, Drafted: 1846 tokens, Per-position acceptance rate: 0.618, 0.441, Avg Draft acceptance rate: 52.9%
 (APIServer pid=118039) INFO 10-24 19:18:53 [loggers.py:335] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%
+INFO:     127.0.0.1:51374 - "GET /health HTTP/1.1" 200 OK

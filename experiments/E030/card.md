@@ -1,0 +1,2 @@
+# E030 — champion E027 with thinking budget 5120 -> 3072
+Parent E027. One variable. Why: the last-finishing request sets the end of the energy window; with 5120 the tail is reason requests at 3.7-5.5K tokens. 3072 shortens the drain tail and cuts ~4% of generated tokens. Risk: reason accuracy (9/45 final reason items exceed 2048, 6 exceed 3072). Gate: reason acc and A on final; eta on val. Start 2026-10-24T19:20:56+07:00.
