@@ -1,0 +1,233 @@
+{
+ "summary": {
+  "model": "mango",
+  "n": 8,
+  "accuracy": 0.75,
+  "pin_recall": 0.9375,
+  "by_len": {
+   "8000": 0.5,
+   "14000": 1.0,
+   "20000": 1.0,
+   "26000": 0.5
+  },
+  "mean_prompt_tokens": 19161.5
+ },
+ "rows": [
+  {
+   "len": 8000,
+   "prompt_tokens": 9053,
+   "completion_tokens": 610,
+   "targets": [
+    [
+     "Y965",
+     "1849"
+    ],
+    [
+     "H254",
+     "2152"
+    ],
+    [
+     "T686",
+     "8787"
+    ],
+    [
+     "L837",
+     "9096"
+    ]
+   ],
+   "correct": true,
+   "partial": 4,
+   "answer_tail": "\n\nY965=1849, H254=2152, T686=8787, L837=9096",
+   "secs": 15.9
+  },
+  {
+   "len": 14000,
+   "prompt_tokens": 15810,
+   "completion_tokens": 3113,
+   "targets": [
+    [
+     "X430",
+     "4914"
+    ],
+    [
+     "R633",
+     "6598"
+    ],
+    [
+     "U550",
+     "7084"
+    ],
+    [
+     "G892",
+     "7983"
+    ]
+   ],
+   "correct": true,
+   "partial": 4,
+   "answer_tail": "\n\nX430=4914, R633=6598, U550=7084, G892=7983",
+   "secs": 37.4
+  },
+  {
+   "len": 20000,
+   "prompt_tokens": 22524,
+   "completion_tokens": 2762,
+   "targets": [
+    [
+     "B517",
+     "8100"
+    ],
+    [
+     "U609",
+     "1300"
+    ],
+    [
+     "B575",
+     "2535"
+    ],
+    [
+     "K417",
+     "7905"
+    ]
+   ],
+   "correct": true,
+   "partial": 4,
+   "answer_tail": "\n\nB517=8100, U609=1300, B575=2535, K417=7905",
+   "secs": 35.2
+  },
+  {
+   "len": 26000,
+   "prompt_tokens": 29283,
+   "completion_tokens": 968,
+   "targets": [
+    [
+     "K291",
+     "7557"
+    ],
+    [
+     "A320",
+     "7829"
+    ],
+    [
+     "W177",
+     "5907"
+    ],
+    [
+     "M466",
+     "2025"
+    ]
+   ],
+   "correct": true,
+   "partial": 4,
+   "answer_tail": "\n\nK291=7557, A320=7829, W177=5907, M466=2025",
+   "secs": 20.3
+  },
+  {
+   "len": 8000,
+   "prompt_tokens": 9039,
+   "completion_tokens": 3113,
+   "targets": [
+    [
+     "V919",
+     "5380"
+    ],
+    [
+     "T379",
+     "3821"
+    ],
+    [
+     "L465",
+     "9341"
+    ],
+    [
+     "M941",
+     "7264"
+    ]
+   ],
+   "correct": false,
+   "partial": 3,
+   "answer_tail": "\n\nV919=9648, T379=3821, L465=9341, M941=7264",
+   "secs": 37.8
+  },
+  {
+   "len": 14000,
+   "prompt_tokens": 15815,
+   "completion_tokens": 745,
+   "targets": [
+    [
+     "T653",
+     "4701"
+    ],
+    [
+     "M971",
+     "8363"
+    ],
+    [
+     "U928",
+     "6772"
+    ],
+    [
+     "P425",
+     "4174"
+    ]
+   ],
+   "correct": true,
+   "partial": 4,
+   "answer_tail": "\n\nT653=4701, M971=8363, U928=6772, P425=4174",
+   "secs": 18.3
+  },
+  {
+   "len": 20000,
+   "prompt_tokens": 22515,
+   "completion_tokens": 678,
+   "targets": [
+    [
+     "R466",
+     "4302"
+    ],
+    [
+     "S595",
+     "5614"
+    ],
+    [
+     "L118",
+     "2574"
+    ],
+    [
+     "A773",
+     "9121"
+    ]
+   ],
+   "correct": true,
+   "partial": 4,
+   "answer_tail": "\n\nR466=4302, S595=5614, L118=2574, A773=9121",
+   "secs": 17.7
+  },
+  {
+   "len": 26000,
+   "prompt_tokens": 29253,
+   "completion_tokens": 744,
+   "targets": [
+    [
+     "L659",
+     "2039"
+    ],
+    [
+     "D809",
+     "5591"
+    ],
+    [
+     "S130",
+     "5204"
+    ],
+    [
+     "E451",
+     "8567"
+    ]
+   ],
+   "correct": false,
+   "partial": 3,
+   "answer_tail": "\n\nL659=2039, D809=7636, S130=5204, E451=8567",
+   "secs": 18.8
+  }
+ ]
+}

@@ -57,6 +57,7 @@ true start times.
 | E044 | E043 | dynamic SD on V1 runner | rejected | 43.7 |  | 250 | 83/100; 92/300 | 80.0 |  |  |  |  | dynamic SD reserves ~23% KV -> final collapse |
 | E045 | E030 | weights -> team W8A8 INT8 (CUTLASS int8) | superseded by E046 (same server, label only) | 60.3 | 94.4 | 209 | 100/100, 100/100; 245/300, 261/300 | 83.5 |  |  |  |  | W8A8 INT8 on A100 tensor cores ~2x prefill -> peak no longer saturated: val 100/100, local final S 94; accuracy equal or better overall |
 | E046 | E045 | launch verification via scripts/serve_final.sh | FINAL SUBMISSION (OFFICIAL Final 99.38, attempt 20261024T164844-c109c6) | 81.6 | 94.8 | 179 | 257/300 | 82.3 | 99.38 (final) | 157.5 | 294/300 | 88.3 | serve_final.sh reproduces E046: identical args, health PASS, val 100/100 |
+| E047 | E046 | long-context A/B BF16 vs W8A8 (synthetic KV tracking, 64 prompts 9-29K tokens) | no degradation (keep E046) |  |  |  |  | 81.25 |  |  |  |  | W8A8 = BF16 on long-range KV tracking (0.8125 both); official longctx 10/15 likely n=15 noise |
 
 ## Key findings
 
@@ -91,4 +92,5 @@ true start times.
 - Dynamic speculative decoding (E043 V2 runner, E044 V1): k=2 below 64 running / k=1 above cuts final TPOT fails (122 -> 95) but shrinks the KV pool 475K -> 368K tokens -> final memory collapse. GDN kernels: only Triton prefill on Ampere (FlashInfer/CuteDSL need SM90+).
 - **Team W8A8 INT8 checkpoint (E045)**: CUTLASS INT8 tensor-core GEMMs on A100 (~2x BF16) remove the peak prefill bottleneck: val 100/100 on time, local final S 93.7/95.0 vs 25-29 for BF16, 0 waiting at final peak, accuracy 83-84% vs 81%. Weight-only quant (AWQ/FP8 Marlin) was the wrong kind of quantization for this GPU; W8A8 int8 is the right one.
 - **OFFICIAL final S 99.38 (E046 = team W8A8 INT8 + MTP k=2 + bf16 SSM state + prefill cap 1024/4096 + thinking budget 3072)**: sE 1.0, sT 0.97, sL 1.0, 157 J/req (baseline 467, -66%), 294/300 on time, accuracy 88.3%. Only weak spot: longctx retention 0.71 (15 items, ungated).
+- Long-context A/B (E047, synthetic KV tracking 9-29K tokens): W8A8 0.8125 = BF16 0.8125 exact, PIN recall 0.938 vs 0.941 -> the official longctx 10/15 is not explained by quantization on retrieval/tracking; likely n=15 noise.
 

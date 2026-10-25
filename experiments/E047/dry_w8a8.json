@@ -1,0 +1,169 @@
+{
+ "summary": {
+  "model": "mango",
+  "n": 8,
+  "accuracy": 1.0,
+  "pin_recall": 1.0,
+  "by_len": {
+   "8000": 1.0,
+   "16000": 1.0,
+   "24000": 1.0,
+   "30000": 1.0
+  },
+  "mean_prompt_tokens": 20889.25
+ },
+ "rows": [
+  {
+   "len": 8000,
+   "prompt_tokens": 8592,
+   "completion_tokens": 324,
+   "targets": [
+    [
+     "S560",
+     "5401"
+    ],
+    [
+     "E856",
+     "5056"
+    ]
+   ],
+   "correct": true,
+   "partial": 2,
+   "answer_tail": "\n\nS560=5401, E856=5056",
+   "secs": 14.0
+  },
+  {
+   "len": 16000,
+   "prompt_tokens": 17153,
+   "completion_tokens": 356,
+   "targets": [
+    [
+     "E292",
+     "9322"
+    ],
+    [
+     "L587",
+     "3102"
+    ]
+   ],
+   "correct": true,
+   "partial": 2,
+   "answer_tail": "\n\nE292=9322, L587=3102",
+   "secs": 14.6
+  },
+  {
+   "len": 24000,
+   "prompt_tokens": 25721,
+   "completion_tokens": 455,
+   "targets": [
+    [
+     "X605",
+     "8023"
+    ],
+    [
+     "D395",
+     "7046"
+    ]
+   ],
+   "correct": true,
+   "partial": 2,
+   "answer_tail": "\n\nX605=8023, D395=7046",
+   "secs": 15.7
+  },
+  {
+   "len": 30000,
+   "prompt_tokens": 32150,
+   "completion_tokens": 335,
+   "targets": [
+    [
+     "D370",
+     "5981"
+    ],
+    [
+     "L337",
+     "6696"
+    ]
+   ],
+   "correct": true,
+   "partial": 2,
+   "answer_tail": "\n\nD370=5981, L337=6696",
+   "secs": 14.7
+  },
+  {
+   "len": 8000,
+   "prompt_tokens": 8594,
+   "completion_tokens": 470,
+   "targets": [
+    [
+     "R362",
+     "2488"
+    ],
+    [
+     "K328",
+     "6382"
+    ]
+   ],
+   "correct": true,
+   "partial": 2,
+   "answer_tail": "\n\nR362=2488, K328=6382",
+   "secs": 15.6
+  },
+  {
+   "len": 16000,
+   "prompt_tokens": 17141,
+   "completion_tokens": 240,
+   "targets": [
+    [
+     "J708",
+     "7553"
+    ],
+    [
+     "P722",
+     "9953"
+    ]
+   ],
+   "correct": true,
+   "partial": 2,
+   "answer_tail": "\n\nJ708=7553, P722=9953",
+   "secs": 13.7
+  },
+  {
+   "len": 24000,
+   "prompt_tokens": 25693,
+   "completion_tokens": 481,
+   "targets": [
+    [
+     "B633",
+     "7839"
+    ],
+    [
+     "E257",
+     "7592"
+    ]
+   ],
+   "correct": true,
+   "partial": 2,
+   "answer_tail": "\n\nB633=7839, E257=7592",
+   "secs": 16.3
+  },
+  {
+   "len": 30000,
+   "prompt_tokens": 32070,
+   "completion_tokens": 332,
+   "targets": [
+    [
+     "J352",
+     "6193"
+    ],
+    [
+     "V749",
+     "3539"
+    ]
+   ],
+   "correct": true,
+   "partial": 2,
+   "answer_tail": "\n\nJ352=6193, V749=3539",
+   "secs": 15.6
+  }
+ ]
+}

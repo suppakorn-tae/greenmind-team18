@@ -1,0 +1,3 @@
+# E047 — long-context A/B: is the official longctx drop (0.71 retention) caused by W8A8?
+Official E046 longctx 10/15 (retention 0.71) vs BF16 E039 13/15; local grader long class can't reproduce (W8A8 14/15 locally).
+Test: `scripts/longctx_eval.py` — synthetic RULER-style key-value tracking generated locally (no test items): registry of ~300-900 `Room <code>: access PIN is <pin>.` records + filler, 25% of rooms get a later `Update: ... PIN changed to ...`; ask for the current PINs of 4 rooms (3 updated); correct = all 4 latest PINs. 64 prompts (16 each at ~9K/16K/22K/29K prompt tokens), seed 7, streaming, temperature 0, max_tokens 8192, thinking on (server budget 3072), concurrency 8.
